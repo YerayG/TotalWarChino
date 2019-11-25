@@ -12,6 +12,14 @@ class Jugador extends Modelo {
         this.cadenciaDisparo = 10;
         this.tiempoDisparo = 0;
 
+        //La mayoria de esta clase sobra porque el jugador no es ni modelo ni tiene animaciones
+        //ni se mueve ni dispara, solo almacena recursos y compra cosas
+        this.madera = 0;
+        this.dinero = 0;
+        this.hierro = 0;
+        this.cuarteles = 0;
+
+
         this.orientacion = orientaciones.derecha;
         this.estado = estados.moviendo;
 
