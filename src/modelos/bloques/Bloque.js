@@ -1,5 +1,7 @@
 class Bloque extends Modelo {
-    constructor(x, y, imagen) {
-        super(imagen, x, y);
+
+    constructor(rutaImagen, x, y) {
+        super(rutaImagen, x, y)
     }
+
 }
