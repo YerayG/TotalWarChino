@@ -8,26 +8,39 @@ var controles = {};
 
 
 // Capas
+var layer;
 var gameLayer;
+var menuLayer;
+
 
 // Inicio capas y bucle del juego
 function iniciarJuego() {
-    gameLayer = new GameLayer();
+    menuLayer = new MenuLayer();
+    layer = menuLayer;
+
     setInterval(loop, 1000 / 30);
 }
 
 
 
 function loop(){
-    console.log("loop - ");
-    gameLayer.actualizar();
+    console.log("loop - ")
+    layer.actualizar();
     if (entrada == entradas.pulsaciones) {
-        gameLayer.calcularPulsaciones(pulsaciones);
+        layer.calcularPulsaciones(pulsaciones);
     }
-    gameLayer.procesarControles();
-    gameLayer.dibujar();
+    layer.procesarControles()
+    layer.dibujar();
 
     actualizarPulsaciones();
+}
+
+function actualizarPulsaciones () {
+    for(var i=0; i < pulsaciones.length; i++){
+        if ( pulsaciones[i].tipo ==  tipoPulsacion.inicio){
+            pulsaciones[i].tipo = tipoPulsacion.mantener;
+        }
+    }
 }
 
 

@@ -15,6 +15,8 @@ class GameLayer extends Layer {
 
         this.enemigos = [];
 
+        this.obstaculos=[];
+        
         this.fondoPuntos =
             new Fondo(imagenes.icono_puntos, 480*0.85,320*0.05);
 
@@ -228,31 +230,67 @@ class GameLayer extends Layer {
 
     cargarObjetoMapa(simbolo, x, y){
         switch(simbolo) {
-            case "C":
-                this.copa = new Bloque(imagenes.copa, x,y);
-                this.copa.y = this.copa.y - this.copa.alto/2;
-                // modificación para empezar a contar desde el suelo
-                this.espacio.agregarCuerpoDinamico(this.copa);
-                break;
             case "E":
-                var enemigo = new Enemigo(x,y);
-                enemigo.y = enemigo.y - enemigo.alto/2;
+                var espadachin = new Espadachin(x,y);
+                espadachin.y = espadachin.y - espadachin.alto/2;
                 // modificación para empezar a contar desde el suelo
-                this.enemigos.push(enemigo);
-                this.espacio.agregarCuerpoDinamico(enemigo);
+                this.aliados.push(espadachin);
+                this.espacio.agregarCuerpoDinamico(espadachin);
                 break;
-            case "1":
-                this.jugador = new Jugador(x, y);
+            case "A":
+                var arquero = new Arquero(x,y);
+                arquero.y = arquero.y - arquero.alto/2;
                 // modificación para empezar a contar desde el suelo
-                this.jugador.y = this.jugador.y - this.jugador.alto/2;
-                this.espacio.agregarCuerpoDinamico(this.jugador);
+                this.aliados.push(arquero);
+                this.espacio.agregarCuerpoDinamico(arquero);
                 break;
+
+            case "C":
+                var caballero = new Caballero(x,y);
+                caballero.y = caballero.y - caballero.alto/2;
+                // modificación para empezar a contar desde el suelo
+                this.aliados.push(caballero);
+                this.espacio.agregarCuerpoDinamico(caballero);
+                break;
+
+            case "L":
+                var lanzero = new Lancero(x,y);
+                lanzero.y = lanzero.y - lanzero.alto/2;
+                // modificación para empezar a contar desde el suelo
+                this.aliados.push(lanzaro);
+                this.espacio.agregarCuerpoDinamico(lanzero);
+                break;
+
+            case "R":
+                var rey = new Rey(x,y);
+                rey.y = rey.y - rey.alto/2;
+                // modificación para empezar a contar desde el suelo
+                this.aliados.push(rey);
+                this.espacio.agregarCuerpoDinamico(rey);
+                break;
+
+            case "T":
+                var tropa = new Tropa(x,y);
+                tropa.y = tropa.y - tropa.alto/2;
+                // modificación para empezar a contar desde el suelo
+                this.aliados.push(tropa);
+                this.espacio.agregarCuerpoDinamico(tropa);
+                break;
+
             case "#":
                 var bloque = new Bloque(imagenes.bloque_tierra, x,y);
                 bloque.y = bloque.y - bloque.alto/2;
                 // modificación para empezar a contar desde el suelo
                 this.bloques.push(bloque);
                 this.espacio.agregarCuerpoEstatico(bloque);
+                break;
+
+            case "B":
+                var barrera = new Barrera(x,y);
+                barrera.y = barrera.y - barrera.alto/2;
+                // modificación para empezar a contar desde el suelo
+                this.obstaculos.push(barrera);
+                this.espacio.agregarCuerpoEstatico(barrera);
                 break;
         }
     }
