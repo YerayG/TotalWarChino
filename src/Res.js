@@ -18,7 +18,23 @@ var imagenes = {
     mensaje_perder: "res/mensaje_perder.png",
     bloque_arena: "res/Tile-Arena.jpg",
     bloque_monte: "res/Tile-Monte.png",
-    bloque_hierba: "res/Tile-Hierba.jpg"
+    bloque_hierba: "res/Tile-Hierba.jpg",
+    animacion_rey_aliado_ataque_abajo = "res/rey_aliado/Animacion-Rey-B-Atq-Abj.png",
+    animacion_rey_aliado_ataque_arriba = "res/rey_aliado/Animacion-Rey-B-Atq-Arr.png",
+    animacion_rey_aliado_ataque_derecha = "res/rey_aliado/Animacion-Rey-B-Atq-Eral.png",
+    animacion_rey_aliado_ataque_izquierda = "res/rey_aliado/Animacion-Rey-B-Atq-Lat.png",
+    animacion_rey_aliado_abajo = "res/rey_aliado/Animacion-Rey-B-Est-Abj.png",
+    animacion_rey_aliado_arriba = "res/rey_aliado/Animacion-Rey-B-Est-Arr.png",
+    animacion_rey_aliado_derecha = "res/rey_aliado/Animacion-Rey-B-Est-Eral.png",
+    animacion_rey_aliado_izquierda = "res/rey_aliado/Animacion-Rey-B-Est-Lat.png",
+    animacion_rey_enemigo_ataque_abajo = "res/rey_aliado/Animacion-Rey-M-Atq-Abj.png",
+    animacion_rey_enemigo_ataque_arriba = "res/rey_aliado/Animacion-Rey-M-Atq-Arr.png",
+    animacion_rey_enemigo_ataque_derecha = "res/rey_aliado/Animacion-Rey-M-Atq-Eral.png",
+    animacion_rey_enemigo_ataque_izquierda = "res/rey_aliado/Animacion-Rey-M-Atq-Lat.png",
+    animacion_rey_enemigo_abajo = "res/rey_enemigo/Animacion-Rey-M-Est-Abj.png",
+    animacion_rey_enemigo_arriba = "res/rey_enemigo/Animacion-Rey-M-Est-Arr.png",
+    animacion_rey_enemigo_derecha = "res/rey_enemigo/Animacion-Rey-M-Est-Eral.png",
+    animacion_rey_enemigo_izquierda = "res/rey_enemigo/Animacion-Rey-M-Est-Lat.png"
 };
 
 var rutasImagenes = Object.values(imagenes);
