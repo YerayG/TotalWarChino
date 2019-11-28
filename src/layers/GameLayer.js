@@ -19,12 +19,15 @@ class GameLayer extends Layer {
 
         this.propiedades=[];
 
-        this.fondoPuntos =
-            new Fondo(imagenes.icono_puntos, 480*0.85,320*0.05);
+        this.fondoMonedas = new Fondo(imagenes.icono_monedas, 480*0.85,320*0.05);
+        this.fondoHierro = new Fondo(imagenes.icono_hierro, 480*0.70,320*0.05);
+        this.fondoMadera = new Fondo(imagenes.icono_madera, 480*0.55,320*0.05);
 
 
         this.disparosJugador = [];
-        this.puntos = new Texto(0,480*0.9,320*0.07 );
+        this.dinero = new Texto(0,480*0.75,320*0.07 );
+        this.hierro = new Texto(0,480*0.9,320*0.07 );
+        this.madera = new Texto(0,480*0.60,320*0.07 );
 
         this.botonSalto = new Boton(imagenes.boton_salto,480*0.9,320*0.55);
         this.botonDisparo = new Boton(imagenes.boton_disparo,480*0.75,320*0.83);
@@ -49,7 +52,7 @@ class GameLayer extends Layer {
                 i=i-1;
             }
         }
-        
+
 
         // Jugador se cae
         if ( this.jugador.y > 480 ){
@@ -97,7 +100,7 @@ class GameLayer extends Layer {
                     this.disparosJugador.splice(i, 1);
                     i = i-1;
                     this.enemigos[j].impactado();
-                    this.puntos.valor++;
+                    this.dinero.valor++;
                 }
             }
         }
@@ -149,12 +152,16 @@ class GameLayer extends Layer {
             this.enemigos[i].dibujar(this.scrollX);
         }
 
-        this.fondoPuntos.dibujar();
+        this.fondoMonedas.dibujar();
+        this.fondoHierro.dibujar();
+        this.fondoMadera.dibujar();
 
-        this.puntos.dibujar();
+        this.dinero.dibujar();
+        this.hierro.dibujar();
+        this.madera.dibujar();
 
         // HUD
-        this.fondoPuntos.dibujar();
+
         this.puntos.dibujar();
         if ( !this.pausa && entrada == entradas.pulsaciones) {
             this.botonDisparo.dibujar();
