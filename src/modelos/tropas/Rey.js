@@ -1,13 +1,17 @@
 class Rey extends Tropa {
     constructor(x, y) {
-        super(x, y, /*imagenes.rey*/);
+        var imagen, vx;
+        if(aliado) {
+            //imagen = imagenes.rey;
+            vx = 3;
+        } else {
+            //imagen = imagenes.reyEnemigo;
+            vx = -3;
+        }
 
-        super.cadenciaAtaque = 20;
-        super.tiempoAtaque = 20;
-        super.rango = 20;
-        super.vida = 1000;
-        super.damage = 100;
-        //super.coste = 1000;
+        var cadenciaAtaque = 20, rango = 20, vida = 1000, damage = 100;
+
+        super(x, y, vx, cadenciaAtaque, rango, vida, damage, imagen);
     }
 
     actualizar() {

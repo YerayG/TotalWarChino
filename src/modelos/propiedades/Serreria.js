@@ -10,6 +10,6 @@ class Serreria extends Propiedad {
     }
 
     generarParaJugador(jugador) {
-        jugador.madera += cantidad;
+        jugador.madera += this.cantidad;
     }
 }

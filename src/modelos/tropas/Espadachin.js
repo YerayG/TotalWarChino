@@ -1,13 +1,17 @@
 class Espadachin extends Tropa {
-    constructor(x, y) {
-        super(x, y, /*imagenes.espadachin*/);
+    constructor(x, y, aliado) {
+        var imagen, vx;
+        if(aliado) {
+            //imagen = imagenes.espadachin;
+            vx = 2;
+        } else {
+            //imagen = imagenes.espadachinEnemigo;
+            vx = -2;
+        }
 
-        super.cadenciaAtaque = 20;
-        super.tiempoAtaque = 20;
-        super.rango = 20;
-        super.vida = 200;
-        super.damage = 50;
-        //super.coste = 50;
+        var cadenciaAtaque = 20, rango = 20, vida = 200, damage = 50;
+
+        super(x, y, vx, cadenciaAtaque, rango, vida, damage, imagen);
     }
 
     actualizar() {
