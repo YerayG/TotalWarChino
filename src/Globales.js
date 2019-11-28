@@ -11,7 +11,7 @@ orientaciones.derecha = 2;
 orientaciones.izquierda = 3;
 
 var nivelActual = 0;
-var nivelMaximo = 2;
+var nivelMaximo = 0;
 
 var pulsaciones = []; // actuales registradas
 
