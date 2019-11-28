@@ -2,6 +2,16 @@ class Jugador extends Modelo {
 
     constructor(x, y) {
         super(imagenes.jugador , x, y);
+
+        //La mayoria de esta clase sobra porque el jugador no es ni modelo ni tiene animaciones
+        //ni se mueve ni dispara, solo almacena recursos y compra cosas
+        this.madera = 0;
+        this.dinero = 0;
+        this.hierro = 0;
+        this.cuarteles = 0;
+
+        this.propiedades = [];
+
         this.vidas = 3;
         this.tiempoInvulnerable = 0;
 
@@ -11,13 +21,6 @@ class Jugador extends Modelo {
         // Disparo
         this.cadenciaDisparo = 10;
         this.tiempoDisparo = 0;
-
-        //La mayoria de esta clase sobra porque el jugador no es ni modelo ni tiene animaciones
-        //ni se mueve ni dispara, solo almacena recursos y compra cosas
-        this.madera = 0;
-        this.dinero = 0;
-        this.hierro = 0;
-        this.cuarteles = 0;
 
 
         this.orientacion = orientaciones.derecha;
@@ -184,5 +187,15 @@ class Jugador extends Modelo {
                 // 100 actualizaciones de loop
             }
         }
+    }
+
+    generarRecursos() {
+        for(var i = 0; i < this.propiedades.length; i++) {
+            this.propiedades[i].generarParaJugador(this);
+        }
+    }
+
+    comprar(propiedad) {
+        this.propiedades.push(propiedad);
     }
 }

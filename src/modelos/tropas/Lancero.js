@@ -1,13 +1,17 @@
 class Lancero extends Tropa {
     constructor(x, y) {
-        super(x, y, /*imagenes.lancero*/);
+        var imagen, vx;
+        if(aliado) {
+            //imagen = imagenes.lancero;
+            vx = 2;
+        } else {
+            //imagen = imagenes.lanceroEnemigo;
+            vx = -2;
+        }
 
-        super.cadenciaAtaque = 20;
-        super.tiempoAtaque = 20;
-        super.rango = 40;
-        super.vida = 300;
-        super.damage = 70;
-        //super.coste = 150;
+        var cadenciaAtaque = 20, rango = 40, vida = 300, damage = 70;
+
+        super(x, y, vx, cadenciaAtaque, rango, vida, damage, imagen);
     }
 
     actualizar() {

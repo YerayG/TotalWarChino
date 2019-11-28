@@ -10,6 +10,6 @@ class Ayuntamiento extends Propiedad {
     }
 
     generarParaJugador(jugador) {
-        jugador.dinero += cantidad;
+        jugador.dinero += this.cantidad;
     }
 }

@@ -1,15 +1,16 @@
 class Tropa extends Modelo {
-    constructor(x, y, imagen) {
+    constructor(x, y, vx, rango, cadenciaAtaque, vida, damage, imagen) {
         super(imagen, x, y);
 
         this.estado = estados.moviendo;
-        this.vx = 1;
+        this.vx = vx;
 
-        this.rango = 0;
-        this.cadenciaAtaque = 0;
-        this.tiempoAtaque = 0;
-        this.vida = 0;
-        this.damage = 0;
+        this.rango = rango;
+        this.cadenciaAtaque = cadenciaAtaque;
+        this.tiempoAtaque = cadenciaAtaque;
+        this.vida = vida;
+        this.damage = damage;
+
         //this.coste = 0;
         //Ver constructor de Propiedad
         //Además pueden ser tropas aliadas o enemigas
@@ -30,11 +31,11 @@ class Tropa extends Modelo {
         //Scroll y animaciones
     }
 
-    enRango(enemigo) {
-        return this.x + this.rango >= enemigo.x && this.aliado;
+    enRango(unidad) {
+        return this.x + this.rango >= unidad.x;
     }
 
-    mismaCalle(enemigo) {
-        return Math.abs(this.y - enemigo.y) <= 10;
+    mismaCalle(unidad) {
+        return Math.abs(this.y - unidad.y) <= 10;
     }
 }

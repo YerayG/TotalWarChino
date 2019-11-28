@@ -1,13 +1,17 @@
 class Caballero extends Tropa {
-    constructor(x, y) {
-        super(x, y, /*imagenes.caballero*/);
+    constructor(x, y, aliado) {
+        var imagen, vx;
+        if(aliado) {
+            //imagen = imagenes.caballero;
+            vx = 3;
+        } else {
+            //imagen = imagenes.caballeroEnemigo;
+            vx = -3;
+        }
 
-        super.cadenciaAtaque = 30;
-        super.tiempoAtaque = 30;
-        super.rango = 30;
-        super.vida = 600;
-        super.damage = 50;
-        //super.coste = 200;
+        var cadenciaAtaque = 30, rango = 30, vida = 600, damage = 50;
+
+        super(x, y, vx, cadenciaAtaque, rango, vida, damage, imagen);
     }
 
     actualizar() {

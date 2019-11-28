@@ -10,6 +10,6 @@ class Mina extends Propiedad {
     }
 
     generarParaJugador(jugador) {
-        jugador.hierro += cantidad;
+        jugador.hierro += this.cantidad;
     }
 }

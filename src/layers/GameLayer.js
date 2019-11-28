@@ -21,13 +21,16 @@ class GameLayer extends Layer {
             new Fondo(imagenes.icono_puntos, 480*0.85,320*0.05);
 
 
-        this.disparosJugador = []
+        this.disparosJugador = [];
         this.puntos = new Texto(0,480*0.9,320*0.07 );
 
         this.botonSalto = new Boton(imagenes.boton_salto,480*0.9,320*0.55);
         this.botonDisparo = new Boton(imagenes.boton_disparo,480*0.75,320*0.83);
 
         this.pad = new Pad(480*0.14,320*0.8);
+
+        this.tropasAliadas = [];
+        this.tropasEnemigas = [];
 
         this.cargarMapa("res/"+nivelActual+".txt");
     }
