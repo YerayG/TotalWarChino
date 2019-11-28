@@ -19,6 +19,7 @@ var imagenes = {
     bloque_arena: "res/Tile-Arena.jpg",
     bloque_monte: "res/Tile-Monte.png",
     bloque_hierba: "res/Tile-Hierba.jpg",
+
     animacion_rey_aliado_ataque_abajo = "res/rey_aliado/Animacion-Rey-B-Atq-Abj.png",
     animacion_rey_aliado_ataque_arriba = "res/rey_aliado/Animacion-Rey-B-Atq-Arr.png",
     animacion_rey_aliado_ataque_derecha = "res/rey_aliado/Animacion-Rey-B-Atq-Eral.png",
@@ -27,14 +28,34 @@ var imagenes = {
     animacion_rey_aliado_arriba = "res/rey_aliado/Animacion-Rey-B-Est-Arr.png",
     animacion_rey_aliado_derecha = "res/rey_aliado/Animacion-Rey-B-Est-Eral.png",
     animacion_rey_aliado_izquierda = "res/rey_aliado/Animacion-Rey-B-Est-Lat.png",
-    animacion_rey_enemigo_ataque_abajo = "res/rey_aliado/Animacion-Rey-M-Atq-Abj.png",
-    animacion_rey_enemigo_ataque_arriba = "res/rey_aliado/Animacion-Rey-M-Atq-Arr.png",
-    animacion_rey_enemigo_ataque_derecha = "res/rey_aliado/Animacion-Rey-M-Atq-Eral.png",
-    animacion_rey_enemigo_ataque_izquierda = "res/rey_aliado/Animacion-Rey-M-Atq-Lat.png",
+
+    animacion_rey_enemigo_ataque_abajo = "res/rey_enemigo/Animacion-Rey-M-Atq-Abj.png",
+    animacion_rey_enemigo_ataque_arriba = "res/rey_enemigo/Animacion-Rey-M-Atq-Arr.png",
+    animacion_rey_enemigo_ataque_derecha = "res/rey_enemigo/Animacion-Rey-M-Atq-Eral.png",
+    animacion_rey_enemigo_ataque_izquierda = "res/rey_enemigo/Animacion-Rey-M-Atq-Lat.png",
     animacion_rey_enemigo_abajo = "res/rey_enemigo/Animacion-Rey-M-Est-Abj.png",
     animacion_rey_enemigo_arriba = "res/rey_enemigo/Animacion-Rey-M-Est-Arr.png",
     animacion_rey_enemigo_derecha = "res/rey_enemigo/Animacion-Rey-M-Est-Eral.png",
-    animacion_rey_enemigo_izquierda = "res/rey_enemigo/Animacion-Rey-M-Est-Lat.png"
+    animacion_rey_enemigo_izquierda = "res/rey_enemigo/Animacion-Rey-M-Est-Lat.png",
+
+    animacion_caballero_aliado_ataque_abajo = "res/caballero_azul/Animacion-Azul-Atq-Abj.png",
+    animacion_caballero_aliado_ataque_arriba = "res/caballero_azul/Animacion-Cab-Azul-Atq-Arr.png",
+    animacion_caballero_aliado_ataque_derecha = "res/caballero_azul/Animacion-Cab-Atq-Eral.png",
+    animacion_caballero_aliado_ataque_izquierda = "res/caballero_azul/Animacion-Cab-Atq-Lat.png",
+    animacion_caballero_aliado_abajo = "res/caballero_azul/Animacion-Caballero-Est.png",
+    animacion_caballero_aliado_arriba = "res/caballero_azulo/Animacion-Cab-Azul-Est-Arr.png",
+    animacion_caballero_aliado_derecha = "res/caballero_azul/Animacion-Caballero-Azul-Est-Eral.png",
+    animacion_caballero_aliado_izquierda = "res/caballero_azul/Animacion-Cab-Azul-Est-Lat.png",
+
+    animacion_caballero_enemigo_ataque_abajo = "res/caballero_negro/Animacion-Cab-N-Atq-Abj.png",
+    animacion_caballero_enemigo_ataque_arriba = "res/caballero_negro/Animacion-Cab-N-Atq-Arr.png",
+    animacion_caballero_enemigo_ataque_derecha = "res/caballero_negro/Animacion-Cab-N-Atq-Eral.png",
+    animacion_caballero_enemigo_ataque_izquierda = "res/caballero_negro/Animacion-Cab-N-Atq-Lat.png",
+    animacion_caballero_enemigo_abajo = "res/caballero_negro/Animacion-Cab-N-Est-Abj.png",
+    animacion_caballero_enemigo_arriba = "res/caballero_negro/Animacion-Cab-N-Est-Arr.png",
+    animacion_caballero_enemigo_derecha = "res/caballero_negro/Animacion-Cab-N-Est-Eral.png",
+    animacion_caballero_enemigo_izquierda = "res/caballero_negro/Animacion-Cab-N-Est-Lat.png"
+
 };
 
 var rutasImagenes = Object.values(imagenes);
