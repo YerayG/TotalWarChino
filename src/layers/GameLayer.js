@@ -152,14 +152,14 @@ class GameLayer extends Layer {
             case "C":
                 //supongo que es el aliado
                 var animaciones = {
-                    animacion_caballero_ataque_abajo = imagenes.animacion_caballero_aliado_ataque_abajo,
-                    animacion_caballero_ataque_arriba = imagenes.animacion_caballero_aliado_ataque_arriba,
-                    animacion_caballero_ataque_derecha = imagenes.animacion_caballero_aliado_ataque_derecha,
-                    animacion_caballero_ataque_izquierda = imagenes.animacion_caballero_aliado_ataque_izquierda,
-                    animacion_caballero_abajo = imagenes.animacion_caballero_aliado_abajo,
-                    animacion_caballero_arriba = imagenes.animacion_caballero_aliado_arriba,
-                    animacion_caballero_derecha = imagenes.animacion_caballero_aliado_derecha,
-                    animacion_caballero_izquierda = imagenes.animacion_caballero_aliado_izquierda
+                    animacion_ataque_abajo = imagenes.animacion_caballero_aliado_ataque_abajo,
+                    animacion_ataque_arriba = imagenes.animacion_caballero_aliado_ataque_arriba,
+                    animacion_ataque_derecha = imagenes.animacion_caballero_aliado_ataque_derecha,
+                    animacion_ataque_izquierda = imagenes.animacion_caballero_aliado_ataque_izquierda,
+                    animacion_abajo = imagenes.animacion_caballero_aliado_abajo,
+                    animacion_arriba = imagenes.animacion_caballero_aliado_arriba,
+                    animacion_derecha = imagenes.animacion_caballero_aliado_derecha,
+                    animacion_izquierda = imagenes.animacion_caballero_aliado_izquierda
                 }
                 var caballero = new Caballero(x, y, animaciones);
                 caballero.y = caballero.y - caballero.alto / 2;
@@ -179,14 +179,14 @@ class GameLayer extends Layer {
             case "R":
                 //suponemos que es el rey bueno
                 var animaciones = {
-                    animacion_rey_ataque_abajo = imagenes.animacion_rey_aliado_ataque_abajo,
-                    animacion_rey_ataque_arriba = imagenes.animacion_rey_aliado_ataque_arriba,
-                    animacion_rey_ataque_derecha = imagenes.animacion_rey_aliado_ataque_derecha,
-                    animacion_rey_ataque_izquierda = imagenes.animacion_rey_aliado_ataque_izquierda,
-                    animacion_rey_abajo = imagenes.animacion_rey_aliado_abajo,
-                    animacion_rey_arriba = imagenes.animacion_rey_aliado_arriba,
-                    animacion_rey_derecha = imagenes.animacion_rey_aliado_derecha,
-                    animacion_rey_izquierda = imagenes.animacion_rey_aliado_izquierda
+                    animacion_ataque_abajo = imagenes.animacion_rey_aliado_ataque_abajo,
+                    animacion_ataque_arriba = imagenes.animacion_rey_aliado_ataque_arriba,
+                    animacion_ataque_derecha = imagenes.animacion_rey_aliado_ataque_derecha,
+                    animacion_ataque_izquierda = imagenes.animacion_rey_aliado_ataque_izquierda,
+                    animacion_abajo = imagenes.animacion_rey_aliado_abajo,
+                    animacion_arriba = imagenes.animacion_rey_aliado_arriba,
+                    animacion_derecha = imagenes.animacion_rey_aliado_derecha,
+                    animacion_izquierda = imagenes.animacion_rey_aliado_izquierda
                 }
                 var rey = new Rey(x, y, animaciones);
                 rey.y = rey.y - rey.alto / 2;
