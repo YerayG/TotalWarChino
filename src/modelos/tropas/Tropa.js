@@ -10,6 +10,7 @@ class Tropa extends Modelo {
         this.tiempoAtaque = 0;
         this.vida = 0;
         this.damage = 0;
+
         //this.coste = 0;
         //Ver constructor de Propiedad
         //Además pueden ser tropas aliadas o enemigas
@@ -26,7 +27,7 @@ class Tropa extends Modelo {
         //en GameLayer tiempoAtaque-- y si <= 0 y hay enemigos en rango y misma calle ataca
     }
 
-    dibujar (){
+    dibujar() {
         //Scroll y animaciones
     }
 
