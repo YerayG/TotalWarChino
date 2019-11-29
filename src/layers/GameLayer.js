@@ -14,10 +14,12 @@ class GameLayer extends Layer {
         this.fondo = new Fondo(imagenes.fondo_2,480*0.5,320*0.5);
 
         this.enemigos = [];
+        this.aliados = [];
 
         this.obstaculos=[];
 
-        this.propiedades=[];
+        this.propiedadesAliadas=[];
+        this.propiedadesEnemigas=[];
 
         this.fondoPuntos =
             new Fondo(imagenes.icono_puntos, 480*0.85,320*0.05);
@@ -102,16 +104,84 @@ class GameLayer extends Layer {
             }
         }
 
-        // Enemigos muertos fuera del juego
-        for (var j=0; j < this.enemigos.length; j++){
-            if ( this.enemigos[j] != null &&
-                this.enemigos[j].estado == estados.muerto  ) {
+        //Atacar (aliados)
+        for (var i=0; i < this.aliados.length; i++) {
+            for (var j=0; j < this.enemigos.length; j++) {
+                if(this.aliados[i].enRango(this.enemigos[j]) && this.aliados[i].mismaCalle(this.enemigos[j])) {
+                    this.aliados[i].atacar(this.enemigos[j]);
+                    this.enemigos[j].checkVida();
+                }
+                if(this.enemigos[j].enRango(this.aliados[i]) && this.enemigos[j].mismaCalle(this.aliados[i])) {
+                    this.enemigos[i].atacar(this.aliados[i]);
+                    this.aliados[i].checkVida();
+                }
+            }
+
+            for (var j=0; j < this.propiedadesEnemigas.length; j++) {
+                if(this.aliados[i].enRango(this.propiedadesEnemigas[j]) && this.aliados[i].mismaCalle(this.propiedadesEnemigas[j])) {
+                    this.aliados[i].atacar(this.propiedadesEnemigas[j]);
+                }
+            }
+
+            if(this.aliados[i].enRango(this.baseEnemiga)) {
+                this.aliados[i].atacar(this.baseEnemiga);
+                //TODO Si vida de baseEnemiga <= 0 game over y ganas
+            }
+        }
+
+        //Atacar (enemigos)
+        for (var i=0; i < this.enemigos.length; i++) {
+            for (var j=0; j < this.propiedadesAliadas.length; j++) {
+                if(this.enemigos[i].enRango(this.propiedadesAliadas[j]) && this.enemigos[i].mismaCalle(this.propiedadesAliadas[j])) {
+                    this.enemigos[i].atacar(this.propiedadesAliadas[j]);
+                }
+            }
+
+            if(this.enemigos[i].enRango(this.baseAliada)) {
+                this.enemigos[i].atacar(this.baseAliada);
+                //TODO Si vida de baseAliada <= 0 game over y pierdes
+            }
+        }
+
+        // Tropas muertas fuera del juego
+        for (var i=0; i < this.aliados.length; i++){
+            if ( this.aliados[i] != null &&
+                this.aliados[i].estado == estados.muerto  ) {
 
                 this.espacio
-                    .eliminarCuerpoDinamico(this.enemigos[j]);
+                    .eliminarCuerpoDinamico(this.aliados[i]);
 
-                this.enemigos.splice(j, 1);
-                j = j-1;
+                this.aliados.splice(i, 1);
+                i = i-1;
+            }
+        }
+
+        for (var i=0; i < this.enemigos.length; i++){
+            if ( this.enemigos[i] != null &&
+                this.enemigos[i].estado == estados.muerto  ) {
+
+                this.espacio
+                    .eliminarCuerpoDinamico(this.enemigos[i]);
+
+                this.enemigos.splice(i, 1);
+                i = i-1;
+            }
+        }
+
+        //Propiedades destruidas fuera del juego
+        for(var i=0; i < this.propiedadesAliadas; i++) {
+            if (this.propiedadesAliadas[i] != null && this.propiedadesAliadas[i].isDestruido()) {
+                this.espacio.eliminarCuerpoEstatico(this.propiedadesAliadas[i]);
+                this.propiedadesAliadas.splice(i, 1);
+                i = i-1;
+            }
+        }
+
+        for(var i=0; i < this.propiedadesEnemigas; i++) {
+            if (this.propiedadesEnemigas[i] != null && this.propiedadesEnemigas[i].isDestruido()) {
+                this.espacio.eliminarCuerpoEstatico(this.propiedadesEnemigas[i]);
+                this.propiedadesEnemigas.splice(i, 1);
+                i = i-1;
             }
         }
     }
@@ -228,7 +298,7 @@ class GameLayer extends Layer {
                 var mina = new Mina(x,y);
                 mina.y = mina.y - mina.alto/2;
                 // modificación para empezar a contar desde el suelo
-                this.propiedades.push(mina);
+                this.propiedadesAliadas.push(mina);
                 this.espacio.agregarCuerpoDinamico(mina);
                 break;
             case "B":
@@ -279,6 +349,15 @@ class GameLayer extends Layer {
                 this.espacio.agregarCuerpoDinamico(enemigo);
                 break;
 
+            case "A":
+                this.baseAliada = new Base(x,y,true);
+                this.espacio.agregarCuerpoEstatico(this.baseAliada);
+                break;
+
+            case "V":
+                this.baseEnemiga = new Base(x,y,false);
+                this.espacio.agregarCuerpoEstatico(this.baseEnemiga);
+                break;
         }
     }
 

@@ -10,6 +10,8 @@ class Jugador extends Modelo {
         this.hierro = 0;
         this.cuarteles = 0;
 
+        this.vida = 3000;
+
         this.propiedades = [];
 
         this.vidas = 3;
