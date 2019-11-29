@@ -37,7 +37,11 @@ class Tropa extends Modelo {
     }
 
     enRango(unidad) {
-        return this.x + this.rango >= unidad.x;
+        if (this.rango > 0) {
+            return this.x + this.rango >= unidad.x;
+        } else {
+            return this.x + this.rango <= unidad.x;
+        }
     }
 
     mismaCalle(unidad) {
