@@ -1,6 +1,6 @@
 class Caballero extends Tropa {
     constructor(x, y, animaciones) {
-        super(x, y, /*imagenes.caballero*/ );
+        super(x, y, imagenes.arquero_aliado, animaciones);
 
         super.cadenciaAtaque = 30;
         super.tiempoAtaque = 30;

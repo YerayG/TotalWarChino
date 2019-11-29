@@ -1,6 +1,6 @@
 class Arquero extends Tropa {
-    constructor(x, y) {
-        super(x, y, /*imagenes.arquero*/);
+    constructor(x, y, animaciones) {
+        super(x, y, imagenes.arquero_aliado, animaciones);
 
         super.cadenciaAtaque = 15;
         super.tiempoAtaque = 15;
