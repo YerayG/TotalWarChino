@@ -17,6 +17,7 @@ class Tropa extends Modelo {
 
         //Los enemigos serán las mismas clases que las tropas probably
         //Y pasaremos un parametro aliado boolean a los constructores y en funcion de eso cambia vx y la imagen?
+        //Ya esta hecho
 
         //Animaciones
     }
@@ -25,6 +26,10 @@ class Tropa extends Modelo {
         //Animaciones
 
         //en GameLayer tiempoAtaque-- y si <= 0 y hay enemigos en rango y misma calle ataca
+
+        if(tiempoAtaque > 0) {
+            tiempoAtaque--;
+        }
     }
 
     dibujar (){
@@ -37,5 +42,21 @@ class Tropa extends Modelo {
 
     mismaCalle(unidad) {
         return Math.abs(this.y - unidad.y) <= 10;
+    }
+
+    atacar(unidad) {
+        if(tiempoAtaque <= 0) {
+            unidad.vida -= this.damage;
+            this.tiempoAtaque = this.cadenciaAtaque;
+            //controlar animaciones y vx según las animaciones
+        }
+    }
+
+    checkVida() {
+        if(this.vida <= 0) {
+            this.estado = estados.muerto;
+            //primero a estados muriendo y luego pasarle el callback a la animacion para pasar a estados.muerto
+            //TODO cuando tengamos las animaciones
+        }
     }
 }

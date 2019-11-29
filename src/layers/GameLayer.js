@@ -14,6 +14,7 @@ class GameLayer extends Layer {
         this.fondo = new Fondo(imagenes.fondo_2,480*0.5,320*0.5);
 
         this.enemigos = [];
+        this.aliados = [];
 
         this.obstaculos=[];
 
@@ -102,16 +103,42 @@ class GameLayer extends Layer {
             }
         }
 
-        // Enemigos muertos fuera del juego
-        for (var j=0; j < this.enemigos.length; j++){
-            if ( this.enemigos[j] != null &&
-                this.enemigos[j].estado == estados.muerto  ) {
+        //Atacar
+        for (var i=0; i < this.aliados.length; i++) {
+            for (var j=0; j < this.enemigos.length; j++) {
+                if(this.aliados[i].enRango(this.enemigos[j]) && this.aliados[i].mismaCalle(this.enemigos[j])) {
+                    this.aliados[i].atacar(this.enemigos[j]);
+                    this.enemigos[j].checkVida();
+                }
+                if(this.enemigos[j].enRango(this.aliados[i]) && this.enemigos[j].mismaCalle(this.aliados[i])) {
+                    this.enemigos[i].atacar(this.aliados[i]);
+                    this.aliados[i].checkVida();
+                }
+            }
+        }
+
+        // Tropas muertas fuera del juego
+        for (var i=0; i < this.aliados.length; i++){
+            if ( this.aliados[i] != null &&
+                this.aliados[i].estado == estados.muerto  ) {
 
                 this.espacio
-                    .eliminarCuerpoDinamico(this.enemigos[j]);
+                    .eliminarCuerpoDinamico(this.aliados[i]);
 
-                this.enemigos.splice(j, 1);
-                j = j-1;
+                this.aliados.splice(i, 1);
+                i = i-1;
+            }
+        }
+
+        for (var i=0; i < this.enemigos.length; i++){
+            if ( this.enemigos[i] != null &&
+                this.enemigos[i].estado == estados.muerto  ) {
+
+                this.espacio
+                    .eliminarCuerpoDinamico(this.enemigos[i]);
+
+                this.enemigos.splice(i, 1);
+                i = i-1;
             }
         }
     }
