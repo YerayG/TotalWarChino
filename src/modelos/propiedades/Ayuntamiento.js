@@ -7,7 +7,7 @@ class Ayuntamiento extends Propiedad {
         super.actualizar();
     }
 
-    generarParaJugador(jugador) {
-        jugador.dinero += super.cantidad;
+    generarPara(bando) {
+        bando.dinero += this.cantidad;
     }
 }

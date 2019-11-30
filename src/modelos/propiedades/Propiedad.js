@@ -15,7 +15,7 @@ class Propiedad extends Modelo {
 
     }
 
-    generarParaJugador(jugador) {
+    generarPara(bando) {
 
     }
 

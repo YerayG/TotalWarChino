@@ -13,8 +13,11 @@ class GameLayer extends Layer {
 
         this.fondo = new Fondo(imagenes.fondo_2,480*0.5,320*0.5);
 
-        this.enemigos = [];
-        this.aliados = [];
+        //this.jugador = new Jugador();
+        this.enemigo = new Enemigo(); //El enemigo no son las tropas, es lo que las controla. Las tropas enemigas están en el array tropasEnemigas
+
+        this.tropasEnemigas = [];
+        this.tropasAliadas = [];
 
         this.obstaculos=[];
 
@@ -70,16 +73,16 @@ class GameLayer extends Layer {
             }
         }
 
-        for (var i=0; i < this.enemigos.length; i++){
-            this.enemigos[i].actualizar();
+        for (var i=0; i < this.tropasEnemigas.length; i++){
+            this.tropasEnemigas[i].actualizar();
         }
         for (var i=0; i < this.disparosJugador.length; i++) {
             this.disparosJugador[i].actualizar();
         }
 
         // colisiones
-        for (var i=0; i < this.enemigos.length; i++){
-            if ( this.jugador.colisiona(this.enemigos[i])){
+        for (var i=0; i < this.tropasEnemigas.length; i++){
+            if ( this.jugador.colisiona(this.tropasEnemigas[i])){
                 this.jugador.golpeado();
                 if (this.jugador.vidas <= 0){
                     this.iniciar();
@@ -88,82 +91,106 @@ class GameLayer extends Layer {
         }
         // colisiones , disparoJugador - Enemigo
         for (var i=0; i < this.disparosJugador.length; i++){
-            for (var j=0; j < this.enemigos.length; j++){
+            for (var j=0; j < this.tropasEnemigas.length; j++){
                 if (this.disparosJugador[i] != null &&
-                    this.enemigos[j] != null &&
-                    this.disparosJugador[i].colisiona(this.enemigos[j])) {
+                    this.tropasEnemigas[j] != null &&
+                    this.disparosJugador[i].colisiona(this.tropasEnemigas[j])) {
 
                     this.espacio
                         .eliminarCuerpoDinamico(this.disparosJugador[i]);
 
                     this.disparosJugador.splice(i, 1);
                     i = i-1;
-                    this.enemigos[j].impactado();
+                    this.tropasEnemigas[j].impactado();
                     this.puntos.valor++;
                 }
             }
         }
 
-        //Atacar (aliados)
-        for (var i=0; i < this.aliados.length; i++) {
-            for (var j=0; j < this.enemigos.length; j++) {
-                if(this.aliados[i].enRango(this.enemigos[j]) && this.aliados[i].mismaCalle(this.enemigos[j])) {
-                    this.aliados[i].atacar(this.enemigos[j]);
-                    this.enemigos[j].checkVida();
+        //Esquivar obstáculos
+        //TODO va a haber que arreglarlo cuando tengamos las animaciones, es imposible hacerlo bien a ojo
+        for(var i=0; i<this.obstaculos.length; i++) {
+            for(var j=0; j<this.tropasAliadas.length; j++) {
+                if(this.tropasAliadas[j].obstaculoDelante(i)) {
+                    this.tropasAliadas[j].esquivar();
+                } else {
+                    this.tropasAliadas[j].dejarDeEsquivar();
                 }
-                if(this.enemigos[j].enRango(this.aliados[i]) && this.enemigos[j].mismaCalle(this.aliados[i])) {
-                    this.enemigos[i].atacar(this.aliados[i]);
-                    this.aliados[i].checkVida();
+            }
+
+            for(var j=0; j<this.tropasEnemigas.length; j++) {
+                if(this.tropasEnemigas[j].obstaculoDelante(i)) {
+                    this.tropasEnemigas[j].esquivar();
+                } else {
+                    this.tropasEnemigas[j].dejarDeEsquivar();
+                }
+            }
+        }
+
+        //Generar recursos
+        this.jugador.generarRecursos(this.propiedadesAliadas);
+        this.enemigo.generarRecursos(this.propiedadesEnemigas);
+
+        //Atacar (tropasAliadas)
+        for (var i=0; i < this.tropasAliadas.length; i++) {
+            for (var j=0; j < this.tropasEnemigas.length; j++) {
+                if(this.tropasAliadas[i].enRango(this.tropasEnemigas[j]) && this.tropasAliadas[i].mismaCalle(this.tropasEnemigas[j])) {
+                    this.tropasAliadas[i].atacar(this.tropasEnemigas[j]);
+                    this.tropasEnemigas[j].checkVida();
+                }
+                if(this.tropasEnemigas[j].enRango(this.tropasAliadas[i]) && this.tropasEnemigas[j].mismaCalle(this.tropasAliadas[i])) {
+                    this.tropasEnemigas[i].atacar(this.tropasAliadas[i]);
+                    this.tropasAliadas[i].checkVida();
                 }
             }
 
             for (var j=0; j < this.propiedadesEnemigas.length; j++) {
-                if(this.aliados[i].enRango(this.propiedadesEnemigas[j]) && this.aliados[i].mismaCalle(this.propiedadesEnemigas[j])) {
-                    this.aliados[i].atacar(this.propiedadesEnemigas[j]);
+                if(this.tropasAliadas[i].enRango(this.propiedadesEnemigas[j]) && this.tropasAliadas[i].mismaCalle(this.propiedadesEnemigas[j])) {
+                    this.tropasAliadas[i].atacar(this.propiedadesEnemigas[j]);
                 }
             }
 
-            if(this.aliados[i].enRango(this.baseEnemiga)) {
-                this.aliados[i].atacar(this.baseEnemiga);
+            if(this.tropasAliadas[i].enRango(this.baseEnemiga)) {
+                this.tropasAliadas[i].atacar(this.baseEnemiga);
                 //TODO Si vida de baseEnemiga <= 0 game over y ganas
             }
         }
 
-        //Atacar (enemigos)
-        for (var i=0; i < this.enemigos.length; i++) {
+        //Atacar (tropasEnemigas)
+        for (var i=0; i < this.tropasEnemigas.length; i++) {
             for (var j=0; j < this.propiedadesAliadas.length; j++) {
-                if(this.enemigos[i].enRango(this.propiedadesAliadas[j]) && this.enemigos[i].mismaCalle(this.propiedadesAliadas[j])) {
-                    this.enemigos[i].atacar(this.propiedadesAliadas[j]);
+                if(this.tropasEnemigas[i].enRango(this.propiedadesAliadas[j]) && this.tropasEnemigas[i].mismaCalle(this.propiedadesAliadas[j])) {
+                    this.tropasEnemigas[i].atacar(this.propiedadesAliadas[j]);
                 }
             }
 
-            if(this.enemigos[i].enRango(this.baseAliada)) {
-                this.enemigos[i].atacar(this.baseAliada);
+            if(this.tropasEnemigas[i].enRango(this.baseAliada)) {
+                this.tropasEnemigas[i].atacar(this.baseAliada);
                 //TODO Si vida de baseAliada <= 0 game over y pierdes
             }
         }
 
         // Tropas muertas fuera del juego
-        for (var i=0; i < this.aliados.length; i++){
-            if ( this.aliados[i] != null &&
-                this.aliados[i].estado == estados.muerto  ) {
+        for (var i=0; i < this.tropasAliadas.length; i++){
+            if ( this.tropasAliadas[i] != null &&
+                this.tropasAliadas[i].estado == estados.muerto  ) {
 
                 this.espacio
-                    .eliminarCuerpoDinamico(this.aliados[i]);
+                    .eliminarCuerpoDinamico(this.tropasAliadas[i]);
 
-                this.aliados.splice(i, 1);
+                this.tropasAliadas.splice(i, 1);
                 i = i-1;
             }
         }
 
-        for (var i=0; i < this.enemigos.length; i++){
-            if ( this.enemigos[i] != null &&
-                this.enemigos[i].estado == estados.muerto  ) {
+        for (var i=0; i < this.tropasEnemigas.length; i++){
+            if ( this.tropasEnemigas[i] != null &&
+                this.tropasEnemigas[i].estado == estados.muerto  ) {
 
                 this.espacio
-                    .eliminarCuerpoDinamico(this.enemigos[i]);
+                    .eliminarCuerpoDinamico(this.tropasEnemigas[i]);
 
-                this.enemigos.splice(i, 1);
+                this.tropasEnemigas.splice(i, 1);
                 i = i-1;
             }
         }
@@ -215,8 +242,8 @@ class GameLayer extends Layer {
         }
 
         this.jugador.dibujar(this.scrollX);
-        for (var i=0; i < this.enemigos.length; i++){
-            this.enemigos[i].dibujar(this.scrollX);
+        for (var i=0; i < this.tropasEnemigas.length; i++){
+            this.tropasEnemigas[i].dibujar(this.scrollX);
         }
 
         this.fondoPuntos.dibujar();
@@ -345,7 +372,7 @@ class GameLayer extends Layer {
                 var enemigo = new Nave(x,y);
                 enemigo.y = enemigo.y - enemigo.alto/2;
                 // modificación para empezar a contar desde el suelo
-                this.enemigos.push(enemigo);
+                this.tropasEnemigas.push(enemigo);
                 this.espacio.agregarCuerpoDinamico(enemigo);
                 break;
 

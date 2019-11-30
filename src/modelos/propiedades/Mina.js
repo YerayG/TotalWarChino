@@ -7,7 +7,7 @@ class Mina extends Propiedad {
         super.actualizar();
     }
 
-    generarParaJugador(jugador) {
-        jugador.hierro += super.cantidad;
+    generarPara(bando) {
+        bando.hierro += this.cantidad;
     }
 }

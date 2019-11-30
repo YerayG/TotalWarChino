@@ -3,6 +3,11 @@ class Enemigo extends Modelo {
     constructor(x, y) {
         super(imagenes.enemigo, x, y);
 
+        this.madera = 0;
+        this.dinero = 0;
+        this.hierro = 0;
+        this.cuarteles = 0;
+
         this.estado = estados.moviendo;
 
         this.vxInteligencia = -1;
@@ -54,6 +59,12 @@ class Enemigo extends Modelo {
     impactado(){
         if ( this.estado != estados.muriendo ){
             this.estado = estados.muriendo;
+        }
+    }
+
+    generarRecursos(propiedades) {
+        for(var i = 0; i < propiedades.length; i++) {
+            propiedades[i].generarPara(this);
         }
     }
 }
