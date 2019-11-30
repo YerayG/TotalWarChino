@@ -9,9 +9,9 @@ class Cuartel extends Propiedad {
         super.actualizar();
     }
 
-    generarParaJugador(jugador) {
+    generarPara(bando) {
         if (!this.generado) {
-            jugador.cuarteles++;
+            bando.cuarteles++;
             this.generado = true;
         }
     }

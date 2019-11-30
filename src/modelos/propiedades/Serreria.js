@@ -7,7 +7,7 @@ class Serreria extends Propiedad {
         super.actualizar();
     }
 
-    generarParaJugador(jugador) {
-        jugador.madera += super.cantidad;
+    generarPara(bando) {
+        bando.madera += this.cantidad;
     }
 }

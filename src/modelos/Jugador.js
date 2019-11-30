@@ -10,10 +10,6 @@ class Jugador extends Modelo {
         this.hierro = 0;
         this.cuarteles = 0;
 
-        this.vida = 3000;
-
-        this.propiedades = [];
-
         this.vidas = 3;
         this.tiempoInvulnerable = 0;
 
@@ -191,13 +187,9 @@ class Jugador extends Modelo {
         }
     }
 
-    generarRecursos() {
-        for(var i = 0; i < this.propiedades.length; i++) {
-            this.propiedades[i].generarParaJugador(this);
+    generarRecursos(propiedades) {
+        for(var i = 0; i < propiedades.length; i++) {
+            propiedades[i].generarPara(this);
         }
-    }
-
-    comprar(propiedad) {
-        this.propiedades.push(propiedad);
     }
 }
