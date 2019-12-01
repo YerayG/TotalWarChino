@@ -35,7 +35,7 @@ class GameLayer extends Layer {
         this.pad = new Pad(480*0.14,320*0.8);
 
         this.botonArquero = new Boton(imagenes.boton_arquero,480*0.1,320*0.90);
-        this.costeCaballero = new Texto2("Coste:" ,480*0.05,320*0.98 );
+        this.costeCaballero = new Texto2("Oro:" ,480*0.05,320*0.98 );
         this.botonCaballero = new Boton(imagenes.boton_caballero,480*0.70
             ,320*0.90);
         this.botonEspadachin = new Boton(imagenes.boton_espadachin,480*0.25,320*0.90);

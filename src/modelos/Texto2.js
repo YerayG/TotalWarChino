@@ -7,7 +7,7 @@ class Texto2 {
     }
 
     dibujar (){
-        contexto.font = "8px Arial";
+        contexto.font = "6px Arial";
         contexto.fillStyle = "white";
         contexto.textAlign = "left";
         contexto.fillText(this.valor,this.x,this.y);
