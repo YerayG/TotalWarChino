@@ -10,6 +10,9 @@ class Jugador extends Modelo {
         this.hierro = 0;
         this.cuarteles = 0;
 
+        this.recursosAutomaticosCada = 10;
+        this.recursosAutomaticosContador = this.recursosAutomaticosCada;
+
         this.vidas = 3;
         this.tiempoInvulnerable = 0;
 
@@ -190,6 +193,15 @@ class Jugador extends Modelo {
     generarRecursos(propiedades) {
         for(var i = 0; i < propiedades.length; i++) {
             propiedades[i].generarPara(this);
+        }
+
+        if(this.recursosAutomaticosContador <= 0) {
+            this.dinero++;
+            this.hierro++;
+            this.madera++;
+            this.recursosAutomaticosContador = this.recursosAutomaticosCada;
+        } else {
+            this.recursosAutomaticosContador--;
         }
     }
 }
