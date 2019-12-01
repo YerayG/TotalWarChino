@@ -29,6 +29,7 @@ var imagenes = {
     pad :"res/pad.png",
     boton_disparo : "res/boton_disparo.png",
     boton_arquero : "res/boton-Arquero.png",
+    boton_lancero : "res/boton-Lancero.png",
     boton_rey : "res/boton-Rey.png",
     boton_catapulta : "res/boton-Catapulta.png",
     boton_espadachin : "res/boton-Espadachin.png",
