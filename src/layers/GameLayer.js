@@ -34,6 +34,14 @@ class GameLayer extends Layer {
 
         this.pad = new Pad(480*0.14,320*0.8);
 
+        this.botonArquero = new Boton(imagenes.boton_arquero,480*0.1,320*0.90);
+        this.costeCaballero = new Texto2("Coste:" ,480*0.05,320*0.98 );
+        this.botonCaballero = new Boton(imagenes.boton_caballero,480*0.70
+            ,320*0.90);
+        this.botonEspadachin = new Boton(imagenes.boton_espadachin,480*0.25,320*0.90);
+        this.botonRey = new Boton(imagenes.boton_rey,480*0.40,320*0.90);
+        this.botonCatapulta = new Boton(imagenes.boton_catapulta,480*0.55,320*0.90);
+
         this.cargarMapa("res/"+nivelActual+".txt");
     }
 
@@ -159,6 +167,14 @@ class GameLayer extends Layer {
         this.dinero.dibujar();
         this.hierro.dibujar();
         this.madera.dibujar();
+
+        //Botones dibujar
+        this.botonArquero.dibujar();
+        this.costeCaballero.dibujar();
+        this.botonEspadachin.dibujar();
+        this.botonCaballero.dibujar();
+        this.botonRey.dibujar();
+        this.botonCatapulta.dibujar();
 
         // HUD
 
