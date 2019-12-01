@@ -339,7 +339,7 @@ class GameLayer extends Layer {
         var fichero = new XMLHttpRequest();
         fichero.open("GET", ruta, false);
 
-        fichero.onreadystatechange = function () {
+        fichero.onreadystatechange = function() {
             var texto = fichero.responseText;
             var lineas = texto.split('\n');
             this.anchoMapa = (lineas[0].length - 1) * 40;
@@ -488,7 +488,17 @@ class GameLayer extends Layer {
                     break;
                 case 1:
                     if (this.enemigo.comprobarRecursos(costeArquero)) {
-                        var arquero = new Arquero(xEnemigo, yEnemigo, false);
+                        var animaciones = {
+                            animacion_atacar = {
+                                imagenSrc = imagenes.animacion_arquero_enemigo_ataque,
+                                frames = 7
+                            },
+                            animacion_mover = {
+                                imagenSrc = imagenes.animacion_arquero_enemigo_ataque,
+                                frames = 7
+                            }
+                        };
+                        var arquero = new Arquero(xEnemigo, yEnemigo, false, animaciones);
                         this.tropasEnemigas.push(arquero);
                         this.espacio.agregarCuerpoDinamico(arquero);
                         this.enemigo.decrementarRecursos(costeArquero);
@@ -496,7 +506,17 @@ class GameLayer extends Layer {
                     break;
                 case 2:
                     if (this.enemigo.comprobarRecursos(costeLancero)) {
-                        var lancero = new Lancero(xEnemigo, yEnemigo, false);
+                        var animaciones = {
+                            animacion_atacar = {
+                                imagenSrc = imagenes.animacion_lancero_enemigo_ataque,
+                                frames = 7
+                            },
+                            animacion_mover = {
+                                imagenSrc = imagenes.animacion_lancero_enemigo_ataque,
+                                frames = 7
+                            },
+                        };
+                        var lancero = new Lancero(xEnemigo, yEnemigo, false, animaciones);
                         this.tropasEnemigas.push(lancero);
                         this.espacio.agregarCuerpoDinamico(lancero);
                         this.enemigo.decrementarRecursos(costeLancero);
@@ -504,7 +524,17 @@ class GameLayer extends Layer {
                     break;
                 case 3:
                     if (this.enemigo.comprobarRecursos(costeCaballero)) {
-                        var caballero = new Caballero(xEnemigo, yEnemigo, false);
+                        var animaciones = {
+                            animacion_atacar = {
+                                imagenSrc = imagenes.animacion_caballero_enemigo_ataque_izquierda,
+                                frames = 7
+                            },
+                            animacion_mover = {
+                                imagenSrc = imagenes.animacion_caballero_enemigo_izquierda,
+                                frames = 4
+                            },
+                        };
+                        var caballero = new Caballero(xEnemigo, yEnemigo, false, animaciones);
                         this.tropasEnemigas.push(caballero);
                         this.espacio.agregarCuerpoDinamico(caballero);
                         this.enemigo.decrementarRecursos(costeCaballero);
@@ -512,6 +542,16 @@ class GameLayer extends Layer {
                     break;
                 case 4:
                     if (this.enemigo.comprobarRecursos(costeCatapulta)) {
+                        var animaciones = {
+                            animacion_atacar = {
+                                imagenSrc = imagenes.animacion_caballero_enemigo_ataque_izquierda,
+                                frames = 7
+                            },
+                            animacion_mover = {
+                                imagenSrc = imagenes.animacion_caballero_enemigo_izquierda,
+                                frames = 4
+                            },
+                        };
                         var catapulta = new Catapulta(xEnemigo, yEnemigo, false);
                         this.tropasEnemigas.push(catapulta);
                         this.espacio.agregarCuerpoDinamico(catapulta);
@@ -520,7 +560,17 @@ class GameLayer extends Layer {
                     break;
                 case 5:
                     if (this.enemigo.comprobarRecursos(costeRey)) {
-                        var rey = new Rey(xEnemigo, yEnemigo, false);
+                        var animaciones = {
+                            animacion_atacar = {
+                                imagenSrc = imagenes.animacion_rey_enemigo_ataque_izquierda,
+                                frames = 7
+                            },
+                            animacion_mover = {
+                                imagenSrc = imagenes.animacion_rey_enemigo_izquierda,
+                                frames = 4
+                            },
+                        };
+                        var rey = new Rey(xEnemigo, yEnemigo, false, animaciones);
                         this.tropasEnemigas.push(rey);
                         this.espacio.agregarCuerpoDinamico(rey);
                         this.enemigo.decrementarRecursos(costeRey);
@@ -583,4 +633,3 @@ class GameLayer extends Layer {
     }
 
 }
-

@@ -1,7 +1,7 @@
 class Rey extends Tropa {
-    constructor(x, y) {
+    constructor(x, y, aliado, animaciones) {
         var imagen, vx, rango;
-        if(aliado) {
+        if (aliado) {
             //imagen = imagenes.rey;
             vx = 3;
             rango = 20;
@@ -11,9 +11,11 @@ class Rey extends Tropa {
             rango = -20;
         }
 
-        var cadenciaAtaque = 20, vida = 1000, damage = 100;
+        var cadenciaAtaque = 20,
+            vida = 1000,
+            damage = 100;
 
-        super(x, y, vx, cadenciaAtaque, rango, vida, damage, imagen);
+        super(x, y, vx, cadenciaAtaque, rango, vida, damage, imagen, animaciones);
     }
 
     actualizar() {

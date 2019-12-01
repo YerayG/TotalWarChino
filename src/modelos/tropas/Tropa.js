@@ -1,5 +1,5 @@
 class Tropa extends Modelo {
-    constructor(x, y, vx, rango, cadenciaAtaque, vida, damage, imagen) {
+    constructor(x, y, vx, rango, cadenciaAtaque, vida, damage, imagen, animaciones) {
         super(imagen, x, y);
 
         this.estado = estados.moviendo;
@@ -22,6 +22,10 @@ class Tropa extends Modelo {
         //Ya esta hecho
 
         //Animaciones
+        this.aMover = new Animacion(animaciones.animacion_mover.imagenSrc, this.ancho, this.alto, 6, animaciones.animacion_mover.frames);
+        this.aAtacar = new Animacion(animaciones.animacion_atacar.imagenSrc, this.ancho, this.alto, 6, animaciones.animacion_atacar.frames);
+
+        this.animacion = this.aMover;
     }
 
     actualizar() {
@@ -29,12 +33,12 @@ class Tropa extends Modelo {
 
         //en GameLayer tiempoAtaque-- y si <= 0 y hay tropasEnemigas en rango y misma calle ataca
 
-        if(this.tiempoAtaque > 0) {
+        if (this.tiempoAtaque > 0) {
             this.tiempoAtaque--;
         }
     }
 
-    dibujar (){
+    dibujar() {
         //Scroll y animaciones
     }
 
@@ -51,7 +55,7 @@ class Tropa extends Modelo {
     }
 
     atacar(unidad) {
-        if(this.tiempoAtaque <= 0) {
+        if (this.tiempoAtaque <= 0) {
             unidad.vida -= this.damage;
             this.tiempoAtaque = this.cadenciaAtaque;
             //controlar animaciones y vx según las animaciones
@@ -59,7 +63,7 @@ class Tropa extends Modelo {
     }
 
     checkVida() {
-        if(this.vida <= 0) {
+        if (this.vida <= 0) {
             this.estado = estados.muerto;
             //primero a estados.muriendo y luego pasarle el callback a la animacion para pasar a estados.muerto
             //TODO cuando tengamos las animaciones
@@ -72,11 +76,11 @@ class Tropa extends Modelo {
         var xDifference = obstaculo.x - this.x;
         var yDifference = Math.abs(obstaculo.y - this.y);
         //Si va hacia la derecha y hay un obstaculo cerca a la derecha
-        if(this.vx > 0 && xDifference <= 40 && xDifference > 0 && yDifference < 30) {
+        if (this.vx > 0 && xDifference <= 40 && xDifference > 0 && yDifference < 30) {
             return true;
         }
         //Si va hacia la izquierda y hay un obstaculo cerca a la izquierda
-        if(this.vx < 0 && xDifference >= -40 && xDifference < 0 && yDifference < 30) {
+        if (this.vx < 0 && xDifference >= -40 && xDifference < 0 && yDifference < 30) {
             return true;
         }
         return false;
