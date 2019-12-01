@@ -29,8 +29,8 @@ class Tropa extends Modelo {
 
         //en GameLayer tiempoAtaque-- y si <= 0 y hay tropasEnemigas en rango y misma calle ataca
 
-        if(tiempoAtaque > 0) {
-            tiempoAtaque--;
+        if(this.tiempoAtaque > 0) {
+            this.tiempoAtaque--;
         }
     }
 
@@ -51,7 +51,7 @@ class Tropa extends Modelo {
     }
 
     atacar(unidad) {
-        if(tiempoAtaque <= 0) {
+        if(this.tiempoAtaque <= 0) {
             unidad.vida -= this.damage;
             this.tiempoAtaque = this.cadenciaAtaque;
             //controlar animaciones y vx según las animaciones
