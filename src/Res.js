@@ -36,7 +36,7 @@ var imagenes = {
     bloque_arena: "res/Tile-Arena.jpg",
     bloque_monte: "res/Tile-Monte.png",
     bloque_hierba: "res/Tile-Hierba.jpg",
-
+    //Dividir el tamaño de las imagenes entre 10 -> ejemplo: 400x300px --> 40x30px
     animacion_rey_aliado_ataque_abajo: "res/rey_aliado/Animacion-Rey-B-Atq-Abj.png",
     animacion_rey_aliado_ataque_arriba: "res/rey_aliado/Animacion-Rey-B-Atq-Arr.png",
     animacion_rey_aliado_ataque_derecha: "res/rey_aliado/Animacion-Rey-B-Atq-Eral.png",
