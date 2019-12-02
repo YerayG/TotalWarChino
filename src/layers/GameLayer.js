@@ -48,12 +48,12 @@ class GameLayer extends Layer {
         this.botonSerreria = new Boton(imagenes.boton_Serreria,480*0.36,320*0.07);
 
         //coste tropas
-        this.costeEspadachin = new Texto2("20" ,480*0.12,320*0.935 );
-        this.costeArquero = new Texto2("20" ,480*0.265,320*0.935 );
-        this.costeLancero = new Texto2("60" ,480*0.415,320*0.935 );
-        this.costeCaballero = new Texto2("60" ,480*0.565,320*0.935 );
-        this.costeRey = new Texto2("60" ,480*0.715,320*0.935 );
-        this.costeCatapulta = new Texto2("60" ,480*0.868,320*0.935 );
+        this.costeEspadachin = new Texto2("20" ,480*0.115,320*0.975 );
+        this.costeArquero = new Texto2("20" ,480*0.27,320*0.975 );
+        this.costeLancero = new Texto2("60" ,480*0.415,320*0.975 );
+        this.costeCaballero = new Texto2("60" ,480*0.565,320*0.975 );
+        this.costeRey = new Texto2("60" ,480*0.715,320*0.975 );
+        this.costeCatapulta = new Texto2("60" ,480*0.868,320*0.975 );
 
         //coste Edificios
         this.costeAyuntamiento1 = new Texto2("120" ,480*0.13,320*0.06);
