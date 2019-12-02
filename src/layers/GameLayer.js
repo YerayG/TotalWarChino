@@ -359,6 +359,10 @@ class GameLayer extends Layer {
 
     cargarObjetoMapa(simbolo, x, y) {
         switch (simbolo) {
+            case "1":
+                this.jugador = new Jugador(x, y);
+                this.espacio.agregarCuerpoDinamico(this.jugador);
+                break;
             case "M":
                 var mina = new Mina(x, y);
                 mina.y = mina.y - mina.alto / 2;
@@ -381,23 +385,20 @@ class GameLayer extends Layer {
                 this.obstaculos.push(torre);
                 this.espacio.agregarCuerpoEstatico(torre);
                 break;
-
-            case "1":
-                this.jugador = new Jugador(x, y);
-                // modificación para empezar a contar desde el suelo
-                this.jugador.y = this.jugador.y - this.jugador.alto / 2;
-                this.espacio.agregarCuerpoDinamico(this.jugador);
-                break;
-
-
             case "#":
-                var bloque = new Bloque(imagenes.bloque_tierra, x, y);
+                var bloque = new Bloque(imagenes.bloque_hierba, x, y);
                 bloque.y = bloque.y - bloque.alto / 2;
                 // modificación para empezar a contar desde el suelo
                 this.bloques.push(bloque);
                 this.espacio.agregarCuerpoEstatico(bloque);
                 break;
-
+            case '.':
+                var bloque = new Bloque(imagenes.bloque_arena, x, y);
+                bloque.y = bloque.y - bloque.alto / 2;
+                // modificación para empezar a contar desde el suelo
+                this.bloques.push(bloque);
+                this.espacio.agregarCuerpoEstatico(bloque);
+                break;
             case "C":
                 this.copa = new BloqueAntiguo(imagenes.copa, x, y);
                 this.copa.y = this.copa.y - this.copa.alto / 2;
@@ -489,13 +490,13 @@ class GameLayer extends Layer {
                 case 1:
                     if (this.enemigo.comprobarRecursos(costeArquero)) {
                         var animaciones = {
-                            animacion_atacar = {
-                                imagenSrc = imagenes.animacion_arquero_enemigo_ataque,
-                                frames = 7
+                            animacion_atacar: {
+                                imagenSrc: imagenes.animacion_arquero_enemigo_ataque,
+                                frames: 7
                             },
-                            animacion_mover = {
-                                imagenSrc = imagenes.animacion_arquero_enemigo_ataque,
-                                frames = 7
+                            animacion_mover: {
+                                imagenSrc: imagenes.animacion_arquero_enemigo_ataque,
+                                frames: 7
                             }
                         };
                         var arquero = new Arquero(xEnemigo, yEnemigo, false, animaciones);
@@ -507,13 +508,13 @@ class GameLayer extends Layer {
                 case 2:
                     if (this.enemigo.comprobarRecursos(costeLancero)) {
                         var animaciones = {
-                            animacion_atacar = {
-                                imagenSrc = imagenes.animacion_lancero_enemigo_ataque,
-                                frames = 7
+                            animacion_atacar: {
+                                imagenSrc: imagenes.animacion_lancero_enemigo_ataque,
+                                frames: 7
                             },
-                            animacion_mover = {
-                                imagenSrc = imagenes.animacion_lancero_enemigo_ataque,
-                                frames = 7
+                            animacion_mover: {
+                                imagenSrc: imagenes.animacion_lancero_enemigo_ataque,
+                                frames: 7
                             },
                         };
                         var lancero = new Lancero(xEnemigo, yEnemigo, false, animaciones);
@@ -525,13 +526,13 @@ class GameLayer extends Layer {
                 case 3:
                     if (this.enemigo.comprobarRecursos(costeCaballero)) {
                         var animaciones = {
-                            animacion_atacar = {
-                                imagenSrc = imagenes.animacion_caballero_enemigo_ataque_izquierda,
-                                frames = 7
+                            animacion_atacar: {
+                                imagenSrc: imagenes.animacion_caballero_enemigo_ataque_izquierda,
+                                frames: 7
                             },
-                            animacion_mover = {
-                                imagenSrc = imagenes.animacion_caballero_enemigo_izquierda,
-                                frames = 4
+                            animacion_mover: {
+                                imagenSrc: imagenes.animacion_caballero_enemigo_izquierda,
+                                frames: 4
                             },
                         };
                         var caballero = new Caballero(xEnemigo, yEnemigo, false, animaciones);
@@ -543,13 +544,13 @@ class GameLayer extends Layer {
                 case 4:
                     if (this.enemigo.comprobarRecursos(costeCatapulta)) {
                         var animaciones = {
-                            animacion_atacar = {
-                                imagenSrc = imagenes.animacion_caballero_enemigo_ataque_izquierda,
-                                frames = 7
+                            animacion_atacar: {
+                                imagenSrc: imagenes.animacion_caballero_enemigo_ataque_izquierda,
+                                frames: 7
                             },
-                            animacion_mover = {
-                                imagenSrc = imagenes.animacion_caballero_enemigo_izquierda,
-                                frames = 4
+                            animacion_mover: {
+                                imagenSrc: imagenes.animacion_caballero_enemigo_izquierda,
+                                frames: 4
                             },
                         };
                         var catapulta = new Catapulta(xEnemigo, yEnemigo, false);
@@ -561,13 +562,13 @@ class GameLayer extends Layer {
                 case 5:
                     if (this.enemigo.comprobarRecursos(costeRey)) {
                         var animaciones = {
-                            animacion_atacar = {
-                                imagenSrc = imagenes.animacion_rey_enemigo_ataque_izquierda,
-                                frames = 7
+                            animacion_atacar: {
+                                imagenSrc: imagenes.animacion_rey_enemigo_ataque_izquierda,
+                                frames: 7
                             },
-                            animacion_mover = {
-                                imagenSrc = imagenes.animacion_rey_enemigo_izquierda,
-                                frames = 4
+                            animacion_mover: {
+                                imagenSrc: imagenes.animacion_rey_enemigo_izquierda,
+                                frames: 4
                             },
                         };
                         var rey = new Rey(xEnemigo, yEnemigo, false, animaciones);
