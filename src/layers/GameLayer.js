@@ -11,7 +11,7 @@ class GameLayer extends Layer {
 
         this.bloques = [];
 
-        this.fondo = new Fondo(imagenes.fondo_2,480*0.5,320*0.5);
+        this.fondo = new Fondo(imagenes.fondo,480*0.5,320*0.5);
 
         this.enemigos = [];
 
@@ -19,28 +19,54 @@ class GameLayer extends Layer {
 
         this.propiedades=[];
 
-        this.fondoMonedas = new Fondo(imagenes.icono_monedas, 480*0.85,320*0.05);
-        this.fondoHierro = new Fondo(imagenes.icono_hierro, 480*0.70,320*0.05);
-        this.fondoMadera = new Fondo(imagenes.icono_madera, 480*0.55,320*0.05);
+        this.fondoMonedas = new Fondo(imagenes.icono_monedas, 480*0.92,320*0.05);
+        this.fondoHierro = new Fondo(imagenes.icono_hierro, 480*0.80,320*0.05);
+        this.fondoMadera = new Fondo(imagenes.icono_madera, 480*0.68,320*0.05);
 
 
         this.disparosJugador = [];
-        this.dinero = new Texto(0,480*0.75,320*0.07 );
-        this.hierro = new Texto(0,480*0.9,320*0.07 );
-        this.madera = new Texto(0,480*0.60,320*0.07 );
+        this.hierro = new Texto(0,480*0.85,320*0.07 );
+        this.dinero = new Texto(0,480*0.97,320*0.07 );
+        this.madera = new Texto(0,480*0.73,320*0.07 );
 
         this.botonSalto = new Boton(imagenes.boton_salto,480*0.9,320*0.55);
         this.botonDisparo = new Boton(imagenes.boton_disparo,480*0.75,320*0.83);
 
         this.pad = new Pad(480*0.14,320*0.8);
 
-        this.botonArquero = new Boton(imagenes.boton_arquero,480*0.1,320*0.90);
-        this.costeCaballero = new Texto2("Oro: 60" ,480*0.05,320*0.98 );
-        this.botonCaballero = new Boton(imagenes.boton_caballero,480*0.70,320*0.90);
-        this.botonLanzero = new Boton(imagenes.boton_lancero,480*0.85,320*0.90);
-        this.botonEspadachin = new Boton(imagenes.boton_espadachin,480*0.25,320*0.90);
-        this.botonRey = new Boton(imagenes.boton_rey,480*0.40,320*0.90);
-        this.botonCatapulta = new Boton(imagenes.boton_catapulta,480*0.55,320*0.90);
+        //botones tropas
+        this.botonArquero = new Boton(imagenes.boton_arquero,480*0.25,320*0.94 );
+        this.botonEspadachin = new Boton(imagenes.boton_espadachin,480*0.1,320*0.94);
+        this.botonLancero = new Boton(imagenes.boton_lancero,480*0.40,320*0.94);
+        this.botonCaballero = new Boton(imagenes.boton_caballero,480*0.55,320*0.94);
+        this.botonRey = new Boton(imagenes.boton_rey,480*0.70,320*0.94);
+        this.botonCatapulta = new Boton(imagenes.boton_catapulta,480*0.85,320*0.94);
+
+        //botones edificios
+        this.botonAyuntamiento = new Boton(imagenes.boton_Ayuntamiento,480*0.1,320*0.07);
+        this.botonMina = new Boton(imagenes.boton_Mina,480*0.23,320*0.07);
+        this.botonSerreria = new Boton(imagenes.boton_Serreria,480*0.36,320*0.07);
+
+        //coste tropas
+        this.costeEspadachin = new Texto2("20" ,480*0.12,320*0.935 );
+        this.costeArquero = new Texto2("20" ,480*0.265,320*0.935 );
+        this.costeLancero = new Texto2("60" ,480*0.415,320*0.935 );
+        this.costeCaballero = new Texto2("60" ,480*0.565,320*0.935 );
+        this.costeRey = new Texto2("60" ,480*0.715,320*0.935 );
+        this.costeCatapulta = new Texto2("60" ,480*0.868,320*0.935 );
+
+        //coste Edificios
+        this.costeAyuntamiento1 = new Texto2("120" ,480*0.13,320*0.06);
+        this.costeAyuntamiento2 = new Texto3("120" ,480*0.13,320*0.09);
+        this.costeAyuntamiento3 = new Texto4("200" ,480*0.13,320*0.12);
+
+        this.costeMina1 = new Texto2("120" ,480*0.263,320*0.06);
+        this.costeMina2 = new Texto3("120" ,480*0.263,320*0.09);
+        this.costeMina3 = new Texto4("200" ,480*0.263,320*0.12);
+
+        this.costeSerreria1 = new Texto2("120" ,480*0.393,320*0.06);
+        this.costeSerreria2 = new Texto3("120" ,480*0.393,320*0.09);
+        this.costeSerreria3 = new Texto4("200" ,480*0.393,320*0.12);
 
         this.cargarMapa("res/"+nivelActual+".txt");
     }
@@ -170,16 +196,39 @@ class GameLayer extends Layer {
 
         //Botones dibujar
         this.botonArquero.dibujar();
-        this.costeCaballero.dibujar();
         this.botonEspadachin.dibujar();
         this.botonCaballero.dibujar();
-        this.botonLanzero.dibujar();
+        this.botonLancero.dibujar();
         this.botonRey.dibujar();
         this.botonCatapulta.dibujar();
+        this.botonAyuntamiento.dibujar();
+        this.botonMina.dibujar();
+        this.botonSerreria.dibujar();
+
+        //coste dibujar
+        this.costeArquero.dibujar();
+        this.costeEspadachin.dibujar();
+        this.costeLancero.dibujar();
+        this.costeCaballero.dibujar();
+        this.costeRey.dibujar();
+        this.costeCatapulta.dibujar();
+
+        //coste edificios
+        this.costeAyuntamiento1.dibujar();
+        this.costeAyuntamiento2.dibujar();
+        this.costeAyuntamiento3.dibujar();
+
+        this.costeMina1.dibujar();
+        this.costeMina2.dibujar();
+        this.costeMina3.dibujar();
+
+        this.costeSerreria1.dibujar();
+        this.costeSerreria2.dibujar();
+        this.costeSerreria3.dibujar();
+
 
         // HUD
 
-        this.puntos.dibujar();
         if ( !this.pausa && entrada == entradas.pulsaciones) {
             this.botonDisparo.dibujar();
             this.botonSalto.dibujar();
@@ -310,6 +359,7 @@ class GameLayer extends Layer {
         // Suponemos botones no estan pulsados
         this.botonDisparo.pulsado = false;
         this.botonSalto.pulsado = false;
+        this.botonAyuntamiento.pulsado = false;
         // suponemos que el pad está sin tocar
         controles.moverX = 0;
 
@@ -337,6 +387,12 @@ class GameLayer extends Layer {
                     controles.moverY = 1;
                 }
             }
+            if (this.botonAyuntamiento.contienePunto(pulsaciones[i].x , pulsaciones[i].y) ){
+                this.botonAyuntamiento.pulsado = true;
+                if ( pulsaciones[i].tipo == tipoPulsacion.inicio) {
+                    alert("120 oro" + "\n" + "120 madera" + "\n" + " 200 hierro");
+                }
+            }
 
         }
 
@@ -350,4 +406,5 @@ class GameLayer extends Layer {
             controles.moverY = 0;
         }
     }
+
 }
