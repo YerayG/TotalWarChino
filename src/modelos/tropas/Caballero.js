@@ -2,11 +2,11 @@ class Caballero extends Tropa {
     constructor(x, y, aliado, animaciones) {
         var imagen, vx, rango;
         if (aliado) {
-            //imagen = imagenes.caballero;
+            imagen = imagenes.caballero_aliado;
             vx = 3;
             rango = 30;
         } else {
-            //imagen = imagenes.caballeroEnemigo;
+            imagen = imagenes.caballero_enemigo;
             vx = -3;
             rango = -30
         }

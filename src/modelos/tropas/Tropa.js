@@ -13,13 +13,6 @@ class Tropa extends Modelo {
         this.damage = damage;
 
         this.esquivando = false;
-        //this.coste = 0;
-        //Ver constructor de Propiedad
-        //Además pueden ser tropas aliadas o enemigas
-
-        //Los tropasEnemigas serán las mismas clases que las tropas probably
-        //Y pasaremos un parametro aliado boolean a los constructores y en funcion de eso cambia vx y la imagen?
-        //Ya esta hecho
 
         //Animaciones
         this.aMover = new Animacion(animaciones.animacion_mover.imagenSrc, this.ancho, this.alto, 6, animaciones.animacion_mover.frames);
@@ -31,7 +24,7 @@ class Tropa extends Modelo {
 
     actualizar() {
         //Animaciones
-
+        this.animacion.actualizar();
         //en GameLayer tiempoAtaque-- y si <= 0 y hay tropasEnemigas en rango y misma calle ataca
 
         if (this.tiempoAtaque > 0) {
@@ -40,7 +33,7 @@ class Tropa extends Modelo {
     }
 
     dibujar() {
-        //Scroll y animaciones
+        this.animacion.dibujar(this.x, this.y);
     }
 
     enRango(unidad) {
@@ -59,7 +52,7 @@ class Tropa extends Modelo {
         if (this.tiempoAtaque <= 0) {
             unidad.vida -= this.damage;
             this.tiempoAtaque = this.cadenciaAtaque;
-            //controlar animaciones y vx según las animaciones
+            //TODO controlar animaciones y vx según las animaciones
         }
     }
 
@@ -67,7 +60,7 @@ class Tropa extends Modelo {
         if (this.vida <= 0) {
             this.estado = estados.muerto;
             //primero a estados.muriendo y luego pasarle el callback a la animacion para pasar a estados.muerto
-            //TODO cuando tengamos las animaciones
+            //TODO cuando tengamos las animaciones si hay de morir
         }
     }
 

@@ -26,10 +26,8 @@ function iniciarJuego() {
 function loop(){
     console.log("loop - ")
     layer.actualizar();
-    if (entrada == entradas.pulsaciones) {
-        layer.calcularPulsaciones(pulsaciones);
-    }
-    layer.procesarControles()
+    layer.calcularPulsaciones(pulsaciones);
+    layer.procesarControles();
     layer.dibujar();
 
     actualizarPulsaciones();

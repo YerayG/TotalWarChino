@@ -4,11 +4,6 @@ class Propiedad extends Modelo {
 
         this.cantidad = cantidad;
         this.vida = vida;
-        /*this.costeMadera = 0;
-        this.costeDinero = 0;
-        this.costeHierro = 0;*/
-        //Esto es mejor almacenarlo en el GameLayer porque se comprueba antes de comprarlo
-        // (antes de que la Propiedad esté creada)
     }
 
     actualizar() {

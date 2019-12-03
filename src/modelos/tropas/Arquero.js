@@ -2,11 +2,11 @@ class Arquero extends Tropa {
     constructor(x, y, aliado, animaciones) {
         var imagen, vx, rango;
         if (aliado) {
-            //imagen = imagenes.arquero;
+            imagen = imagenes.arquero_aliado;
             vx = 3;
             rango = 300;
         } else {
-            //imagen = imagenes.arqueroEnemigo;
+            imagen = imagenes.arquero_enemigo;
             vx = -3;
             rango = -300
         }

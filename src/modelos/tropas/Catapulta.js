@@ -1,4 +1,5 @@
 class Catapulta extends Tropa {
+  
     constructor(x, y, aliado) {
         var imagen, vx, rango;
         if(aliado) {
