@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
@@ -8,7 +9,11 @@
 
     <title>Juego de Naves</title>
     <style>
-        * { padding: 0; margin: 0; }
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
         canvas {
             background: #eee;
             display: block;
@@ -16,16 +21,17 @@
         }
     </style>
 </head>
+
 <body>
 
-<canvas id="canvas" width="480" height="320"></canvas>
+    <canvas id="canvas" width="480" height="320"></canvas>
 
 <script src="src/modelos/Mapa.js"></script>
 <script src="src/modelos/Modelo.js"></script>
     <script src="src/modelos/bloques/Bloque.js"></script>
     <script src="src/modelos/bloques/Obstaculo.js"></script>
-    <script src="src/modelos/bloques/Torre.js"></script>
     <script src="src/modelos/bloques/Barrera.js"></script>
+    <script src="src/modelos/bloques/Base.js"></script>
     <script src="src/modelos/Jugador.js"></script>
     <script src="src/modelos/Fondo.js"></script>
     <script src="src/modelos/Enemigo.js"></script>
@@ -37,32 +43,34 @@
     <script src="src/modelos/Boton.js"></script>
     <script src="src/modelos/Pad.js"></script>
     <script src="src/modelos/propiedades/Propiedad.js"></script>
-        <script src="src/modelos/propiedades/Cuartel.js"></script>
-        <script src="src/modelos/propiedades/Ayuntamiento.js"></script>
-        <script src="src/modelos/propiedades/Mina.js"></script>
-        <script src="src/modelos/propiedades/Serreria.js"></script>
+    <script src="src/modelos/propiedades/Cuartel.js"></script>
+    <script src="src/modelos/propiedades/Ayuntamiento.js"></script>
+    <script src="src/modelos/propiedades/Mina.js"></script>
+    <script src="src/modelos/propiedades/Serreria.js"></script>
     <script src="src/modelos/tropas/Tropa.js"></script>
-        <script src="src/modelos/tropas/Rey.js"></script>
-        <script src="src/modelos/tropas/Lancero.js"></script>
-        <script src="src/modelos/tropas/Caballero.js"></script>
-        <script src="src/modelos/tropas/Arquero.js"></script>
-        <script src="src/modelos/tropas/Espadachin.js"></script>
-        <script src="src/modelos/tropas/Catapulta.js"></script>
+    <script src="src/modelos/tropas/Rey.js"></script>
+    <script src="src/modelos/tropas/Lancero.js"></script>
+    <script src="src/modelos/tropas/Caballero.js"></script>
+    <script src="src/modelos/tropas/Arquero.js"></script>
+    <script src="src/modelos/tropas/Espadachin.js"></script>
+    <script src="src/modelos/tropas/Catapulta.js"></script>
 
 
-<script src="src/layers/Layer.js"></script>
+    <script src="src/layers/Layer.js"></script>
     <script src="src/layers/GameLayer.js"></script>
     <script src="src/layers/MenuLayer.js"></script>
 
-<script src="src/graficos/Animacion.js"></script>
+    <script src="src/graficos/Animacion.js"></script>
 
-<script src="src/Espacio.js"></script>
-<script src="src/Globales.js"></script>
-<script src="src/Eventosteclado.js"></script>
-<script src="src/EventosPulsacion.js"></script>
-<script src="src/EventosGamePad.js"></script>
-<script src="src/Res.js"></script>
-<script src="Main.js"></script>
+    <script src="src/Espacio.js"></script>
+    <script src="src/Globales.js"></script>
+    <script src="src/Eventosteclado.js"></script>
+    <script src="src/EventosPulsacion.js"></script>
+    <script src="src/EventosGamePad.js"></script>
+    <script src="src/Res.js"></script>
+    <script src="src/Coste.js"></script>
+    <script src="Main.js"></script>
 
 </body>
+
 </html>

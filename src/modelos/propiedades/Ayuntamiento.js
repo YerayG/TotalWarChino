@@ -1,15 +1,13 @@
 class Ayuntamiento extends Propiedad {
     constructor(x, y) {
-        super(x, y, /*imagenes.ayuntamiento*/);
-
-        this.cantidad = 1;
+        super(x, y, 1, 1000, /*imagenes.ayuntamiento*/);
     }
 
     actualizar() {
         super.actualizar();
     }
 
-    generarParaJugador(jugador) {
-        jugador.dinero += this.cantidad;
+    generarPara(bando) {
+        bando.dinero += this.cantidad;
     }
 }

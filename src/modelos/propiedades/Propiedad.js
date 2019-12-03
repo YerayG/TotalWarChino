@@ -1,8 +1,9 @@
 class Propiedad extends Modelo {
-    constructor(x, y, imagen) {
+    constructor(x, y, cantidad, vida, imagen) {
         super(imagen, x, y);
 
-        this.cantidad = 0;
+        this.cantidad = cantidad;
+        this.vida = vida;
         /*this.costeMadera = 0;
         this.costeDinero = 0;
         this.costeHierro = 0;*/
@@ -14,7 +15,11 @@ class Propiedad extends Modelo {
 
     }
 
-    generarParaJugador(jugador) {
+    generarPara(bando) {
 
+    }
+
+    isDestruido() {
+        return this.vida <= 0;
     }
 }

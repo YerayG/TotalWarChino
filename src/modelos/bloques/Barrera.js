@@ -1,7 +1,10 @@
 class Barrera extends Bloque {
     constructor(x, y) {
         super(x, y, /*imagenes.barrera*/);
+        this.vida = 500;
     }
 
-    //destruible
+    isDestruido() {
+        return this.vida <= 0;
+    }
 }

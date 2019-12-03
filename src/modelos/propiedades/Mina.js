@@ -1,15 +1,13 @@
 class Mina extends Propiedad {
     constructor(x, y) {
-        super(x, y, /*imagenes.mina*/);
-
-        this.cantidad = 5;
+        super(x, y, 5, 1000, /*imagenes.mina*/);
     }
 
     actualizar() {
         super.actualizar();
     }
 
-    generarParaJugador(jugador) {
-        jugador.hierro += this.cantidad;
+    generarPara(bando) {
+        bando.hierro += this.cantidad;
     }
 }

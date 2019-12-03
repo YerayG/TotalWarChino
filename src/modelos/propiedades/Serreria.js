@@ -1,15 +1,13 @@
 class Serreria extends Propiedad {
     constructor(x, y) {
-        super(x, y, /*imagenes.serreria*/);
-
-        this.cantidad = 5;
+        super(x, y, 5, 1000, /*imagenes.serreria*/);
     }
 
     actualizar() {
         super.actualizar();
     }
 
-    generarParaJugador(jugador) {
-        jugador.madera += this.cantidad;
+    generarPara(bando) {
+        bando.madera += this.cantidad;
     }
 }

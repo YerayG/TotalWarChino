@@ -11,7 +11,8 @@ class Jugador extends Modelo {
         this.cuarteles = 0;
         this.siguienteCompra =0;
 
-        this.propiedades = [];
+        this.recursosAutomaticosCada = 10;
+        this.recursosAutomaticosContador = this.recursosAutomaticosCada;
 
         this.vidas = 3;
         this.tiempoInvulnerable = 0;
@@ -190,13 +191,18 @@ class Jugador extends Modelo {
         }
     }
 
-    generarRecursos() {
-        for(var i = 0; i < this.propiedades.length; i++) {
-            this.propiedades[i].generarParaJugador(this);
+    generarRecursos(propiedades) {
+        for(var i = 0; i < propiedades.length; i++) {
+            propiedades[i].generarPara(this);
         }
-    }
 
-    comprar(propiedad) {
-        this.propiedades.push(propiedad);
+        if(this.recursosAutomaticosContador <= 0) {
+            this.dinero++;
+            this.hierro++;
+            this.madera++;
+            this.recursosAutomaticosContador = this.recursosAutomaticosCada;
+        } else {
+            this.recursosAutomaticosContador--;
+        }
     }
 }

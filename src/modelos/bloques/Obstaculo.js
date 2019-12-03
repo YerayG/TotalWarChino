@@ -3,6 +3,4 @@ class Obstaculo extends Bloque {
         super(x, y, /*imagenes.obstaculo*/);
         //Mas de uno?
     }
-
-    //destruible
 }
