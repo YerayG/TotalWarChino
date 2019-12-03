@@ -246,24 +246,27 @@ class GameLayer extends Layer {
     }
 
     //TODO usando el raton, no la posicion del jugador
-    calcularScroll() {
-        // limite izquierda
-        if (this.jugador.x > 480 * 0.3) {
-            if (this.jugador.x - this.scrollX < 480 * 0.3) {
-                this.scrollX = this.jugador.x - 480 * 0.3;
-            }
-        }
+    calcularScroll(){
+        /*if(this.jugador.siguienteCompra <= 0) {
 
-        // limite derecha
-        if (this.jugador.x < this.anchoMapa - 480 * 0.3) {
-            if (this.jugador.x - this.scrollX > 480 * 0.7) {
-                this.scrollX = this.jugador.x - 480 * 0.7;
+            var mouseX = window.event.clientX;
+
+            if (mouseX > 480 * 0.2) {
+                if (mouseX - this.scrollX < 480 * 0.2) {
+                    this.scrollX = mouseX - 480 * 0.2;
+                }
             }
-        }
+
+            if (mouseX < this.anchoMapa - 480 * 0.2) {
+                if (mouseX - this.scrollX > 480 * 0.8) {
+                    this.scrollX = mouseX - 480 * 0.8;
+                }
+            }
+        }*/
     }
 
     dibujar() {
-        //this.calcularScroll(); TODO hasta que no se haga bien peta
+        this.calcularScroll();
 
         this.fondo.dibujar();
 
