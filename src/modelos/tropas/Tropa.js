@@ -24,6 +24,7 @@ class Tropa extends Modelo {
         //Animaciones
         this.aMover = new Animacion(animaciones.animacion_mover.imagenSrc, this.ancho, this.alto, 6, animaciones.animacion_mover.frames);
         this.aAtacar = new Animacion(animaciones.animacion_atacar.imagenSrc, this.ancho, this.alto, 6, animaciones.animacion_atacar.frames);
+        this.aMorir = new Animacion(imagenes.animacion_morir, this.ancho, this.alto, 6, 4);
 
         this.animacion = this.aMover;
     }

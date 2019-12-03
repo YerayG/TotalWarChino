@@ -82,10 +82,18 @@ var imagenes = {
     lancero_enemigo: "res/lancero_enemigo/lancero_enemigo.png",
 
     animacion_arquero_aliado_ataque: "res/arquero_aliado/Animacion-Arquero-Azul-Atq-Lat.png",
+    animacion_arquero_aliado_mover: "res/arquero_aliado/animacion_arquero_aliado_mover.png",
+
     animacion_arquero_enemigo_ataque: "res/arquero_enemigo/Animacion-Arquero-Negro-Atq-Lat.png",
+    animacion_arquero_enemigo_mover: "res/arquero_enemigo/animacion_arquero_enemigo_mover.png",
 
     animacion_lancero_aliado_ataque: "res/lancero_aliado/animacion_lancero_aliado_ataque.png",
-    animacion_lancero_enemigo_ataque: "res/lancero_enemigo/animacion_lancero_enemigo_ataque.png"
+    animacion_lancero_aliado_mover: "res/lancero_aliado/animacion_lancero_aliado_mover.png",
+
+    animacion_lancero_enemigo_ataque: "res/lancero_enemigo/animacion_lancero_enemigo_ataque.png",
+    animacion_lancero_enemigo_mover: "res/lancero_enemigo/animacion_lancero_enemigo_mover.png",
+
+    animacion_morir: "res/animacion_muerte.png"
 
 };
 

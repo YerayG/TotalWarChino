@@ -495,7 +495,7 @@ class GameLayer extends Layer {
                                 frames: 7
                             },
                             animacion_mover: {
-                                imagenSrc: imagenes.animacion_arquero_enemigo_ataque,
+                                imagenSrc: imagenes.animacion_arquero_enemigo_mover,
                                 frames: 7
                             }
                         };
@@ -513,7 +513,7 @@ class GameLayer extends Layer {
                                 frames: 7
                             },
                             animacion_mover: {
-                                imagenSrc: imagenes.animacion_lancero_enemigo_ataque,
+                                imagenSrc: imagenes.animacion_lancero_enemigo_mover,
                                 frames: 7
                             },
                         };
