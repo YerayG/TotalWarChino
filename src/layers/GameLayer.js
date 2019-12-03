@@ -245,29 +245,7 @@ class GameLayer extends Layer {
         }
     }
 
-    //TODO usando el raton, no la posicion del jugador
-    calcularScroll(){
-        /*if(this.jugador.siguienteCompra <= 0) {
-
-            var mouseX = window.event.clientX;
-
-            if (mouseX > 480 * 0.2) {
-                if (mouseX - this.scrollX < 480 * 0.2) {
-                    this.scrollX = mouseX - 480 * 0.2;
-                }
-            }
-
-            if (mouseX < this.anchoMapa - 480 * 0.2) {
-                if (mouseX - this.scrollX > 480 * 0.8) {
-                    this.scrollX = mouseX - 480 * 0.8;
-                }
-            }
-        }*/
-    }
-
     dibujar() {
-        this.calcularScroll();
-
         this.fondo.dibujar();
 
         for (var i = 0; i < this.bloques.length; i++) {
@@ -359,7 +337,13 @@ class GameLayer extends Layer {
     }
 
     procesarControles() {
-
+        if (controles.scroll) {
+            if (this.scrollX <= this.anchoMapa - 480 && controles.scroll > 0) {
+                this.scrollX += controles.scroll * 3;
+            } else if (this.scrollX >= 0 && controles.scroll < 0) {
+                this.scrollX += controles.scroll * 3;
+            }
+        }
     }
 
     cargarObjetoMapa(simbolo, x, y) {
@@ -560,9 +544,14 @@ class GameLayer extends Layer {
             if(this.mapa.contienePunto(pulsaciones[i].x , pulsaciones[i].y)){
                 this.mapa.pulsado=true;
                 if(pulsaciones[i].tipo == tipoPulsacion.inicio) {
-                    this.posicionX = pulsaciones[i].x;
-                    this.posicionY = pulsaciones[i].x;
-                    this.cargarEnMapa(this.jugador.siguienteCompra, pulsaciones[i].x, pulsaciones[i].y);
+                    var posicionX = pulsaciones[i].x;
+                    var posicionY = pulsaciones[i].y;
+                    //Solo se puede colocar al principio del mapa
+                    if (posicionX + this.scrollX <= 300) {
+                        this.cargarEnMapa(this.jugador.siguienteCompra, posicionX + this.scrollX, posicionY);
+                    } else {
+                        alert("Solo puedes construir en tu zona del mapa (al principio)");
+                    }
                 }
             }
 
@@ -575,7 +564,6 @@ class GameLayer extends Layer {
             case 1:
                 var espadachin = new Espadachin(posicionX, posicionY,true);
                 espadachin.y = espadachin.y - espadachin.alto / 2;
-                // modificación para empezar a contar desde el suelo
                 if(!this.colisionaPropiedad(espadachin)) {
                     this.jugador.dinero = this.jugador.dinero - this.textoEspadachin.valor;
                     this.tropasAliadas.push(espadachin);
@@ -598,11 +586,9 @@ class GameLayer extends Layer {
                 arquero.y = arquero.y - arquero.alto / 2;
                 if(!this.colisionaPropiedad(arquero)) {
                     this.jugador.dinero = this.jugador.dinero - this.textoArquero.valor;
-                    // modificación para empezar a contar desde el suelo
                     this.tropasAliadas.push(arquero);
                     this.espacio.agregarCuerpoDinamico(arquero);
                     this.jugador.siguienteCompra = 0;
-                    console.log("GO ARCHER");
                     break;
                 }
             case 3:
@@ -611,7 +597,6 @@ class GameLayer extends Layer {
                 lancero.y = lancero.y - lancero.alto / 2;
                 if(!this.colisionaPropiedad(lancero)) {
                     this.jugador.dinero = this.jugador.dinero - this.textoLancero.valor;
-                    // modificación para empezar a contar desde el suelo
                     this.tropasAliadas.push(lancero);
                     this.espacio.agregarCuerpoDinamico(lancero);
                     this.jugador.siguienteCompra = 0;
@@ -623,7 +608,6 @@ class GameLayer extends Layer {
                 caballero.y = caballero.y - caballero.alto / 2;
                 if(!this.colisionaPropiedad(caballero)) {
                     this.jugador.dinero = this.jugador.dinero - this.textoCaballero.valor;
-                    // modificación para empezar a contar desde el suelo
                     this.tropasAliadas.push(caballero);
                     this.espacio.agregarCuerpoDinamico(caballero);
                     this.jugador.siguienteCompra = 0;
@@ -635,7 +619,6 @@ class GameLayer extends Layer {
                 rey.y = rey.y - rey.alto / 2;
                 if(!this.colisionaPropiedad(rey)) {
                     this.jugador.dinero = this.jugador.dinero - this.textoRey.valor;
-                    // modificación para empezar a contar desde el suelo
                     this.tropasAliadas.push(rey);
                     this.espacio.agregarCuerpoDinamico(rey);
                     this.jugador.siguienteCompra = 0;
@@ -647,7 +630,6 @@ class GameLayer extends Layer {
                 catapulta.y = catapulta.y - catapulta.alto / 2;
                 if(!this.colisionaPropiedad(catapulta)) {
                     this.jugador.dinero = this.jugador.dinero - this.textoCatapulta.valor;
-                    // modificación para empezar a contar desde el suelo
                     this.tropasAliadas.push(catapulta);
                     this.espacio.agregarCuerpoDinamico(catapulta);
                     this.jugador.siguienteCompra = 0;
@@ -655,9 +637,8 @@ class GameLayer extends Layer {
                 }
             case 7:
                 var ayuntamiento = new Ayuntamiento(posicionX, posicionY);
-                ayuntamiento.y = ayuntamiento.y - ayuntamiento.alto / 2;
+                //ayuntamiento.y = ayuntamiento.y - ayuntamiento.alto / 2;
                 if(!this.colisionaPropiedad(ayuntamiento) && !this.colisionaTropas(ayuntamiento)) {
-                    // modificación para empezar a contar desde el suelo
                     this.jugador.dinero = this.jugador.dinero - this.textoAyuntamientoOro.valor;
                     this.jugador.madera = this.jugador.madera - this.textoAyuntamientoMadera.valor;
                     this.jugador.hierro = this.jugador.hierro - this.textoAyuntamientoHierro.valor;
@@ -673,7 +654,6 @@ class GameLayer extends Layer {
                     this.jugador.dinero = this.jugador.dinero - this.textoCuartelOro.valor;
                     this.jugador.madera = this.jugador.madera - this.textoCuartelMadera.valor;
                     this.jugador.hierro = this.jugador.hierro - this.textoCuartelHierro.valor;
-                    // modificación para empezar a contar desde el suelo
                     this.propiedadesAliadas.push(cuartel);
                     this.espacio.agregarCuerpoEstatico(cuartel);
                     this.jugador.siguienteCompra = 0;
@@ -686,7 +666,6 @@ class GameLayer extends Layer {
                     this.jugador.dinero=this.jugador.dinero-this.textoMinaOro.valor;
                     this.jugador.madera=this.jugador.madera-this.textoMinaMadera.valor;
                     this.jugador.hierro=this.jugador.hierro-this.textoMinaHierro.valor;
-                    // modificación para empezar a contar desde el suelo
                     this.propiedadesAliadas.push(mina);
                     this.espacio.agregarCuerpoEstatico(mina);
                     this.jugador.siguienteCompra = 0;
@@ -696,7 +675,6 @@ class GameLayer extends Layer {
                 var serreria = new Serreria(posicionX, posicionY);
                 serreria.y = serreria.y - serreria.alto / 2;
                 if(!this.colisionaPropiedad(serreria) && !this.colisionaTropas(serreria)) {
-                    // modificación para empezar a contar desde el suelo
                     this.jugador.dinero=this.jugador.dinero-this.textoSerreriaOro.valor;
                     this.jugador.madera=this.jugador.madera-this.textoSerreriaMadera.valor;
                     this.jugador.hierro=this.jugador.hierro-this.textoSerreriaMadera.valor;
@@ -733,8 +711,8 @@ class GameLayer extends Layer {
     }
 
     generarSiguienteCompraEnemiga() {
-        var calle = parseInt(Math.random() * 6); //TODO cambiar esto, depende de las dimensiones del mapa y no las sabemos aún
-        var xEnemigo = 700; //TODO cambiar esto, depende de las dimensiones del mapa y no las sabemos aún
+        var calle = parseInt(Math.random() * 6);
+        var xEnemigo = this.anchoMapa - 100;
         var yEnemigo = this.getYFromCalle(calle);
 
         if (this.enemigo.isTropaSiguiente) {
