@@ -1,4 +1,5 @@
 class Rey extends Tropa {
+
     constructor(x, y, aliado, animaciones) {
         var imagen, vx, rango;
         if (aliado) {

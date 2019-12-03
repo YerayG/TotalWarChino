@@ -1,5 +1,6 @@
 class Lancero extends Tropa {
-    constructor(x, y, animaciones) {
+
+    constructor(x, y, aliado, animaciones) {
         var imagen, vx, rango;
         if (aliado) {
             //imagen = imagenes.lancero;

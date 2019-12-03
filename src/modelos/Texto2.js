@@ -1,4 +1,4 @@
-class Texto {
+class Texto2 {
 
     constructor(valor, x, y) {
         this.valor = valor;
@@ -7,8 +7,8 @@ class Texto {
     }
 
     dibujar (){
-        contexto.font = "10px Arial";
-        contexto.fillStyle = "white";
+        contexto.font = "7px Arial";
+        contexto.fillStyle = "yellow";
         contexto.textAlign = "left";
         contexto.fillText(this.valor,this.x,this.y);
     }

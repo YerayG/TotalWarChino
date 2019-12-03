@@ -86,7 +86,6 @@ var imagenes = {
 
     animacion_lancero_aliado_ataque: "res/lancero_aliado/animacion_lancero_aliado_ataque.png",
     animacion_lancero_enemigo_ataque: "res/lancero_enemigo/animacion_lancero_enemigo_ataque.png"
-
 };
 
 var rutasImagenes = Object.values(imagenes);

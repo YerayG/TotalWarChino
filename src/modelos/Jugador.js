@@ -5,10 +5,11 @@ class Jugador extends Modelo {
 
         //La mayoria de esta clase sobra porque el jugador no es ni modelo ni tiene animaciones
         //ni se mueve ni dispara, solo almacena recursos y compra cosas
-        this.madera = 0;
-        this.dinero = 0;
-        this.hierro = 0;
+        this.madera = 2000;
+        this.dinero = 2000;
+        this.hierro = 2000;
         this.cuarteles = 0;
+        this.siguienteCompra =0;
 
         this.recursosAutomaticosCada = 10;
         this.recursosAutomaticosContador = this.recursosAutomaticosCada;
