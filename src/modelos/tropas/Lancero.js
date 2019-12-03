@@ -3,11 +3,11 @@ class Lancero extends Tropa {
     constructor(x, y, aliado, animaciones) {
         var imagen, vx, rango;
         if (aliado) {
-            //imagen = imagenes.lancero;
+            imagen = imagenes.lancero_aliado;
             vx = 2;
             rango = 40;
         } else {
-            //imagen = imagenes.lanceroEnemigo;
+            imagen = imagenes.lancero_enemigo;
             vx = -2;
             rango = -40;
         }

@@ -1,4 +1,4 @@
-class Texto3 {
+class TextoMadera {
 
     constructor(valor, x, y) {
         this.valor = valor;
