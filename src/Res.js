@@ -37,6 +37,7 @@ var imagenes = {
     boton_Ayuntamiento : "res/boton-Ayuntamiento.png",
     boton_Mina : "res/boton-Mina.png",
     boton_Serreria : "res/boton-Serreria.png",
+    boton_Cuartel : "res/boton-Cuartel.png",
     boton_salto : "res/boton_salto.png",
     boton_pausa : "res/boton_pausa.png",
     menu_fondo : "res/menu_fondo.png",

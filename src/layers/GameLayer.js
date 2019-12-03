@@ -46,6 +46,7 @@ class GameLayer extends Layer {
         this.botonAyuntamiento = new Boton(imagenes.boton_Ayuntamiento,480*0.1,320*0.07);
         this.botonMina = new Boton(imagenes.boton_Mina,480*0.23,320*0.07);
         this.botonSerreria = new Boton(imagenes.boton_Serreria,480*0.36,320*0.07);
+        this.botonCuartel = new Boton(imagenes.boton_Cuartel,480*0.49,320*0.07);
 
         //coste tropas
         this.costeEspadachin = new Texto2("20" ,480*0.115,320*0.975 );
@@ -67,6 +68,10 @@ class GameLayer extends Layer {
         this.costeSerreria1 = new Texto2("120" ,480*0.393,320*0.06);
         this.costeSerreria2 = new Texto3("120" ,480*0.393,320*0.09);
         this.costeSerreria3 = new Texto4("200" ,480*0.393,320*0.12);
+
+        this.costeCuartel1 = new Texto2("120" ,480*0.523,320*0.06);
+        this.costeCuartel2 = new Texto3("120" ,480*0.523,320*0.09);
+        this.costeCuartel3 = new Texto4("200" ,480*0.523,320*0.12);
 
         this.cargarMapa("res/"+nivelActual+".txt");
     }
@@ -204,6 +209,7 @@ class GameLayer extends Layer {
         this.botonAyuntamiento.dibujar();
         this.botonMina.dibujar();
         this.botonSerreria.dibujar();
+        this.botonCuartel.dibujar();
 
         //coste dibujar
         this.costeArquero.dibujar();
@@ -225,6 +231,10 @@ class GameLayer extends Layer {
         this.costeSerreria1.dibujar();
         this.costeSerreria2.dibujar();
         this.costeSerreria3.dibujar();
+
+        this.costeCuartel1.dibujar();
+        this.costeCuartel2.dibujar();
+        this.costeCuartel3.dibujar();
 
 
         // HUD
@@ -390,7 +400,17 @@ class GameLayer extends Layer {
             if (this.botonAyuntamiento.contienePunto(pulsaciones[i].x , pulsaciones[i].y) ){
                 this.botonAyuntamiento.pulsado = true;
                 if ( pulsaciones[i].tipo == tipoPulsacion.inicio) {
-                    alert("120 oro" + "\n" + "120 madera" + "\n" + " 200 hierro");
+                    if(this.jugador.dinero<120 || this.jugador.madera<120|| this.jugador.hierro<200){
+                        alert("NECESITAS"+ "\n"+"120 oro" + "\n" + "120 madera" + "\n" + " 200 hierro");
+                    }
+                    else{
+                        this.jugador.dinero=this.jugador.dinero-120;
+                        this.jugador.madera=this.jugador.madera-120;
+                        this.jugador.hierro=this.jugador.hierro-200;
+
+
+
+                    }
                 }
             }
 
