@@ -2,11 +2,11 @@ class Base extends Bloque {
     constructor(x, y, aliado) {
         var imagen;
         if (aliado) {
-            //imagenes.baseAliada;
+            imagen = imagenes.base_aliada;
         } else {
             //imagenes.baseEnemiga;
         }
-        super(x, y, imagen);
+        super(imagenes.base_aliada, x, y);
 
         this.vida = 5000;
     }

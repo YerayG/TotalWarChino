@@ -11,9 +11,9 @@ class GameLayer extends Layer {
 
         this.bloques = [];
 
-        this.mapa= new Mapa();
+        this.mapa = new Mapa();
 
-        this.fondo = new Fondo(imagenes.fondo,480*0.5,320*0.5);
+        this.fondo = new Fondo(imagenes.fondo, 480 * 0.5, 320 * 0.5);
 
         this.jugador = new Jugador();
         this.enemigo = new Enemigo();
@@ -22,7 +22,7 @@ class GameLayer extends Layer {
         this.tropasAliadas = [];
 
         this.obstaculos = [];
- 
+
         this.propiedadesAliadas = [];
         this.propiedadesEnemigas = [];
 
@@ -30,59 +30,59 @@ class GameLayer extends Layer {
         this.barrerasEnemigas = [];
 
         this.disparosJugador = [];
-      
-        this.fondoMonedas = new Fondo(imagenes.icono_monedas, 480*0.885,320*0.05);
-        this.fondoHierro = new Fondo(imagenes.icono_hierro, 480*0.74,320*0.06);
-        this.fondoMadera = new Fondo(imagenes.icono_madera, 480*0.59,320*0.05);
-      
-        this.hierro = new Texto(0,480*0.78,320*0.06 );
-        this.oro = new Texto(0,480*0.92,320*0.06 );
-        this.madera = new Texto(0,480*0.63,320*0.06 );
+
+        this.fondoMonedas = new Fondo(imagenes.icono_monedas, 480 * 0.885, 320 * 0.05);
+        this.fondoHierro = new Fondo(imagenes.icono_hierro, 480 * 0.74, 320 * 0.06);
+        this.fondoMadera = new Fondo(imagenes.icono_madera, 480 * 0.59, 320 * 0.05);
+
+        this.hierro = new Texto(0, 480 * 0.78, 320 * 0.06);
+        this.oro = new Texto(0, 480 * 0.92, 320 * 0.06);
+        this.madera = new Texto(0, 480 * 0.63, 320 * 0.06);
 
         this.botonSalto = new Boton(imagenes.boton_salto, 480 * 0.9, 320 * 0.55);
         this.botonDisparo = new Boton(imagenes.boton_disparo, 480 * 0.75, 320 * 0.83);
 
         //botones tropas
-        this.botonArquero = new Boton(imagenes.boton_arquero,480*0.25,320*0.94 );
-        this.botonEspadachin = new Boton(imagenes.boton_espadachin,480*0.1,320*0.94);
-        this.botonLancero = new Boton(imagenes.boton_lancero,480*0.40,320*0.94);
-        this.botonCaballero = new Boton(imagenes.boton_caballero,480*0.55,320*0.94);
-        this.botonRey = new Boton(imagenes.boton_rey,480*0.70,320*0.94);
-        this.botonCatapulta = new Boton(imagenes.boton_catapulta,480*0.85,320*0.94);
+        this.botonArquero = new Boton(imagenes.boton_arquero, 480 * 0.25, 320 * 0.94);
+        this.botonEspadachin = new Boton(imagenes.boton_espadachin, 480 * 0.1, 320 * 0.94);
+        this.botonLancero = new Boton(imagenes.boton_lancero, 480 * 0.40, 320 * 0.94);
+        this.botonCaballero = new Boton(imagenes.boton_caballero, 480 * 0.55, 320 * 0.94);
+        this.botonRey = new Boton(imagenes.boton_rey, 480 * 0.70, 320 * 0.94);
+        this.botonCatapulta = new Boton(imagenes.boton_catapulta, 480 * 0.85, 320 * 0.94);
 
         //botones edificios
-        this.botonAyuntamiento = new Boton(imagenes.boton_Ayuntamiento,480*0.1,320*0.07);
-        this.botonMina = new Boton(imagenes.boton_Mina,480*0.23,320*0.07);
-        this.botonSerreria = new Boton(imagenes.boton_Serreria,480*0.36,320*0.07);
-        this.botonCuartel = new Boton(imagenes.boton_Cuartel,480*0.49,320*0.07);
+        this.botonAyuntamiento = new Boton(imagenes.boton_Ayuntamiento, 480 * 0.1, 320 * 0.07);
+        this.botonMina = new Boton(imagenes.boton_Mina, 480 * 0.23, 320 * 0.07);
+        this.botonSerreria = new Boton(imagenes.boton_Serreria, 480 * 0.36, 320 * 0.07);
+        this.botonCuartel = new Boton(imagenes.boton_Cuartel, 480 * 0.49, 320 * 0.07);
 
 
         //coste tropas
-        this.textoEspadachin = new TextoOro("20" ,480*0.115,320*0.975 );
-        this.textoArquero = new TextoOro("20" ,480*0.27,320*0.975 );
-        this.textoLancero = new TextoOro("60" ,480*0.415,320*0.975 );
-        this.textoCaballero = new TextoOro("60" ,480*0.565,320*0.975 );
-        this.textoRey = new TextoOro("60" ,480*0.715,320*0.975 );
-        this.textoCatapulta = new TextoOro("60" ,480*0.868,320*0.975 );
+        this.textoEspadachin = new TextoOro("20", 480 * 0.115, 320 * 0.975);
+        this.textoArquero = new TextoOro("20", 480 * 0.27, 320 * 0.975);
+        this.textoLancero = new TextoOro("60", 480 * 0.415, 320 * 0.975);
+        this.textoCaballero = new TextoOro("60", 480 * 0.565, 320 * 0.975);
+        this.textoRey = new TextoOro("60", 480 * 0.715, 320 * 0.975);
+        this.textoCatapulta = new TextoOro("60", 480 * 0.868, 320 * 0.975);
 
         //coste Edificios
-        this.textoAyuntamientoOro = new TextoOro("120" ,480*0.13,320*0.06);
-        this.textoAyuntamientoMadera = new TextoMadera("120" ,480*0.13,320*0.09);
-        this.textoAyuntamientoHierro = new TextoHierro("200" ,480*0.13,320*0.12);
+        this.textoAyuntamientoOro = new TextoOro("120", 480 * 0.13, 320 * 0.06);
+        this.textoAyuntamientoMadera = new TextoMadera("120", 480 * 0.13, 320 * 0.09);
+        this.textoAyuntamientoHierro = new TextoHierro("200", 480 * 0.13, 320 * 0.12);
 
-        this.textoMinaOro = new TextoOro("120" ,480*0.263,320*0.06);
-        this.textoMinaMadera = new TextoMadera("120" ,480*0.263,320*0.09);
-        this.textoMinaHierro = new TextoHierro("200" ,480*0.263,320*0.12);
+        this.textoMinaOro = new TextoOro("120", 480 * 0.263, 320 * 0.06);
+        this.textoMinaMadera = new TextoMadera("120", 480 * 0.263, 320 * 0.09);
+        this.textoMinaHierro = new TextoHierro("200", 480 * 0.263, 320 * 0.12);
 
-        this.textoSerreriaOro = new TextoOro("120" ,480*0.393,320*0.06);
-        this.textoSerreriaMadera = new TextoMadera("120" ,480*0.393,320*0.09);
-        this.textoSerreriaHierro = new TextoHierro("200" ,480*0.393,320*0.12);
+        this.textoSerreriaOro = new TextoOro("120", 480 * 0.393, 320 * 0.06);
+        this.textoSerreriaMadera = new TextoMadera("120", 480 * 0.393, 320 * 0.09);
+        this.textoSerreriaHierro = new TextoHierro("200", 480 * 0.393, 320 * 0.12);
 
-        this.textoCuartelOro = new TextoOro("120" ,480*0.523,320*0.06);
-        this.textoCuartelMadera = new TextoMadera("120" ,480*0.523,320*0.09);
-        this.textoCuartelHierro = new TextoHierro("200" ,480*0.523,320*0.12);
+        this.textoCuartelOro = new TextoOro("120", 480 * 0.523, 320 * 0.06);
+        this.textoCuartelMadera = new TextoMadera("120", 480 * 0.523, 320 * 0.09);
+        this.textoCuartelHierro = new TextoHierro("200", 480 * 0.523, 320 * 0.12);
 
-        this.cargarMapa("res/"+nivelActual+".txt");
+        this.cargarMapa("res/" + nivelActual + ".txt");
     }
 
     actualizar() {
@@ -97,7 +97,7 @@ class GameLayer extends Layer {
             this.tropasEnemigas[i].actualizar();
         }
 
-        for (var i=0; i < this.tropasAliadas.length; i++){
+        for (var i = 0; i < this.tropasAliadas.length; i++) {
             this.tropasAliadas[i].actualizar();
         }
 
@@ -256,15 +256,15 @@ class GameLayer extends Layer {
             this.tropasEnemigas[i].dibujar(this.scrollX);
         }
 
-        for (var i=0; i < this.tropasAliadas.length; i++){
+        for (var i = 0; i < this.tropasAliadas.length; i++) {
             this.tropasAliadas[i].dibujar(this.scrollX);
         }
 
-        for (var i=0; i < this.propiedadesAliadas.length; i++){
+        for (var i = 0; i < this.propiedadesAliadas.length; i++) {
             this.propiedadesAliadas[i].dibujar(this.scrollX);
         }
 
-        for (var i=0; i < this.propiedadesEnemigas.length; i++){
+        for (var i = 0; i < this.propiedadesEnemigas.length; i++) {
             this.propiedadesEnemigas[i].dibujar(this.scrollX);
         }
 
@@ -373,177 +373,158 @@ class GameLayer extends Layer {
     }
 
     calcularPulsaciones(pulsaciones) {
-        for(var i=0; i < pulsaciones.length; i++){
+        for (var i = 0; i < pulsaciones.length; i++) {
 
-            if (this.botonEspadachin.contienePunto(pulsaciones[i].x , pulsaciones[i].y) ){
+            if (this.botonEspadachin.contienePunto(pulsaciones[i].x, pulsaciones[i].y)) {
                 this.botonEspadachin.pulsado = true;
-                if ( pulsaciones[i].tipo == tipoPulsacion.inicio) {
-                    if(this.jugador.dinero<this.textoEspadachin.valor){
-                        alert("NECESITAS"+ "\n"+"20 oro");
-                    }
-                    else{
-                        if( this.jugador.siguienteCompra===1){
-                            this.jugador.siguienteCompra=0;
-                        }
-                        else{
-                            this.jugador.siguienteCompra=1;
-                        }
-                    }
-                }
-            }
-            if (this.botonArquero.contienePunto(pulsaciones[i].x , pulsaciones[i].y) ){
-                this.botonArquero.pulsado = true;
-                if ( pulsaciones[i].tipo == tipoPulsacion.inicio) {
-                    if(this.jugador.dinero<this.textoArquero.valor){
-                        alert("NECESITAS"+ "\n"+"20 oro");
-                    }
-                    else{
-                        if( this.jugador.siguienteCompra===2){
-                            this.jugador.siguienteCompra=0;
-                        }
-                        else{
-                            this.jugador.siguienteCompra=2;
-                        }
-                    }
-                }
-            }
-            if (this.botonLancero.contienePunto(pulsaciones[i].x , pulsaciones[i].y) ){
-                this.botonLancero.pulsado = true;
-                if ( pulsaciones[i].tipo == tipoPulsacion.inicio) {
-                    if(this.jugador.dinero<this.textoLancero.valor){
-                        alert("NECESITAS"+ "\n"+"60 oro");
-                    }
-                    else{
-                        if( this.jugador.siguienteCompra===3){
-                            this.jugador.siguienteCompra=0;
-                        }
-                        else{
-                            this.jugador.siguienteCompra=3;
-                        }
-                    }
-                }
-            }
-            if (this.botonCaballero.contienePunto(pulsaciones[i].x , pulsaciones[i].y) ){
-                this.botonCaballero.pulsado = true;
-                if ( pulsaciones[i].tipo == tipoPulsacion.inicio) {
-                    if(this.jugador.dinero<this.textoCaballero.valor){
-                        alert("NECESITAS"+ "\n"+"60 oro");
-                    }
-                    else{
-                        if( this.jugador.siguienteCompra===4){
-                            this.jugador.siguienteCompra=0;
-                        }
-                        else{
-                            this.jugador.siguienteCompra=4;
-                        }
-                    }
-                }
-            }
-            if (this.botonRey.contienePunto(pulsaciones[i].x , pulsaciones[i].y) ){
-                this.botonRey.pulsado = true;
-                if ( pulsaciones[i].tipo == tipoPulsacion.inicio) {
-                    if(this.jugador.dinero<this.textoRey.valor){
-                        alert("NECESITAS"+ "\n"+"60 oro");
-                    }
-                    else{
-                        if( this.jugador.siguienteCompra===5){
-                            this.jugador.siguienteCompra=0;
-                        }
-                        else{
-                            this.jugador.siguienteCompra=5;
-                        }
-                    }
-                }
-            }
-
-            if (this.botonCatapulta.contienePunto(pulsaciones[i].x , pulsaciones[i].y) ){
-                this.botonCatapulta.pulsado = true;
-                if ( pulsaciones[i].tipo == tipoPulsacion.inicio) {
-                    if(this.jugador.dinero<this.textoCatapulta.valor){
-                        alert("NECESITAS"+ "\n"+"60 oro");
-                    }
-                    else{
-                        if( this.jugador.siguienteCompra===6){
-                            this.jugador.siguienteCompra=0;
-                        }
-                        else{
-                            this.jugador.siguienteCompra=6;
-                        }
-                    }
-                }
-            }
-
-            if (this.botonAyuntamiento.contienePunto(pulsaciones[i].x , pulsaciones[i].y) ){
-                this.botonAyuntamiento.pulsado = true;
-                if ( pulsaciones[i].tipo == tipoPulsacion.inicio) {
-                    if(this.jugador.dinero<this.textoAyuntamientoOro.valor || this.jugador.madera<this.textoAyuntamientoMadera.valor|| this.jugador.hierro<this.textoAyuntamientoHierro.valor){
-                        alert("NECESITAS"+ "\n"+"120 oro" + "\n" + "120 madera" + "\n" + " 200 hierro");
+                if (pulsaciones[i].tipo == tipoPulsacion.inicio) {
+                    if (this.jugador.dinero < this.textoEspadachin.valor) {
+                        alert("NECESITAS" + "\n" + "20 oro");
                     } else {
-                        if( this.jugador.siguienteCompra===7){
-                            this.jugador.siguienteCompra=0;
-                        }
-                        else{
-                            this.jugador.siguienteCompra=7;
+                        if (this.jugador.siguienteCompra === 1) {
+                            this.jugador.siguienteCompra = 0;
+                        } else {
+                            this.jugador.siguienteCompra = 1;
                         }
                     }
                 }
             }
-            if (this.botonCuartel.contienePunto(pulsaciones[i].x , pulsaciones[i].y) ){
+            if (this.botonArquero.contienePunto(pulsaciones[i].x, pulsaciones[i].y)) {
+                this.botonArquero.pulsado = true;
+                if (pulsaciones[i].tipo == tipoPulsacion.inicio) {
+                    if (this.jugador.dinero < this.textoArquero.valor) {
+                        alert("NECESITAS" + "\n" + "20 oro");
+                    } else {
+                        if (this.jugador.siguienteCompra === 2) {
+                            this.jugador.siguienteCompra = 0;
+                        } else {
+                            this.jugador.siguienteCompra = 2;
+                        }
+                    }
+                }
+            }
+            if (this.botonLancero.contienePunto(pulsaciones[i].x, pulsaciones[i].y)) {
+                this.botonLancero.pulsado = true;
+                if (pulsaciones[i].tipo == tipoPulsacion.inicio) {
+                    if (this.jugador.dinero < this.textoLancero.valor) {
+                        alert("NECESITAS" + "\n" + "60 oro");
+                    } else {
+                        if (this.jugador.siguienteCompra === 3) {
+                            this.jugador.siguienteCompra = 0;
+                        } else {
+                            this.jugador.siguienteCompra = 3;
+                        }
+                    }
+                }
+            }
+            if (this.botonCaballero.contienePunto(pulsaciones[i].x, pulsaciones[i].y)) {
+                this.botonCaballero.pulsado = true;
+                if (pulsaciones[i].tipo == tipoPulsacion.inicio) {
+                    if (this.jugador.dinero < this.textoCaballero.valor) {
+                        alert("NECESITAS" + "\n" + "60 oro");
+                    } else {
+                        if (this.jugador.siguienteCompra === 4) {
+                            this.jugador.siguienteCompra = 0;
+                        } else {
+                            this.jugador.siguienteCompra = 4;
+                        }
+                    }
+                }
+            }
+            if (this.botonRey.contienePunto(pulsaciones[i].x, pulsaciones[i].y)) {
+                this.botonRey.pulsado = true;
+                if (pulsaciones[i].tipo == tipoPulsacion.inicio) {
+                    if (this.jugador.dinero < this.textoRey.valor) {
+                        alert("NECESITAS" + "\n" + "60 oro");
+                    } else {
+                        if (this.jugador.siguienteCompra === 5) {
+                            this.jugador.siguienteCompra = 0;
+                        } else {
+                            this.jugador.siguienteCompra = 5;
+                        }
+                    }
+                }
+            }
+
+            if (this.botonCatapulta.contienePunto(pulsaciones[i].x, pulsaciones[i].y)) {
+                this.botonCatapulta.pulsado = true;
+                if (pulsaciones[i].tipo == tipoPulsacion.inicio) {
+                    if (this.jugador.dinero < this.textoCatapulta.valor) {
+                        alert("NECESITAS" + "\n" + "60 oro");
+                    } else {
+                        if (this.jugador.siguienteCompra === 6) {
+                            this.jugador.siguienteCompra = 0;
+                        } else {
+                            this.jugador.siguienteCompra = 6;
+                        }
+                    }
+                }
+            }
+
+            if (this.botonAyuntamiento.contienePunto(pulsaciones[i].x, pulsaciones[i].y)) {
+                this.botonAyuntamiento.pulsado = true;
+                if (pulsaciones[i].tipo == tipoPulsacion.inicio) {
+                    if (this.jugador.dinero < this.textoAyuntamientoOro.valor || this.jugador.madera < this.textoAyuntamientoMadera.valor || this.jugador.hierro < this.textoAyuntamientoHierro.valor) {
+                        alert("NECESITAS" + "\n" + "120 oro" + "\n" + "120 madera" + "\n" + " 200 hierro");
+                    } else {
+                        if (this.jugador.siguienteCompra === 7) {
+                            this.jugador.siguienteCompra = 0;
+                        } else {
+                            this.jugador.siguienteCompra = 7;
+                        }
+                    }
+                }
+            }
+            if (this.botonCuartel.contienePunto(pulsaciones[i].x, pulsaciones[i].y)) {
                 this.botonCuartel.pulsado = true;
-                if ( pulsaciones[i].tipo == tipoPulsacion.inicio) {
-                    if(this.jugador.dinero<this.textoCuartelOro.valor || this.jugador.madera<this.textoCuartelMadera.valor|| this.jugador.hierro<this.textoCuartelHierro.valor){
-                        alert("NECESITAS"+ "\n"+"120 oro" + "\n" + "120 madera" + "\n" + " 200 hierro");
-                    }
-                    else{
+                if (pulsaciones[i].tipo == tipoPulsacion.inicio) {
+                    if (this.jugador.dinero < this.textoCuartelOro.valor || this.jugador.madera < this.textoCuartelMadera.valor || this.jugador.hierro < this.textoCuartelHierro.valor) {
+                        alert("NECESITAS" + "\n" + "120 oro" + "\n" + "120 madera" + "\n" + " 200 hierro");
+                    } else {
 
-                        if( this.jugador.siguienteCompra===8){
-                            this.jugador.siguienteCompra=0;
-                        }
-                        else{
-                            this.jugador.siguienteCompra=8;
+                        if (this.jugador.siguienteCompra === 8) {
+                            this.jugador.siguienteCompra = 0;
+                        } else {
+                            this.jugador.siguienteCompra = 8;
                         }
 
                     }
                 }
             }
-            if (this.botonMina.contienePunto(pulsaciones[i].x , pulsaciones[i].y) ){
+            if (this.botonMina.contienePunto(pulsaciones[i].x, pulsaciones[i].y)) {
                 this.botonMina.pulsado = true;
-                if ( pulsaciones[i].tipo == tipoPulsacion.inicio) {
-                    if(this.jugador.dinero<this.textoMinaOro.valor || this.jugador.madera<this.textoMinaMadera.valor|| this.jugador.hierro<this.textoMinaHierro.valor){
-                        alert("NECESITAS"+ "\n"+"120 oro" + "\n" + "120 madera" + "\n" + " 200 hierro");
-                    }
-                    else{
+                if (pulsaciones[i].tipo == tipoPulsacion.inicio) {
+                    if (this.jugador.dinero < this.textoMinaOro.valor || this.jugador.madera < this.textoMinaMadera.valor || this.jugador.hierro < this.textoMinaHierro.valor) {
+                        alert("NECESITAS" + "\n" + "120 oro" + "\n" + "120 madera" + "\n" + " 200 hierro");
+                    } else {
 
-                        if( this.jugador.siguienteCompra===9){
-                            this.jugador.siguienteCompra=0;
-                        }
-                        else{
-                            this.jugador.siguienteCompra=9;
+                        if (this.jugador.siguienteCompra === 9) {
+                            this.jugador.siguienteCompra = 0;
+                        } else {
+                            this.jugador.siguienteCompra = 9;
                         }
                     }
                 }
             }
-            if (this.botonSerreria.contienePunto(pulsaciones[i].x , pulsaciones[i].y) ){
+            if (this.botonSerreria.contienePunto(pulsaciones[i].x, pulsaciones[i].y)) {
                 this.botonSerreria.pulsado = true;
-                if ( pulsaciones[i].tipo == tipoPulsacion.inicio) {
-                    if(this.jugador.dinero<this.textoSerreriaOro.valor || this.jugador.madera<this.textoSerreriaMadera.valor|| this.jugador.hierro<this.textoSerreriaHierro.valor){
-                        alert("NECESITAS"+ "\n"+"120 oro" + "\n" + "120 madera" + "\n" + " 200 hierro");
-                    }
-                    else{
+                if (pulsaciones[i].tipo == tipoPulsacion.inicio) {
+                    if (this.jugador.dinero < this.textoSerreriaOro.valor || this.jugador.madera < this.textoSerreriaMadera.valor || this.jugador.hierro < this.textoSerreriaHierro.valor) {
+                        alert("NECESITAS" + "\n" + "120 oro" + "\n" + "120 madera" + "\n" + " 200 hierro");
+                    } else {
 
-                        if( this.jugador.siguienteCompra===10){
-                            this.jugador.siguienteCompra=0;
-                        }
-                        else{
-                            this.jugador.siguienteCompra=10;
+                        if (this.jugador.siguienteCompra === 10) {
+                            this.jugador.siguienteCompra = 0;
+                        } else {
+                            this.jugador.siguienteCompra = 10;
                         }
                     }
                 }
             }
 
-            if(this.mapa.contienePunto(pulsaciones[i].x , pulsaciones[i].y)){
-                this.mapa.pulsado=true;
-                if(pulsaciones[i].tipo == tipoPulsacion.inicio) {
+            if (this.mapa.contienePunto(pulsaciones[i].x, pulsaciones[i].y)) {
+                this.mapa.pulsado = true;
+                if (pulsaciones[i].tipo == tipoPulsacion.inicio) {
                     var posicionX = pulsaciones[i].x;
                     var posicionY = pulsaciones[i].y;
                     //Solo se puede colocar al principio del mapa
@@ -558,20 +539,10 @@ class GameLayer extends Layer {
 
         }
     }
-  
+
     cargarEnMapa(siguienteCompra, posicionX, posicionY) {
-        switch(siguienteCompra) {
+        switch (siguienteCompra) {
             case 1:
-                var espadachin = new Espadachin(posicionX, posicionY,true);
-                espadachin.y = espadachin.y - espadachin.alto / 2;
-                if(!this.colisionaPropiedad(espadachin)) {
-                    this.jugador.dinero = this.jugador.dinero - this.textoEspadachin.valor;
-                    this.tropasAliadas.push(espadachin);
-                    this.espacio.agregarCuerpoDinamico(espadachin);
-                    this.jugador.siguienteCompra = 0;
-                    break;
-                }
-            case 2:
                 var animaciones = {
                     animacion_atacar: {
                         imagenSrc: imagenes.animacion_arquero_enemigo_ataque,
@@ -582,9 +553,29 @@ class GameLayer extends Layer {
                         frames: 7
                     }
                 };
-                var arquero = new Arquero(posicionX, posicionY,true, animaciones);
+                var espadachin = new Espadachin(posicionX, posicionY, true, animaciones);
+                espadachin.y = espadachin.y - espadachin.alto / 2;
+                if (!this.colisionaPropiedad(espadachin)) {
+                    this.jugador.dinero = this.jugador.dinero - this.textoEspadachin.valor;
+                    this.tropasAliadas.push(espadachin);
+                    this.espacio.agregarCuerpoDinamico(espadachin);
+                    this.jugador.siguienteCompra = 0;
+                    break;
+                }
+            case 2:
+                var animaciones = {
+                    animacion_atacar: {
+                        imagenSrc: imagenes.animacion_arquero_aliado_ataque,
+                        frames: 7
+                    },
+                    animacion_mover: {
+                        imagenSrc: imagenes.animacion_arquero_aliado_mover,
+                        frames: 4
+                    }
+                };
+                var arquero = new Arquero(posicionX, posicionY, true, animaciones);
                 arquero.y = arquero.y - arquero.alto / 2;
-                if(!this.colisionaPropiedad(arquero)) {
+                if (!this.colisionaPropiedad(arquero)) {
                     this.jugador.dinero = this.jugador.dinero - this.textoArquero.valor;
                     this.tropasAliadas.push(arquero);
                     this.espacio.agregarCuerpoDinamico(arquero);
@@ -592,10 +583,19 @@ class GameLayer extends Layer {
                     break;
                 }
             case 3:
-
-                var lancero = new Lancero(posicionX, posicionY,true);
+                var animaciones = {
+                    animacion_atacar: {
+                        imagenSrc: imagenes.animacion_lancero_aliado_ataque,
+                        frames: 7
+                    },
+                    animacion_mover: {
+                        imagenSrc: imagenes.animacion_lancero_aliado_mover,
+                        frames: 4
+                    }
+                };
+                var lancero = new Lancero(posicionX, posicionY, true, animaciones);
                 lancero.y = lancero.y - lancero.alto / 2;
-                if(!this.colisionaPropiedad(lancero)) {
+                if (!this.colisionaPropiedad(lancero)) {
                     this.jugador.dinero = this.jugador.dinero - this.textoLancero.valor;
                     this.tropasAliadas.push(lancero);
                     this.espacio.agregarCuerpoDinamico(lancero);
@@ -603,10 +603,19 @@ class GameLayer extends Layer {
                     break;
                 }
             case 4:
-
-                var caballero = new Caballero(posicionX, posicionY, true);
+                var animaciones = {
+                    animacion_atacar: {
+                        imagenSrc: imagenes.animacion_caballero_aliado_ataque,
+                        frames: 7
+                    },
+                    animacion_mover: {
+                        imagenSrc: imagenes.animacion_caballero_aliado_derecha,
+                        frames: 4
+                    }
+                };
+                var caballero = new Caballero(posicionX, posicionY, true, animaciones);
                 caballero.y = caballero.y - caballero.alto / 2;
-                if(!this.colisionaPropiedad(caballero)) {
+                if (!this.colisionaPropiedad(caballero)) {
                     this.jugador.dinero = this.jugador.dinero - this.textoCaballero.valor;
                     this.tropasAliadas.push(caballero);
                     this.espacio.agregarCuerpoDinamico(caballero);
@@ -614,10 +623,19 @@ class GameLayer extends Layer {
                     break;
                 }
             case 5:
-
-                var rey = new Rey(posicionX, posicionY,true);
+                var animaciones = {
+                    animacion_atacar: {
+                        imagenSrc: imagenes.animacion_rey_aliado_ataque,
+                        frames: 7
+                    },
+                    animacion_mover: {
+                        imagenSrc: imagenes.animacion_rey_aliado_derecha,
+                        frames: 4
+                    }
+                };
+                var rey = new Rey(posicionX, posicionY, true, animaciones);
                 rey.y = rey.y - rey.alto / 2;
-                if(!this.colisionaPropiedad(rey)) {
+                if (!this.colisionaPropiedad(rey)) {
                     this.jugador.dinero = this.jugador.dinero - this.textoRey.valor;
                     this.tropasAliadas.push(rey);
                     this.espacio.agregarCuerpoDinamico(rey);
@@ -626,9 +644,9 @@ class GameLayer extends Layer {
                 }
             case 6:
 
-                var catapulta = new Catapulta(posicionX, posicionY,true);
+                var catapulta = new Catapulta(posicionX, posicionY, true);
                 catapulta.y = catapulta.y - catapulta.alto / 2;
-                if(!this.colisionaPropiedad(catapulta)) {
+                if (!this.colisionaPropiedad(catapulta)) {
                     this.jugador.dinero = this.jugador.dinero - this.textoCatapulta.valor;
                     this.tropasAliadas.push(catapulta);
                     this.espacio.agregarCuerpoDinamico(catapulta);
@@ -638,7 +656,7 @@ class GameLayer extends Layer {
             case 7:
                 var ayuntamiento = new Ayuntamiento(posicionX, posicionY);
                 //ayuntamiento.y = ayuntamiento.y - ayuntamiento.alto / 2;
-                if(!this.colisionaPropiedad(ayuntamiento) && !this.colisionaTropas(ayuntamiento)) {
+                if (!this.colisionaPropiedad(ayuntamiento) && !this.colisionaTropas(ayuntamiento)) {
                     this.jugador.dinero = this.jugador.dinero - this.textoAyuntamientoOro.valor;
                     this.jugador.madera = this.jugador.madera - this.textoAyuntamientoMadera.valor;
                     this.jugador.hierro = this.jugador.hierro - this.textoAyuntamientoHierro.valor;
@@ -650,7 +668,7 @@ class GameLayer extends Layer {
             case 8:
                 var cuartel = new Cuartel(posicionX, posicionY);
                 cuartel.y = cuartel.y - cuartel.alto / 2;
-                if(!this.colisionaPropiedad(cuartel) && !this.colisionaTropas(cuartel)) {
+                if (!this.colisionaPropiedad(cuartel) && !this.colisionaTropas(cuartel)) {
                     this.jugador.dinero = this.jugador.dinero - this.textoCuartelOro.valor;
                     this.jugador.madera = this.jugador.madera - this.textoCuartelMadera.valor;
                     this.jugador.hierro = this.jugador.hierro - this.textoCuartelHierro.valor;
@@ -662,10 +680,10 @@ class GameLayer extends Layer {
             case 9:
                 var mina = new Mina(posicionX, posicionY);
                 mina.y = mina.y - mina.alto / 2;
-                if(!this.colisionaPropiedad(mina) && !this.colisionaTropas(mina)) {
-                    this.jugador.dinero=this.jugador.dinero-this.textoMinaOro.valor;
-                    this.jugador.madera=this.jugador.madera-this.textoMinaMadera.valor;
-                    this.jugador.hierro=this.jugador.hierro-this.textoMinaHierro.valor;
+                if (!this.colisionaPropiedad(mina) && !this.colisionaTropas(mina)) {
+                    this.jugador.dinero = this.jugador.dinero - this.textoMinaOro.valor;
+                    this.jugador.madera = this.jugador.madera - this.textoMinaMadera.valor;
+                    this.jugador.hierro = this.jugador.hierro - this.textoMinaHierro.valor;
                     this.propiedadesAliadas.push(mina);
                     this.espacio.agregarCuerpoEstatico(mina);
                     this.jugador.siguienteCompra = 0;
@@ -674,10 +692,10 @@ class GameLayer extends Layer {
             case 10:
                 var serreria = new Serreria(posicionX, posicionY);
                 serreria.y = serreria.y - serreria.alto / 2;
-                if(!this.colisionaPropiedad(serreria) && !this.colisionaTropas(serreria)) {
-                    this.jugador.dinero=this.jugador.dinero-this.textoSerreriaOro.valor;
-                    this.jugador.madera=this.jugador.madera-this.textoSerreriaMadera.valor;
-                    this.jugador.hierro=this.jugador.hierro-this.textoSerreriaMadera.valor;
+                if (!this.colisionaPropiedad(serreria) && !this.colisionaTropas(serreria)) {
+                    this.jugador.dinero = this.jugador.dinero - this.textoSerreriaOro.valor;
+                    this.jugador.madera = this.jugador.madera - this.textoSerreriaMadera.valor;
+                    this.jugador.hierro = this.jugador.hierro - this.textoSerreriaMadera.valor;
                     this.propiedadesAliadas.push(serreria);
                     this.espacio.agregarCuerpoEstatico(serreria);
                     this.jugador.siguienteCompra = 0;
@@ -872,4 +890,3 @@ class GameLayer extends Layer {
     }
 
 }
-

@@ -26,9 +26,20 @@ class Tropa extends Modelo {
         //Animaciones
         this.animacion.actualizar();
         //en GameLayer tiempoAtaque-- y si <= 0 y hay tropasEnemigas en rango y misma calle ataca
-
+        this.x = this.x + this.vx
         if (this.tiempoAtaque > 0) {
             this.tiempoAtaque--;
+        }
+        switch (this.estado) {
+            case estados.atacando:
+                this.animacion = this.aAtacar;
+                break;
+            case estados.moviendo:
+                this.animacion = this.aMover;
+                break;
+            case estados.muerto:
+                this.animacion = this.aMorir;
+                break;
         }
     }
 
@@ -50,9 +61,13 @@ class Tropa extends Modelo {
 
     atacar(unidad) {
         if (this.tiempoAtaque <= 0) {
+            this.estado = estados.atacando;
             unidad.vida -= this.damage;
             this.tiempoAtaque = this.cadenciaAtaque;
             //TODO controlar animaciones y vx según las animaciones
+        }
+        if (unidad.vida == 0) {
+            this.estado = estados.moviendo;
         }
     }
 
@@ -61,6 +76,7 @@ class Tropa extends Modelo {
             this.estado = estados.muerto;
             //primero a estados.muriendo y luego pasarle el callback a la animacion para pasar a estados.muerto
             //TODO cuando tengamos las animaciones si hay de morir
+            this.animacion = this.aMorir;
         }
     }
 

@@ -106,7 +106,12 @@ var imagenes = {
     animacion_lancero_enemigo_ataque: "res/lancero_enemigo/animacion_lancero_enemigo_ataque.png",
     animacion_lancero_enemigo_mover: "res/lancero_enemigo/animacion_lancero_enemigo_mover.png",
 
-    animacion_morir: "res/animacion_muerte.png"
+    animacion_morir: "res/animacion_muerte.png",
+
+    base_aliada: "res/propiedades/ayuntamiento.png",
+    mina: "res/propiedades/mina.png",
+    serreria: "res/propiedades/serreria.png",
+    cuartel: "res/propiedades/cuartel.png"
 
 };
 
