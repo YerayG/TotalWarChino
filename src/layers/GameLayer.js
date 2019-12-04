@@ -378,10 +378,10 @@ class GameLayer extends Layer {
                 this.espacio.agregarCuerpoEstatico(obstaculo);
                 break;
             case "*":
-                var montaña = new Montana(imagenes.bloque_monte,x,y);
-                montaña.y = montaña.y - montaña.alto / 2;
-                this.montanas.push(montaña);
-                this.espacio.agregarCuerpoEstatico(montaña);
+                var montana = new Montana(imagenes.bloque_monte,x,y);
+                montana.y = montana.y - montana.alto / 2;
+                this.montanas.push(montana);
+                this.espacio.agregarCuerpoEstatico(montana);
                 break;
             case "A":
                 var base = new Base(x, y);
