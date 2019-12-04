@@ -3,11 +3,11 @@ class Espadachin extends Tropa {
         var imagen, vx, rango;
 
         if (aliado) {
-            imagen = imagenes.arquero_aliado;
+            imagen = imagenes.caballero_aliado;
             vx = 2;
             rango = 20;
         } else {
-            imagen = imagenes.arquero_aliado;
+            imagen = imagenes.espadachin_enemigo;
             vx = -2;
             rango = -20;
         }

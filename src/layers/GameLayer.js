@@ -515,11 +515,11 @@ class GameLayer extends Layer {
             case 1:
                 var animaciones = {
                     animacion_atacar: {
-                        imagenSrc: imagenes.animacion_arquero_enemigo_ataque,
+                        imagenSrc: imagenes.animacion_caballero_aliado_ataque_derecha,
                         frames: 7
                     },
                     animacion_mover: {
-                        imagenSrc: imagenes.animacion_arquero_enemigo_mover,
+                        imagenSrc: imagenes.animacion_caballero_aliado_derecha,
                         frames: 4
                     }
                 };
@@ -570,11 +570,11 @@ class GameLayer extends Layer {
             case 4:
                 var animaciones = {
                     animacion_atacar: {
-                        imagenSrc: imagenes.animacion_caballero_aliado_ataque_derecha,
+                        imagenSrc: imagenes.animacion_caballero_enemigo_ataque_derecha,
                         frames: 7
                     },
                     animacion_mover: {
-                        imagenSrc: imagenes.animacion_caballero_aliado_derecha,
+                        imagenSrc: imagenes.animacion_caballero_enemigo_derecha,
                         frames: 4
                     }
                 };

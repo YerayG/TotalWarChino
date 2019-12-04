@@ -3,7 +3,7 @@ class Caballero extends Tropa {
         var imagen, vx, rango;
 
         if (aliado) {
-            imagen = imagenes.caballero_aliado;
+            imagen = imagenes.caballero_enemigo;
             vx = 3;
             rango = 30;
         } else {
