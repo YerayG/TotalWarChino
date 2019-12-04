@@ -323,6 +323,7 @@ class GameLayer extends Layer {
             var texto = fichero.responseText;
             var lineas = texto.split('\n');
             this.anchoMapa = (lineas[0].length - 1) * 40;
+            this.altoMapa = lineas.length * 32;
             for (var i = 0; i < lineas.length; i++) {
                 var linea = lineas[i];
                 for (var j = 0; j < linea.length; j++) {
@@ -339,7 +340,7 @@ class GameLayer extends Layer {
 
     procesarControles() {
         if (controles.scroll) {
-            if (this.scrollX <= this.anchoMapa - 480 && controles.scroll > 0) {
+            if (this.scrollX <= this.anchoMapa - 1440 && controles.scroll > 0) {
                 this.scrollX += controles.scroll * 3;
             } else if (this.scrollX >= 0 && controles.scroll < 0) {
                 this.scrollX += controles.scroll * 3;
@@ -575,7 +576,7 @@ class GameLayer extends Layer {
                     }
                 };
                 var arquero = new Arquero(posicionX, posicionY, true, animaciones);
-                arquero.y = arquero.y - arquero.alto / 2;
+                //arquero.y = arquero.y - arquero.alto / 2;
                 if (!this.colisionaPropiedad(arquero)) {
                     this.jugador.dinero = this.jugador.dinero - this.textoArquero.valor;
                     this.tropasAliadas.push(arquero);
@@ -721,9 +722,28 @@ class GameLayer extends Layer {
                 return true;
             }
         }
+        for (var i = 0; i < this.barrerasAliadas.length; i++) {
+            if (objeto.colisiona(this.barrerasAliadas[i])) {
+                alert("Ya hay una barrera en esa zona, colocalo en otra");
+                return true;
+            }
+        }
 
         return false;
+    }
 
+    colisionaPropiedadEnemiga(objeto) {
+        for (var i = 0; i < this.propiedadesEnemigas.length; i++) {
+            if (objeto.colisiona(this.propiedadesEnemigas[i])) {
+                return true;
+            }
+        }
+        for (var i = 0; i < this.barrerasEnemigas.length; i++) {
+            if (objeto.colisiona(this.barrerasEnemigas[i])) {
+                return true;
+            }
+        }
+        return false;
     }
 
     colisionaTropas(objeto) {
@@ -739,9 +759,10 @@ class GameLayer extends Layer {
     }
 
     generarSiguienteCompraEnemiga() {
-        var calle = parseInt(Math.random() * 6);
-        var xEnemigo = this.anchoMapa - 100;
-        var yEnemigo = this.getYFromCalle(calle);
+        if(this.enemigo.decidido) {
+            var xEnemigo = this.anchoMapa - parseInt(Math.random() * 300);
+            var yEnemigo = parseInt(Math.random() * (this.altoMapa - 50) + 25);
+        }
 
         if (this.enemigo.isTropaSiguiente) {
             switch (this.enemigo.siguienteCompra) {
@@ -761,6 +782,7 @@ class GameLayer extends Layer {
                         this.tropasEnemigas.push(espadachin);
                         this.espacio.agregarCuerpoDinamico(espadachin);
                         this.enemigo.decrementarRecursos(costeEspadachin);
+
                     }
                     break;
                 case 1:
@@ -861,42 +883,62 @@ class GameLayer extends Layer {
                 case 0:
                     if (this.enemigo.comprobarRecursos(costeAyuntamientoDinero, costeAyuntamientoHierro, costeAyuntamientoMadera)) {
                         var ayuntamiento = new Ayuntamiento(xEnemigo, yEnemigo);
-                        this.propiedadesEnemigas.push(ayuntamiento);
-                        this.espacio.agregarCuerpoEstatico(ayuntamiento);
-                        this.enemigo.decrementarRecursos(costeAyuntamientoDinero, costeAyuntamientoHierro, costeAyuntamientoMadera);
+                        if(!this.colisionaPropiedadEnemiga(ayuntamiento)) {
+                            this.propiedadesEnemigas.push(ayuntamiento);
+                            this.espacio.agregarCuerpoEstatico(ayuntamiento);
+                            this.enemigo.decrementarRecursos(costeAyuntamientoDinero, costeAyuntamientoHierro, costeAyuntamientoMadera);
+                        } else {
+                            this.enemigo.decidido = false;
+                        }
                     }
                     break;
                 case 1:
                     if (this.enemigo.comprobarRecursos(costeCuartelDinero, costeCuartelHierro, costeCuartelMadera)) {
                         var cuartel = new Cuartel(xEnemigo, yEnemigo);
-                        this.propiedadesEnemigas.push(cuartel);
-                        this.espacio.agregarCuerpoEstatico(cuartel);
-                        this.enemigo.cuarteles++;
-                        this.enemigo.decrementarRecursos(costeCuartelDinero, costeCuartelHierro, costeCuartelMadera);
+                        if(!this.colisionaPropiedadEnemiga(cuartel)) {
+                            this.propiedadesEnemigas.push(cuartel);
+                            this.espacio.agregarCuerpoEstatico(cuartel);
+                            this.enemigo.cuarteles++;
+                            this.enemigo.decrementarRecursos(costeCuartelDinero, costeCuartelHierro, costeCuartelMadera);
+                        } else {
+                            this.enemigo.decidido = false;
+                        }
                     }
                     break;
                 case 2:
                     if (this.enemigo.comprobarRecursos(costeMinaDinero, costeMinaHierro, costeMinaMadera)) {
                         var mina = new Mina(xEnemigo, yEnemigo);
-                        this.propiedadesEnemigas.push(mina);
-                        this.espacio.agregarCuerpoEstatico(mina);
-                        this.enemigo.decrementarRecursos(costeMinaDinero, costeMinaHierro, costeMinaMadera);
+                        if(!this.colisionaPropiedadEnemiga(mina)) {
+                            this.propiedadesEnemigas.push(mina);
+                            this.espacio.agregarCuerpoEstatico(mina);
+                            this.enemigo.decrementarRecursos(costeMinaDinero, costeMinaHierro, costeMinaMadera);
+                        } else {
+                            this.enemigo.decidido = false;
+                        }
                     }
                     break;
                 case 3:
                     if (this.enemigo.comprobarRecursos(costeSerreriaDinero, costeSerreriaHierro, costeSerreriaMadera)) {
                         var serreria = new Serreria(xEnemigo, yEnemigo);
-                        this.propiedadesEnemigas.push(serreria);
-                        this.espacio.agregarCuerpoEstatico(serreria);
-                        this.enemigo.decrementarRecursos(costeSerreriaDinero, costeSerreriaHierro, costeSerreriaMadera);
+                        if(!this.colisionaPropiedadEnemiga(serreria)) {
+                            this.propiedadesEnemigas.push(serreria);
+                            this.espacio.agregarCuerpoEstatico(serreria);
+                            this.enemigo.decrementarRecursos(costeSerreriaDinero, costeSerreriaHierro, costeSerreriaMadera);
+                        } else {
+                            this.enemigo.decidido = false;
+                        }
                     }
                     break;
                 case 4:
                     if (this.enemigo.comprobarRecursos(costeBarreraDinero, costeBarreraHierro, costeBarreraMadera)) {
                         var barrera = new Barrera(xEnemigo, yEnemigo);
-                        this.propiedadesEnemigas.push(barrera);
-                        this.espacio.agregarCuerpoEstatico(barrera);
-                        this.enemigo.decrementarRecursos(costeBarreraDinero, costeBarreraHierro, costeBarreraMadera);
+                        if(!this.colisionaPropiedadEnemiga(barrera)) {
+                            this.propiedadesEnemigas.push(barrera);
+                            this.espacio.agregarCuerpoEstatico(barrera);
+                            this.enemigo.decrementarRecursos(costeBarreraDinero, costeBarreraHierro, costeBarreraMadera);
+                        } else {
+                            this.enemigo.decidido = false;
+                        }
                     }
                     break;
                 default:
