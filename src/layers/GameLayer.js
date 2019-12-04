@@ -81,6 +81,9 @@ class GameLayer extends Layer {
         this.textoCuartelHierro = new TextoHierro("200", 480 * 0.523, 320 * 0.12);
 
         this.cargarMapa("res/" + nivelActual + ".txt");
+
+        this.baseAliada = new Base(30, 150);
+        this.baseEnemiga = new Base(this.anchoMapa - 30, 150);
     }
 
     actualizar() {
@@ -279,6 +282,9 @@ class GameLayer extends Layer {
         for (var i = 0; i < this.propiedadesEnemigas.length; i++) {
             this.propiedadesEnemigas[i].dibujar(this.scrollX);
         }
+
+        this.baseAliada.dibujar(this.scrollX);
+        this.baseEnemiga.dibujar(this.scrollX);
 
         this.fondoMonedas.dibujar();
         this.fondoHierro.dibujar();
@@ -554,7 +560,7 @@ class GameLayer extends Layer {
                     var posicionX = pulsaciones[i].x;
                     var posicionY = pulsaciones[i].y;
                     //Solo se puede colocar al principio del mapa
-                    if (posicionX + this.scrollX <= 300) {
+                    if (posicionX + this.scrollX <= 480) {
                         this.cargarEnMapa(this.jugador.siguienteCompra, posicionX + this.scrollX, posicionY);
                     } else {
                         alert("Solo puedes construir en tu zona del mapa (al principio)");
@@ -776,7 +782,7 @@ class GameLayer extends Layer {
 
     generarSiguienteCompraEnemiga() {
         if(this.enemigo.decidido) {
-            var xEnemigo = this.anchoMapa - parseInt(Math.random() * 300);
+            var xEnemigo = this.anchoMapa - parseInt(Math.random() * 480);
             var yEnemigo = parseInt(Math.random() * (this.altoMapa - 50) + 25);
         }
 
