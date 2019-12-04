@@ -16,7 +16,7 @@ class Tropa extends Modelo {
         //Animaciones
         this.aMover = new Animacion(animaciones.animacion_mover.imagenSrc, this.ancho, this.alto, 6, animaciones.animacion_mover.frames);
         this.aAtacar = new Animacion(animaciones.animacion_atacar.imagenSrc, this.ancho, this.alto, 6, animaciones.animacion_atacar.frames);
-        this.aMorir = new Animacion(imagenes.animacion_morir, this.ancho, this.alto, 6, 4);
+        this.aMorir = new Animacion(imagenes.animacion_morir, this.ancho, this.alto, 6, 4, this.finAnimacionMorir.bind(this));
 
         this.animacion = this.aMover;
     }
@@ -37,7 +37,7 @@ class Tropa extends Modelo {
             case estados.moviendo:
                 this.animacion = this.aMover;
                 break;
-            case estados.muerto:
+            case estados.muriendo:
                 this.animacion = this.aMorir;
                 break;
         }
@@ -73,10 +73,11 @@ class Tropa extends Modelo {
 
     checkVida() {
         if (this.vida <= 0) {
-            this.estado = estados.muerto;
+            if (this.estado == estados.moviendo || this.estado == estados.atacando) {
+                this.estado = estados.muriendo;
+            }
             //primero a estados.muriendo y luego pasarle el callback a la animacion para pasar a estados.muerto
             //TODO cuando tengamos las animaciones si hay de morir
-            this.animacion = this.aMorir;
         }
     }
 
@@ -122,12 +123,16 @@ class Tropa extends Modelo {
 
     //TODO esto no va aun
     moverseHacia(y) {
-        if(this.y > y) {
+        if (this.y > y) {
             this.vy = -1;
         } else if (this.y < y) {
             this.vy = 1;
         } else {
             this.vy = 0;
         }
+    }
+
+    finAnimacionMorir() {
+        this.estado = estados.muerto
     }
 }
