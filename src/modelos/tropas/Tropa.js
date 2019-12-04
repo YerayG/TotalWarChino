@@ -44,8 +44,8 @@ class Tropa extends Modelo {
         }
     }
 
-    dibujar() {
-        this.animacion.dibujar(this.x, this.y);
+    dibujar(scrollX) {
+        this.animacion.dibujar(this.x - scrollX, this.y);
     }
 
     enRango(unidad) {
