@@ -135,11 +135,13 @@ class GameLayer extends Layer {
         for (var i = 0; i < this.tropasAliadas.length; i++) {
             for (var j = 0; j < this.tropasEnemigas.length; j++) {
                 if (this.tropasAliadas[i].enRango(this.tropasEnemigas[j]) && this.tropasAliadas[i].mismaCalle(this.tropasEnemigas[j])) {
+                    this.tropasAliadas[i].moverseHacia(this.tropasEnemigas[j].y);
                     this.tropasAliadas[i].atacar(this.tropasEnemigas[j]);
                     this.tropasEnemigas[j].checkVida();
                 }
                 if (this.tropasEnemigas[j].enRango(this.tropasAliadas[i]) && this.tropasEnemigas[j].mismaCalle(this.tropasAliadas[i])) {
-                    this.tropasEnemigas[i].atacar(this.tropasAliadas[i]);
+                    this.tropasEnemigas[j].moverseHacia(this.tropasAliadas[i].y);
+                    this.tropasEnemigas[j].atacar(this.tropasAliadas[i]);
                     this.tropasAliadas[i].checkVida();
                 }
             }
@@ -156,8 +158,12 @@ class GameLayer extends Layer {
                 }
             }
 
+            //Si están en la base enemiga, moverse hacia ella o atacarla
             if (this.baseEnemiga != undefined) {
-                if (this.tropasAliadas[i].enRango(this.baseEnemiga)) {
+                if(this.tropasAliadas[i].x > this.anchoMapa - 300) {
+                    this.tropasAliadas[i].moverseHacia(this.baseEnemiga.y);
+                }
+                if (this.tropasAliadas[i].enRango(this.baseEnemiga) && this.tropasAliadas[i].enRango(this.baseEnemiga)) {
                     this.tropasAliadas[i].atacar(this.baseEnemiga);
                     //TODO Si vida de baseEnemiga <= 0 game over y ganas
                 }
@@ -178,8 +184,11 @@ class GameLayer extends Layer {
                 }
             }
 
-            if (this.baseEnemiga != undefined) {
-                if (this.tropasEnemigas[i].enRango(this.baseAliada)) {
+            if (this.baseAliada != undefined) {
+                if(this.tropasEnemigas[i].x < 300) {
+                    this.tropasEnemigas[i].moverseHacia(this.baseAliada.y);
+                }
+                if (this.tropasEnemigas[i].enRango(this.baseAliada) && this.tropasEnemigas[i].enRango(this.baseAliada)) {
                     this.tropasEnemigas[i].atacar(this.baseAliada);
                     //TODO Si vida de baseAliada <= 0 game over y pierdes
                 }
@@ -340,11 +349,14 @@ class GameLayer extends Layer {
 
     procesarControles() {
         if (controles.scroll) {
-            if (this.scrollX <= this.anchoMapa - 1440 && controles.scroll > 0) {
+            if (this.scrollX <= this.anchoMapa - 480 && controles.scroll > 0) {
                 this.scrollX += controles.scroll * 3;
             } else if (this.scrollX >= 0 && controles.scroll < 0) {
                 this.scrollX += controles.scroll * 3;
             }
+        }
+        if(controles.back) {
+            this.scrollX = 0;
         }
     }
 
@@ -364,12 +376,16 @@ class GameLayer extends Layer {
                 this.espacio.agregarCuerpoEstatico(obstaculo);
                 break;
             case "A":
-                this.baseAliada = new Base(x, y, true);
-                this.espacio.agregarCuerpoEstatico(this.baseAliada);
+                var base = new Base(x, y);
+                base.y = base.y - base.alto / 2;
+                this.baseAliada = base;
+                this.espacio.agregarCuerpoEstatico(base);
                 break;
             case "V":
-                this.baseEnemiga = new Base(x, y, false);
-                this.espacio.agregarCuerpoEstatico(this.baseEnemiga);
+                var base = new Base(x, y);
+                base.y = base.y - base.alto / 2;
+                this.baseEnemiga = base;
+                this.espacio.agregarCuerpoEstatico(base);
                 break;
         }
     }
@@ -946,10 +962,4 @@ class GameLayer extends Layer {
             }
         }
     }
-
-    //TODO cambiar esto, depende de las dimensiones del mapa y no las sabemos aún
-    getYFromCalle(calle) {
-        return 15 + (calle * 30);
-    }
-
 }

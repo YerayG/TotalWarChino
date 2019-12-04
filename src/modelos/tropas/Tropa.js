@@ -25,7 +25,8 @@ class Tropa extends Modelo {
         //Animaciones
         this.animacion.actualizar();
         //en GameLayer tiempoAtaque-- y si <= 0 y hay tropasEnemigas en rango y misma calle ataca
-        this.x = this.x + this.vx
+        this.x = this.x + this.vx;
+
         if (this.tiempoAtaque > 0) {
             this.tiempoAtaque--;
         }
@@ -55,7 +56,7 @@ class Tropa extends Modelo {
     }
 
     mismaCalle(unidad) {
-        return Math.abs(this.y - unidad.y) <= 10;
+        return Math.abs(this.y - unidad.y) <= 30;
     }
 
     atacar(unidad) {
@@ -117,5 +118,16 @@ class Tropa extends Modelo {
     dejarDeEsquivar() {
         this.vy = 0;
         this.esquivando = false;
+    }
+
+    //TODO esto no va aun
+    moverseHacia(y) {
+        if(this.y > y) {
+            this.vy = -1;
+        } else if (this.y < y) {
+            this.vy = 1;
+        } else {
+            this.vy = 0;
+        }
     }
 }

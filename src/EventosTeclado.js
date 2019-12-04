@@ -16,6 +16,9 @@ function onKeyDown( event) {
             case 37:
                 controles.scroll = -1;
                 break;
+            case 32:
+                controles.back = 1;
+                break;
         }
 
     }
@@ -35,6 +38,11 @@ function onKeyUp( event) {
         case 37:
             if ( controles.scroll == -1 ){
                 controles.scroll = 0;
+            }
+            break;
+        case 32:
+            if(controles.back > 0) {
+                controles.back = 0;
             }
             break;
     }
