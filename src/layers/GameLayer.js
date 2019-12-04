@@ -7,7 +7,7 @@ class GameLayer extends Layer {
 
     iniciar() {
         this.scrollX = 0;
-        this.espacio = new Espacio(1);
+        this.espacio = new Espacio(0);
 
         this.bloques = [];
         this.montanas = [];
@@ -369,7 +369,7 @@ class GameLayer extends Layer {
                 bloque.y = bloque.y - bloque.alto / 2;
                 // modificación para empezar a contar desde el suelo
                 this.bloques.push(bloque);
-                this.espacio.agregarCuerpoEstatico(bloque);
+                this.espacio.agregarCuerpoDinamico(bloque);
                 break;
             case "O":
                 var obstaculo = new Obstaculo(x, y);
