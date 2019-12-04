@@ -719,7 +719,7 @@ class GameLayer extends Layer {
                     if (this.enemigo.comprobarRecursos(costeEspadachin)) {
                         var animaciones = {
                             animacion_atacar: {
-                                imagenSrc: imagenes.animacion_espadachin_enemigo_ataque,
+                                imagenSrc: imagenes.animacion_espadachin_enemigo_atacar,
                                 frames: 7
                             },
                             animacion_mover: {
