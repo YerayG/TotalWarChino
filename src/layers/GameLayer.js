@@ -10,6 +10,7 @@ class GameLayer extends Layer {
         this.espacio = new Espacio(1);
 
         this.bloques = [];
+        this.montanas = [];
 
         this.mapa = new Mapa();
 
@@ -29,7 +30,6 @@ class GameLayer extends Layer {
         this.barrerasAliadas = [];
         this.barrerasEnemigas = [];
 
-        this.disparosJugador = [];
 
         this.fondoMonedas = new Fondo(imagenes.icono_monedas, 480 * 0.885, 320 * 0.05);
         this.fondoHierro = new Fondo(imagenes.icono_hierro, 480 * 0.74, 320 * 0.06);
@@ -39,8 +39,6 @@ class GameLayer extends Layer {
         this.oro = new Texto(0, 480 * 0.92, 320 * 0.06);
         this.madera = new Texto(0, 480 * 0.63, 320 * 0.06);
 
-        this.botonSalto = new Boton(imagenes.boton_salto, 480 * 0.9, 320 * 0.55);
-        this.botonDisparo = new Boton(imagenes.boton_disparo, 480 * 0.75, 320 * 0.83);
 
         //botones tropas
         this.botonArquero = new Boton(imagenes.boton_arquero, 480 * 0.25, 320 * 0.94);
@@ -171,18 +169,18 @@ class GameLayer extends Layer {
         }
 
         //Atacar (tropasEnemigas)
-        for (var i = 0; i < this.tropasEnemigas.length; i++) {
-            for (var j = 0; j < this.propiedadesAliadas.length; j++) {
-                if (this.tropasEnemigas[i].enRango(this.propiedadesAliadas[j]) && this.tropasEnemigas[i].mismaCalle(this.propiedadesAliadas[j])) {
-                    this.tropasEnemigas[i].atacar(this.propiedadesAliadas[j]);
-                }
-            }
+        //for (var i = 0; i < this.tropasEnemigas.length; i++) {
+            //for (var j = 0; j < this.propiedadesAliadas.length; j++) {
+               // if (this.tropasEnemigas[i].enRango(this.propiedadesAliadas[j]) && this.tropasEnemigas[i].mismaCalle(this.propiedadesAliadas[j])) {
+                //    this.tropasEnemigas[i].atacar(this.propiedadesAliadas[j]);
+                //}
+            //}
 
-            for (var j = 0; j < this.barrerasAliadas.length; j++) {
-                if (this.tropasEnemigas[i].enRango(this.barrerasAliadas[j]) && this.tropasEnemigas[i].mismaCalle(this.barrerasAliadas[j])) {
-                    this.tropasEnemigas[i].atacar(this.barrerasAliadas[j]);
-                }
-            }
+           // for (var j = 0; j < this.barrerasAliadas.length; j++) {
+            //    if (this.tropasEnemigas[i].enRango(this.barrerasAliadas[j]) && this.tropasEnemigas[i].mismaCalle(this.barrerasAliadas[j])) {
+              //      this.tropasEnemigas[i].atacar(this.barrerasAliadas[j]);
+              //  }
+           //}
 
             if (this.baseAliada != undefined) {
                 if(this.tropasEnemigas[i].x < 300) {
@@ -193,7 +191,7 @@ class GameLayer extends Layer {
                     //TODO Si vida de baseAliada <= 0 game over y pierdes
                 }
             }
-        }
+
 
         // Tropas muertas fuera del juego
         for (var i = 0; i < this.tropasAliadas.length; i++) {
@@ -260,6 +258,10 @@ class GameLayer extends Layer {
 
         for (var i = 0; i < this.bloques.length; i++) {
             this.bloques[i].dibujar(this.scrollX);
+        }
+
+        for (var i = 0; i < this.montanas.length; i++) {
+            this.montanas[i].dibujar(this.scrollX);
         }
 
         for (var i = 0; i < this.tropasEnemigas.length; i++) {
@@ -374,6 +376,12 @@ class GameLayer extends Layer {
                 obstaculo.y = obstaculo.y - obstaculo.alto / 2;
                 this.obstaculos.push(obstaculo);
                 this.espacio.agregarCuerpoEstatico(obstaculo);
+                break;
+            case "*":
+                var montaña = new Montana(imagenes.bloque_monte,x,y);
+                montaña.y = montaña.y - montaña.alto / 2;
+                this.montanas.push(montaña);
+                this.espacio.agregarCuerpoEstatico(montaña);
                 break;
             case "A":
                 var base = new Base(x, y);

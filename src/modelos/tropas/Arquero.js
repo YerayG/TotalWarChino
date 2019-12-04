@@ -5,11 +5,11 @@ class Arquero extends Tropa {
         if (aliado) {
             imagen = imagenes.arquero_aliado;
             vx = 1;
-            rango = 0;
+            rango = 100;
         } else {
             imagen = imagenes.arquero_enemigo;
             vx = -1;
-            rango = -100
+            rango = 0;
         }
 
         var cadenciaAtaque = 10,
