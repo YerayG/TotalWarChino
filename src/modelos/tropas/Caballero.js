@@ -1,6 +1,7 @@
 class Caballero extends Tropa {
     constructor(x, y, aliado, animaciones) {
         var imagen, vx, rango;
+
         if (aliado) {
             imagen = imagenes.caballero_aliado;
             vx = 3;
@@ -16,9 +17,12 @@ class Caballero extends Tropa {
             damage = 50;
 
         super(x, y, vx, cadenciaAtaque, rango, vida, damage, imagen, animaciones);
+        this.aliado = aliado;
     }
 
     actualizar() {
         super.actualizar();
+        if (this.estado == estados.moviendo) this.vx = this.aliado ? 3 : -3;
+        else this.vx = 0;
     }
 }

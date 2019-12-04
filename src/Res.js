@@ -111,7 +111,17 @@ var imagenes = {
     base_aliada: "res/propiedades/ayuntamiento.png",
     mina: "res/propiedades/mina.png",
     serreria: "res/propiedades/serreria.png",
-    cuartel: "res/propiedades/cuartel.png"
+    cuartel: "res/propiedades/cuartel.png",
+
+    barrera: "res/propiedades/barrera.png",
+
+    catapulta_aliada: "res/catapulta_aliada/catapulta.png",
+    animacion_catapulta_aliada_ataque: "res/catapulta_aliada/animacion_catapulta_aliada_ataque.png",
+    animacion_catapulta_aliada_mover: "res/catapulta_aliada/animacion_catapulta_aliada_mover.png",
+
+    catapulta_aliada: "res/catapulta_enemiga/catapulta.png",
+    animacion_catapulta_aliada_ataque: "res/catapulta_enemiga/animacion_catapulta_enemiga_ataque.png",
+    animacion_catapulta_aliada_mover: "res/catapulta_enemiga/animacion_catapulta_enemiga_mover.png"
 
 };
 

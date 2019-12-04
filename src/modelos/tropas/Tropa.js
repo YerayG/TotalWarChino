@@ -5,7 +5,6 @@ class Tropa extends Modelo {
         this.estado = estados.moviendo;
         this.vx = vx;
         this.vy = 0;
-
         this.rango = rango;
         this.cadenciaAtaque = cadenciaAtaque;
         this.tiempoAtaque = cadenciaAtaque;
