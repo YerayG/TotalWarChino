@@ -83,6 +83,8 @@ class GameLayer extends Layer {
 
         this.baseAliada = new Base(30, 150, this.altoMapa / 2);
         this.baseEnemiga = new Base(this.anchoMapa - 30, this.altoMapa / 2);
+
+        //this.obstaculos.push(new Obstaculo(400, 180));
     }
 
     actualizar() {
@@ -100,7 +102,6 @@ class GameLayer extends Layer {
         }
 
         //Esquivar obstáculos
-        //TODO va a haber que arreglarlo cuando tengamos las animaciones, es imposible hacerlo bien a ojo
         for (var i = 0; i < this.obstaculos.length; i++) {
             for (var j = 0; j < this.tropasAliadas.length; j++) {
                 if (this.tropasAliadas[j].obstaculoDelante(i)) {
@@ -124,7 +125,6 @@ class GameLayer extends Layer {
         this.enemigo.generarRecursos(this.propiedadesEnemigas);
 
         //Generar algo enemigo
-        //TODO descomentar cuando esté hecho el mapa
         this.enemigo.decidirSiguiente(this.tropasEnemigas, this.propiedadesEnemigas);
         this.generarSiguienteCompraEnemiga();
 
@@ -161,9 +161,8 @@ class GameLayer extends Layer {
                 if (this.tropasAliadas[i].x > this.anchoMapa - 300) {
                     this.tropasAliadas[i].moverseHacia(this.baseEnemiga.y);
                 }
-                if (this.tropasAliadas[i].enRango(this.baseEnemiga) && this.tropasAliadas[i].enRango(this.baseEnemiga)) {
+                if (this.tropasAliadas[i].enRango(this.baseEnemiga) && this.tropasAliadas[i].mismaCalle(this.baseEnemiga)) {
                     this.tropasAliadas[i].atacar(this.baseEnemiga);
-                    //TODO Si vida de baseEnemiga <= 0 game over y ganas
                 }
             }
         }
@@ -268,6 +267,10 @@ class GameLayer extends Layer {
 
         for (var i = 0; i < this.propiedadesEnemigas.length; i++) {
             this.propiedadesEnemigas[i].dibujar(this.scrollX);
+        }
+
+        for (var i = 0; i < this.obstaculos.length; i++) {
+            this.obstaculos[i].dibujar(this.scrollX);
         }
 
         this.baseAliada.dibujar(this.scrollX);

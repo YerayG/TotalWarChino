@@ -65,7 +65,6 @@ class Tropa extends Modelo {
             this.estado = estados.atacando;
             unidad.vida -= this.damage;
             this.tiempoAtaque = this.cadenciaAtaque;
-            //TODO controlar animaciones y vx según las animaciones
         }
         if (unidad.vida <= 1) {
             this.estado = estados.moviendo;
@@ -77,13 +76,9 @@ class Tropa extends Modelo {
             if (this.estado == estados.moviendo || this.estado == estados.atacando) {
                 this.estado = estados.muriendo;
             }
-            //primero a estados.muriendo y luego pasarle el callback a la animacion para pasar a estados.muerto
-            //TODO cuando tengamos las animaciones si hay de morir
         }
     }
 
-    //TODO a partir de aquí ajustar valores según cómo de anchas sean las calles cuando lo sepamos
-    //TODO estado.esquivando?
     obstaculoDelante(obstaculo) {
         var xDifference = obstaculo.x - this.x;
         var yDifference = Math.abs(obstaculo.y - this.y);
