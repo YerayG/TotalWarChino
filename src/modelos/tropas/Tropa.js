@@ -48,7 +48,7 @@ class Tropa extends Modelo {
     }
 
     enRango(unidad) {
-        if (this.rango > 0) {
+        if (this.rango < 0) {
             return this.x + this.rango >= unidad.x;
         } else {
             return this.x + this.rango <= unidad.x;
@@ -66,7 +66,7 @@ class Tropa extends Modelo {
             this.tiempoAtaque = this.cadenciaAtaque;
             //TODO controlar animaciones y vx según las animaciones
         }
-        if (unidad.vida == 0) {
+        if (unidad.vida <= 0) {
             this.estado = estados.moviendo;
         }
     }

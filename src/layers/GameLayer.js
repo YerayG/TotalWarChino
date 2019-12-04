@@ -7,7 +7,6 @@ class GameLayer extends Layer {
 
     iniciar() {
         this.scrollX = 0;
-        this.espacio = new Espacio(0);
 
         this.bloques = [];
         this.montanas = [];
@@ -87,8 +86,6 @@ class GameLayer extends Layer {
     }
 
     actualizar() {
-        this.espacio.actualizar();
-
         //Actualiza en el mapa el dinero , madera y hierro del jugador
         this.oro.valor = this.jugador.dinero;
         this.madera.valor = this.jugador.madera;
@@ -145,7 +142,7 @@ class GameLayer extends Layer {
                     this.tropasEnemigas[j].moverseHacia(this.tropasAliadas[i].y);
                     this.tropasEnemigas[j].atacar(this.tropasAliadas[i]);
                     this.tropasAliadas[i].checkVida();
-                    console.log("ENEMIGO ATACA")
+                    console.log("ENEMIGO ATACA");
                 }
             }
 
@@ -174,21 +171,21 @@ class GameLayer extends Layer {
         }
 
         //Atacar (tropasEnemigas)
-        //for (var i = 0; i < this.tropasEnemigas.length; i++) {
+        for (var i = 0; i < this.tropasEnemigas.length; i++) {
             //for (var j = 0; j < this.propiedadesAliadas.length; j++) {
-               // if (this.tropasEnemigas[i].enRango(this.propiedadesAliadas[j]) && this.tropasEnemigas[i].mismaCalle(this.propiedadesAliadas[j])) {
-                //    this.tropasEnemigas[i].atacar(this.propiedadesAliadas[j]);
-                //}
+            // if (this.tropasEnemigas[i].enRango(this.propiedadesAliadas[j]) && this.tropasEnemigas[i].mismaCalle(this.propiedadesAliadas[j])) {
+            //    this.tropasEnemigas[i].atacar(this.propiedadesAliadas[j]);
+            //}
             //}
 
-           // for (var j = 0; j < this.barrerasAliadas.length; j++) {
+            // for (var j = 0; j < this.barrerasAliadas.length; j++) {
             //    if (this.tropasEnemigas[i].enRango(this.barrerasAliadas[j]) && this.tropasEnemigas[i].mismaCalle(this.barrerasAliadas[j])) {
-              //      this.tropasEnemigas[i].atacar(this.barrerasAliadas[j]);
-              //  }
-           //}
+            //      this.tropasEnemigas[i].atacar(this.barrerasAliadas[j]);
+            //  }
+            //}
 
             if (this.baseAliada != undefined) {
-                if(this.tropasEnemigas[i].x < 300) {
+                if (this.tropasEnemigas[i].x < 300) {
                     this.tropasEnemigas[i].moverseHacia(this.baseAliada.y);
                 }
                 if (this.tropasEnemigas[i].enRango(this.baseAliada) && this.tropasEnemigas[i].enRango(this.baseAliada)) {
@@ -196,15 +193,13 @@ class GameLayer extends Layer {
                     //TODO Si vida de baseAliada <= 0 game over y pierdes
                 }
             }
+        }
 
 
         // Tropas muertas fuera del juego
         for (var i = 0; i < this.tropasAliadas.length; i++) {
             if (this.tropasAliadas[i] != null &&
                 this.tropasAliadas[i].estado == estados.muerto) {
-
-                this.espacio
-                    .eliminarCuerpoDinamico(this.tropasAliadas[i]);
 
                 this.tropasAliadas.splice(i, 1);
                 i = i - 1;
@@ -215,9 +210,6 @@ class GameLayer extends Layer {
             if (this.tropasEnemigas[i] != null &&
                 this.tropasEnemigas[i].estado == estados.muerto) {
 
-                this.espacio
-                    .eliminarCuerpoDinamico(this.tropasEnemigas[i]);
-
                 this.tropasEnemigas.splice(i, 1);
                 i = i - 1;
             }
@@ -226,7 +218,6 @@ class GameLayer extends Layer {
         //Propiedades y barreras destruidas fuera del juego
         for (var i = 0; i < this.propiedadesAliadas.length; i++) {
             if (this.propiedadesAliadas[i] != null && this.propiedadesAliadas[i].isDestruido()) {
-                this.espacio.eliminarCuerpoEstatico(this.propiedadesAliadas[i]);
                 this.propiedadesAliadas.splice(i, 1);
                 i = i - 1;
             }
@@ -234,7 +225,6 @@ class GameLayer extends Layer {
 
         for (var i = 0; i < this.barrerasAliadas.length; i++) {
             if (this.barrerasAliadas[i] != null && this.barrerasAliadas[i].isDestruido()) {
-                this.espacio.eliminarCuerpoEstatico(this.barrerasAliadas[i]);
                 this.barrerasAliadas.splice(i, 1);
                 i = i - 1;
             }
@@ -242,7 +232,6 @@ class GameLayer extends Layer {
 
         for (var i = 0; i < this.propiedadesEnemigas.length; i++) {
             if (this.propiedadesEnemigas[i] != null && this.propiedadesEnemigas[i].isDestruido()) {
-                this.espacio.eliminarCuerpoEstatico(this.propiedadesEnemigas[i]);
                 this.propiedadesEnemigas.splice(i, 1);
                 i = i - 1;
             }
@@ -250,7 +239,6 @@ class GameLayer extends Layer {
 
         for (var i = 0; i < this.barrerasEnemigas.length; i++) {
             if (this.barrerasEnemigas[i] != null && this.barrerasEnemigas[i].isDestruido()) {
-                this.espacio.eliminarCuerpoEstatico(this.barrerasEnemigas[i]);
                 this.barrerasEnemigas.splice(i, 1);
                 i = i - 1;
             }
@@ -377,31 +365,26 @@ class GameLayer extends Layer {
                 bloque.y = bloque.y - bloque.alto / 2;
                 // modificación para empezar a contar desde el suelo
                 this.bloques.push(bloque);
-                this.espacio.agregarCuerpoDinamico(bloque);
                 break;
             case "O":
                 var obstaculo = new Obstaculo(x, y);
                 obstaculo.y = obstaculo.y - obstaculo.alto / 2;
                 this.obstaculos.push(obstaculo);
-                this.espacio.agregarCuerpoEstatico(obstaculo);
                 break;
             case "*":
                 var montana = new Montana(imagenes.bloque_monte,x,y);
                 montana.y = montana.y - montana.alto / 2;
                 this.montanas.push(montana);
-                this.espacio.agregarCuerpoEstatico(montana);
                 break;
             case "A":
                 var base = new Base(x, y);
                 base.y = base.y - base.alto / 2;
                 this.baseAliada = base;
-                this.espacio.agregarCuerpoEstatico(base);
                 break;
             case "V":
                 var base = new Base(x, y);
                 base.y = base.y - base.alto / 2;
                 this.baseEnemiga = base;
-                this.espacio.agregarCuerpoEstatico(base);
                 break;
         }
     }
@@ -547,7 +530,6 @@ class GameLayer extends Layer {
                 if (!this.colisionaPropiedad(espadachin)) {
                     this.jugador.dinero = this.jugador.dinero - this.textoEspadachin.valor;
                     this.tropasAliadas.push(espadachin);
-                    this.espacio.agregarCuerpoDinamico(espadachin);
                     this.jugador.siguienteCompra = 0;
                     break;
                 }
@@ -567,7 +549,6 @@ class GameLayer extends Layer {
                 if (!this.colisionaPropiedad(arquero)) {
                     this.jugador.dinero = this.jugador.dinero - this.textoArquero.valor;
                     this.tropasAliadas.push(arquero);
-                    this.espacio.agregarCuerpoDinamico(arquero);
                     this.jugador.siguienteCompra = 0;
                     break;
                 }
@@ -586,7 +567,6 @@ class GameLayer extends Layer {
                 if (!this.colisionaPropiedad(lancero)) {
                     this.jugador.dinero = this.jugador.dinero - this.textoLancero.valor;
                     this.tropasAliadas.push(lancero);
-                    this.espacio.agregarCuerpoDinamico(lancero);
                     this.jugador.siguienteCompra = 0;
                     break;
                 }
@@ -605,7 +585,6 @@ class GameLayer extends Layer {
                 if (!this.colisionaPropiedad(caballero)) {
                     this.jugador.dinero = this.jugador.dinero - this.textoCaballero.valor;
                     this.tropasAliadas.push(caballero);
-                    this.espacio.agregarCuerpoDinamico(caballero);
                     this.jugador.siguienteCompra = 0;
                     break;
                 }
@@ -624,7 +603,6 @@ class GameLayer extends Layer {
                 if (!this.colisionaPropiedad(rey)) {
                     this.jugador.dinero = this.jugador.dinero - this.textoRey.valor;
                     this.tropasAliadas.push(rey);
-                    this.espacio.agregarCuerpoDinamico(rey);
                     this.jugador.siguienteCompra = 0;
                     break;
                 }
@@ -643,7 +621,6 @@ class GameLayer extends Layer {
                 if (!this.colisionaPropiedad(catapulta)) {
                     this.jugador.dinero = this.jugador.dinero - this.textoCatapulta.valor;
                     this.tropasAliadas.push(catapulta);
-                    this.espacio.agregarCuerpoDinamico(catapulta);
                     this.jugador.siguienteCompra = 0;
                     break;
                 }
@@ -655,7 +632,6 @@ class GameLayer extends Layer {
                     this.jugador.madera = this.jugador.madera - this.textoAyuntamientoMadera.valor;
                     this.jugador.hierro = this.jugador.hierro - this.textoAyuntamientoHierro.valor;
                     this.propiedadesAliadas.push(ayuntamiento);
-                    this.espacio.agregarCuerpoEstatico(ayuntamiento);
                     this.jugador.siguienteCompra = 0;
                 }
                 break;
@@ -666,7 +642,6 @@ class GameLayer extends Layer {
                     this.jugador.madera = this.jugador.madera - this.textoCuartelMadera.valor;
                     this.jugador.hierro = this.jugador.hierro - this.textoCuartelHierro.valor;
                     this.propiedadesAliadas.push(cuartel);
-                    this.espacio.agregarCuerpoEstatico(cuartel);
                     this.jugador.siguienteCompra = 0;
                     break;
                 }
@@ -677,7 +652,6 @@ class GameLayer extends Layer {
                     this.jugador.madera = this.jugador.madera - this.textoMinaMadera.valor;
                     this.jugador.hierro = this.jugador.hierro - this.textoMinaHierro.valor;
                     this.propiedadesAliadas.push(mina);
-                    this.espacio.agregarCuerpoEstatico(mina);
                     this.jugador.siguienteCompra = 0;
                     break;
                 }
@@ -688,7 +662,6 @@ class GameLayer extends Layer {
                     this.jugador.madera = this.jugador.madera - this.textoSerreriaMadera.valor;
                     this.jugador.hierro = this.jugador.hierro - this.textoSerreriaMadera.valor;
                     this.propiedadesAliadas.push(serreria);
-                    this.espacio.agregarCuerpoEstatico(serreria);
                     this.jugador.siguienteCompra = 0;
                     break;
                 }
@@ -760,7 +733,6 @@ class GameLayer extends Layer {
                         };
                         var espadachin = new Espadachin(xEnemigo, yEnemigo, false, animaciones);
                         this.tropasEnemigas.push(espadachin);
-                        this.espacio.agregarCuerpoDinamico(espadachin);
                         this.enemigo.decrementarRecursos(costeEspadachin);
 
                     }
@@ -779,7 +751,6 @@ class GameLayer extends Layer {
                         };
                         var arquero = new Arquero(xEnemigo, yEnemigo, false, animaciones);
                         this.tropasEnemigas.push(arquero);
-                        this.espacio.agregarCuerpoDinamico(arquero);
                         this.enemigo.decrementarRecursos(costeArquero);
                     }
                     break;
@@ -797,7 +768,6 @@ class GameLayer extends Layer {
                         };
                         var lancero = new Lancero(xEnemigo, yEnemigo, false, animaciones);
                         this.tropasEnemigas.push(lancero);
-                        this.espacio.agregarCuerpoDinamico(lancero);
                         this.enemigo.decrementarRecursos(costeLancero);
                     }
                     break;
@@ -815,7 +785,6 @@ class GameLayer extends Layer {
                         };
                         var caballero = new Caballero(xEnemigo, yEnemigo, false, animaciones);
                         this.tropasEnemigas.push(caballero);
-                        this.espacio.agregarCuerpoDinamico(caballero);
                         this.enemigo.decrementarRecursos(costeCaballero);
                     }
                     break;
@@ -833,7 +802,6 @@ class GameLayer extends Layer {
                         };
                         var catapulta = new Catapulta(xEnemigo, yEnemigo, false, animaciones);
                         this.tropasEnemigas.push(catapulta);
-                        this.espacio.agregarCuerpoDinamico(catapulta);
                         this.enemigo.decrementarRecursos(costeCatapulta);
                     }
                     break;
@@ -851,7 +819,6 @@ class GameLayer extends Layer {
                         };
                         var rey = new Rey(xEnemigo, yEnemigo, false, animaciones);
                         this.tropasEnemigas.push(rey);
-                        this.espacio.agregarCuerpoDinamico(rey);
                         this.enemigo.decrementarRecursos(costeRey);
                     }
                     break;
@@ -865,7 +832,6 @@ class GameLayer extends Layer {
                         var ayuntamiento = new Ayuntamiento(xEnemigo, yEnemigo);
                         if(!this.colisionaPropiedadEnemiga(ayuntamiento)) {
                             this.propiedadesEnemigas.push(ayuntamiento);
-                            this.espacio.agregarCuerpoEstatico(ayuntamiento);
                             this.enemigo.decrementarRecursos(costeAyuntamientoDinero, costeAyuntamientoHierro, costeAyuntamientoMadera);
                         } else {
                             this.enemigo.decidido = false;
@@ -877,7 +843,6 @@ class GameLayer extends Layer {
                         var cuartel = new Cuartel(xEnemigo, yEnemigo);
                         if(!this.colisionaPropiedadEnemiga(cuartel)) {
                             this.propiedadesEnemigas.push(cuartel);
-                            this.espacio.agregarCuerpoEstatico(cuartel);
                             this.enemigo.cuarteles++;
                             this.enemigo.decrementarRecursos(costeCuartelDinero, costeCuartelHierro, costeCuartelMadera);
                         } else {
@@ -890,7 +855,6 @@ class GameLayer extends Layer {
                         var mina = new Mina(xEnemigo, yEnemigo);
                         if(!this.colisionaPropiedadEnemiga(mina)) {
                             this.propiedadesEnemigas.push(mina);
-                            this.espacio.agregarCuerpoEstatico(mina);
                             this.enemigo.decrementarRecursos(costeMinaDinero, costeMinaHierro, costeMinaMadera);
                         } else {
                             this.enemigo.decidido = false;
@@ -902,7 +866,6 @@ class GameLayer extends Layer {
                         var serreria = new Serreria(xEnemigo, yEnemigo);
                         if(!this.colisionaPropiedadEnemiga(serreria)) {
                             this.propiedadesEnemigas.push(serreria);
-                            this.espacio.agregarCuerpoEstatico(serreria);
                             this.enemigo.decrementarRecursos(costeSerreriaDinero, costeSerreriaHierro, costeSerreriaMadera);
                         } else {
                             this.enemigo.decidido = false;
@@ -914,7 +877,6 @@ class GameLayer extends Layer {
                         var barrera = new Barrera(xEnemigo, yEnemigo);
                         if(!this.colisionaPropiedadEnemiga(barrera)) {
                             this.propiedadesEnemigas.push(barrera);
-                            this.espacio.agregarCuerpoEstatico(barrera);
                             this.enemigo.decrementarRecursos(costeBarreraDinero, costeBarreraHierro, costeBarreraMadera);
                         } else {
                             this.enemigo.decidido = false;
