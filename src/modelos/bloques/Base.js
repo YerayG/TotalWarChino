@@ -1,4 +1,4 @@
-class Base extends Bloque {
+class Base extends Propiedad {
     constructor(x, y) {
         super(imagenes.base_aliada, x, y);
 
