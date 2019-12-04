@@ -127,8 +127,8 @@ class GameLayer extends Layer {
 
         //Generar algo enemigo
         //TODO descomentar cuando esté hecho el mapa
-        //this.enemigo.decidirSiguiente(this.tropasEnemigas, this.propiedadesEnemigas);
-        //this.generarSiguienteCompraEnemiga();
+        this.enemigo.decidirSiguiente(this.tropasEnemigas, this.propiedadesEnemigas);
+        this.generarSiguienteCompraEnemiga();
 
 
         //Atacar (tropasAliadas)
@@ -549,8 +549,8 @@ class GameLayer extends Layer {
                         frames: 7
                     },
                     animacion_mover: {
-                        imagenSrc: imagenes.animacion_arquero_enemigo_ataque,
-                        frames: 7
+                        imagenSrc: imagenes.animacion_arquero_enemigo_mover,
+                        frames: 4
                     }
                 };
                 var espadachin = new Espadachin(posicionX, posicionY, true, animaciones);
@@ -737,7 +737,17 @@ class GameLayer extends Layer {
             switch (this.enemigo.siguienteCompra) {
                 case 0:
                     if (this.enemigo.comprobarRecursos(costeEspadachin)) {
-                        var espadachin = new Espadachin(xEnemigo, yEnemigo, false);
+                        var animaciones = {
+                            animacion_atacar: {
+                                imagenSrc: imagenes.animacion_arquero_enemigo_ataque,
+                                frames: 7
+                            },
+                            animacion_mover: {
+                                imagenSrc: imagenes.animacion_arquero_enemigo_mover,
+                                frames: 4
+                            }
+                        };
+                        var espadachin = new Espadachin(xEnemigo, yEnemigo, false, animaciones);
                         this.tropasEnemigas.push(espadachin);
                         this.espacio.agregarCuerpoDinamico(espadachin);
                         this.enemigo.decrementarRecursos(costeEspadachin);
@@ -752,7 +762,7 @@ class GameLayer extends Layer {
                             },
                             animacion_mover: {
                                 imagenSrc: imagenes.animacion_arquero_enemigo_mover,
-                                frames: 7
+                                frames: 4
                             }
                         };
                         var arquero = new Arquero(xEnemigo, yEnemigo, false, animaciones);

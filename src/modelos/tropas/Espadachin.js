@@ -2,11 +2,11 @@ class Espadachin extends Tropa {
     constructor(x, y, aliado, animaciones) {
         var imagen, vx, rango;
         if (aliado) {
-            //imagen = imagenes.espadachin;
+            imagen = imagenes.arquero_aliado;
             vx = 2;
             rango = 20;
         } else {
-            //imagen = imagenes.espadachinEnemigo;
+            imagen = imagenes.arquero_aliado;
             vx = -2;
             rango = -20;
         }
