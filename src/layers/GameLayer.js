@@ -163,7 +163,7 @@ class GameLayer extends Layer {
 
             //Si están en la base enemiga, moverse hacia ella o atacarla
             if (this.baseEnemiga != undefined) {
-                if(this.tropasAliadas[i].x > this.anchoMapa - 300) {
+                if (this.tropasAliadas[i].x > this.anchoMapa - 300) {
                     this.tropasAliadas[i].moverseHacia(this.baseEnemiga.y);
                 }
                 if (this.tropasAliadas[i].enRango(this.baseEnemiga) && this.tropasAliadas[i].enRango(this.baseEnemiga)) {
@@ -175,27 +175,27 @@ class GameLayer extends Layer {
 
         //Atacar (tropasEnemigas)
         //for (var i = 0; i < this.tropasEnemigas.length; i++) {
-            //for (var j = 0; j < this.propiedadesAliadas.length; j++) {
-               // if (this.tropasEnemigas[i].enRango(this.propiedadesAliadas[j]) && this.tropasEnemigas[i].mismaCalle(this.propiedadesAliadas[j])) {
-                //    this.tropasEnemigas[i].atacar(this.propiedadesAliadas[j]);
-                //}
-            //}
+        //for (var j = 0; j < this.propiedadesAliadas.length; j++) {
+        // if (this.tropasEnemigas[i].enRango(this.propiedadesAliadas[j]) && this.tropasEnemigas[i].mismaCalle(this.propiedadesAliadas[j])) {
+        //    this.tropasEnemigas[i].atacar(this.propiedadesAliadas[j]);
+        //}
+        //}
 
-           // for (var j = 0; j < this.barrerasAliadas.length; j++) {
-            //    if (this.tropasEnemigas[i].enRango(this.barrerasAliadas[j]) && this.tropasEnemigas[i].mismaCalle(this.barrerasAliadas[j])) {
-              //      this.tropasEnemigas[i].atacar(this.barrerasAliadas[j]);
-              //  }
-           //}
+        // for (var j = 0; j < this.barrerasAliadas.length; j++) {
+        //    if (this.tropasEnemigas[i].enRango(this.barrerasAliadas[j]) && this.tropasEnemigas[i].mismaCalle(this.barrerasAliadas[j])) {
+        //      this.tropasEnemigas[i].atacar(this.barrerasAliadas[j]);
+        //  }
+        //}
 
-            if (this.baseAliada != undefined) {
-                if(this.tropasEnemigas[i].x < 300) {
-                    this.tropasEnemigas[i].moverseHacia(this.baseAliada.y);
-                }
-                if (this.tropasEnemigas[i].enRango(this.baseAliada) && this.tropasEnemigas[i].enRango(this.baseAliada)) {
-                    this.tropasEnemigas[i].atacar(this.baseAliada);
-                    //TODO Si vida de baseAliada <= 0 game over y pierdes
-                }
+        if (this.baseAliada != undefined) {
+            if (this.tropasEnemigas[i].x < 300) {
+                this.tropasEnemigas[i].moverseHacia(this.baseAliada.y);
             }
+            if (this.tropasEnemigas[i].enRango(this.baseAliada) && this.tropasEnemigas[i].enRango(this.baseAliada)) {
+                this.tropasEnemigas[i].atacar(this.baseAliada);
+                //TODO Si vida de baseAliada <= 0 game over y pierdes
+            }
+        }
 
 
         // Tropas muertas fuera del juego
@@ -365,7 +365,7 @@ class GameLayer extends Layer {
                 this.scrollX += controles.scroll * 3;
             }
         }
-        if(controles.back) {
+        if (controles.back) {
             this.scrollX = 0;
         }
     }
@@ -386,7 +386,7 @@ class GameLayer extends Layer {
                 this.espacio.agregarCuerpoEstatico(obstaculo);
                 break;
             case "*":
-                var montana = new Montana(imagenes.bloque_monte,x,y);
+                var montana = new Montana(imagenes.bloque_monte, x, y);
                 montana.y = montana.y - montana.alto / 2;
                 this.montanas.push(montana);
                 this.espacio.agregarCuerpoEstatico(montana);
@@ -739,7 +739,7 @@ class GameLayer extends Layer {
     }
 
     generarSiguienteCompraEnemiga() {
-        if(this.enemigo.decidido) {
+        if (this.enemigo.decidido) {
             var xEnemigo = this.anchoMapa - parseInt(Math.random() * 480);
             var yEnemigo = parseInt(Math.random() * (this.altoMapa - 50) + 25);
         }
@@ -750,11 +750,11 @@ class GameLayer extends Layer {
                     if (this.enemigo.comprobarRecursos(costeEspadachin)) {
                         var animaciones = {
                             animacion_atacar: {
-                                imagenSrc: imagenes.animacion_arquero_enemigo_ataque,
+                                imagenSrc: imagenes.animacion_espadachin_enemigo_ataque,
                                 frames: 7
                             },
                             animacion_mover: {
-                                imagenSrc: imagenes.animacion_arquero_enemigo_mover,
+                                imagenSrc: imagenes.animacion_espadachin_enemigo_mover,
                                 frames: 4
                             }
                         };
@@ -863,7 +863,7 @@ class GameLayer extends Layer {
                 case 0:
                     if (this.enemigo.comprobarRecursos(costeAyuntamientoDinero, costeAyuntamientoHierro, costeAyuntamientoMadera)) {
                         var ayuntamiento = new Ayuntamiento(xEnemigo, yEnemigo);
-                        if(!this.colisionaPropiedadEnemiga(ayuntamiento)) {
+                        if (!this.colisionaPropiedadEnemiga(ayuntamiento)) {
                             this.propiedadesEnemigas.push(ayuntamiento);
                             this.espacio.agregarCuerpoEstatico(ayuntamiento);
                             this.enemigo.decrementarRecursos(costeAyuntamientoDinero, costeAyuntamientoHierro, costeAyuntamientoMadera);
@@ -875,7 +875,7 @@ class GameLayer extends Layer {
                 case 1:
                     if (this.enemigo.comprobarRecursos(costeCuartelDinero, costeCuartelHierro, costeCuartelMadera)) {
                         var cuartel = new Cuartel(xEnemigo, yEnemigo);
-                        if(!this.colisionaPropiedadEnemiga(cuartel)) {
+                        if (!this.colisionaPropiedadEnemiga(cuartel)) {
                             this.propiedadesEnemigas.push(cuartel);
                             this.espacio.agregarCuerpoEstatico(cuartel);
                             this.enemigo.cuarteles++;
@@ -888,7 +888,7 @@ class GameLayer extends Layer {
                 case 2:
                     if (this.enemigo.comprobarRecursos(costeMinaDinero, costeMinaHierro, costeMinaMadera)) {
                         var mina = new Mina(xEnemigo, yEnemigo);
-                        if(!this.colisionaPropiedadEnemiga(mina)) {
+                        if (!this.colisionaPropiedadEnemiga(mina)) {
                             this.propiedadesEnemigas.push(mina);
                             this.espacio.agregarCuerpoEstatico(mina);
                             this.enemigo.decrementarRecursos(costeMinaDinero, costeMinaHierro, costeMinaMadera);
@@ -900,7 +900,7 @@ class GameLayer extends Layer {
                 case 3:
                     if (this.enemigo.comprobarRecursos(costeSerreriaDinero, costeSerreriaHierro, costeSerreriaMadera)) {
                         var serreria = new Serreria(xEnemigo, yEnemigo);
-                        if(!this.colisionaPropiedadEnemiga(serreria)) {
+                        if (!this.colisionaPropiedadEnemiga(serreria)) {
                             this.propiedadesEnemigas.push(serreria);
                             this.espacio.agregarCuerpoEstatico(serreria);
                             this.enemigo.decrementarRecursos(costeSerreriaDinero, costeSerreriaHierro, costeSerreriaMadera);
@@ -912,7 +912,7 @@ class GameLayer extends Layer {
                 case 4:
                     if (this.enemigo.comprobarRecursos(costeBarreraDinero, costeBarreraHierro, costeBarreraMadera)) {
                         var barrera = new Barrera(xEnemigo, yEnemigo);
-                        if(!this.colisionaPropiedadEnemiga(barrera)) {
+                        if (!this.colisionaPropiedadEnemiga(barrera)) {
                             this.propiedadesEnemigas.push(barrera);
                             this.espacio.agregarCuerpoEstatico(barrera);
                             this.enemigo.decrementarRecursos(costeBarreraDinero, costeBarreraHierro, costeBarreraMadera);

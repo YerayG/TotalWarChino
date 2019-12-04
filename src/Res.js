@@ -122,8 +122,11 @@ var imagenes = {
 
     catapulta_enemiga: "res/catapulta_enemiga/catapulta.png",
     animacion_catapulta_enemiga_ataque: "res/catapulta_enemiga/animacion_catapulta_enemiga_ataque.png",
-    animacion_catapulta_enemiga_mover: "res/catapulta_enemiga/animacion_catapulta_enemiga_mover.png"
+    animacion_catapulta_enemiga_mover: "res/catapulta_enemiga/animacion_catapulta_enemiga_mover.png",
 
+    espadachin_enemigo: "res/espadachin_enemigo/espadachin_enemigo.png",
+    animacion_espadachin_enemigo_mover: "res/espadachin_enemigo/animacion_espadachin_enemigo_mover.png",
+    animacion_espadachin_enemigo_atacar: "res/espadachin_enemigo/animacion_espadachin_enemigo_atacar.png"
 };
 
 var rutasImagenes = Object.values(imagenes);
@@ -132,8 +135,8 @@ cargarImagenes(0);
 function cargarImagenes(indice) {
     cache[rutasImagenes[indice]] = new Image();
     cache[rutasImagenes[indice]].src = rutasImagenes[indice];
-    cache[rutasImagenes[indice]].onload = function(){
-        if ( indice < rutasImagenes.length-1 ){
+    cache[rutasImagenes[indice]].onload = function() {
+        if (indice < rutasImagenes.length - 1) {
             indice++;
             cargarImagenes(indice);
         } else {
