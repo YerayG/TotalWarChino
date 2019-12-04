@@ -580,7 +580,6 @@ class GameLayer extends Layer {
                     }
                 };
                 var espadachin = new Espadachin(posicionX, posicionY, true, animaciones);
-                espadachin.y = espadachin.y - espadachin.alto / 2;
                 if (!this.colisionaPropiedad(espadachin)) {
                     this.jugador.dinero = this.jugador.dinero - this.textoEspadachin.valor;
                     this.tropasAliadas.push(espadachin);
@@ -620,7 +619,6 @@ class GameLayer extends Layer {
                     }
                 };
                 var lancero = new Lancero(posicionX, posicionY, true, animaciones);
-                lancero.y = lancero.y - lancero.alto / 2;
                 if (!this.colisionaPropiedad(lancero)) {
                     this.jugador.dinero = this.jugador.dinero - this.textoLancero.valor;
                     this.tropasAliadas.push(lancero);
@@ -640,7 +638,6 @@ class GameLayer extends Layer {
                     }
                 };
                 var caballero = new Caballero(posicionX, posicionY, true, animaciones);
-                caballero.y = caballero.y - caballero.alto / 2;
                 if (!this.colisionaPropiedad(caballero)) {
                     this.jugador.dinero = this.jugador.dinero - this.textoCaballero.valor;
                     this.tropasAliadas.push(caballero);
@@ -660,7 +657,6 @@ class GameLayer extends Layer {
                     }
                 };
                 var rey = new Rey(posicionX, posicionY, true, animaciones);
-                rey.y = rey.y - rey.alto / 2;
                 if (!this.colisionaPropiedad(rey)) {
                     this.jugador.dinero = this.jugador.dinero - this.textoRey.valor;
                     this.tropasAliadas.push(rey);
@@ -680,7 +676,6 @@ class GameLayer extends Layer {
                     }
                 };
                 var catapulta = new Catapulta(posicionX, posicionY, true, animaciones);
-                catapulta.y = catapulta.y - catapulta.alto / 2;
                 if (!this.colisionaPropiedad(catapulta)) {
                     this.jugador.dinero = this.jugador.dinero - this.textoCatapulta.valor;
                     this.tropasAliadas.push(catapulta);
@@ -702,7 +697,6 @@ class GameLayer extends Layer {
                 break;
             case 8:
                 var cuartel = new Cuartel(posicionX, posicionY);
-                cuartel.y = cuartel.y - cuartel.alto / 2;
                 if (!this.colisionaPropiedad(cuartel) && !this.colisionaTropas(cuartel)) {
                     this.jugador.dinero = this.jugador.dinero - this.textoCuartelOro.valor;
                     this.jugador.madera = this.jugador.madera - this.textoCuartelMadera.valor;
@@ -714,7 +708,6 @@ class GameLayer extends Layer {
                 }
             case 9:
                 var mina = new Mina(posicionX, posicionY);
-                mina.y = mina.y - mina.alto / 2;
                 if (!this.colisionaPropiedad(mina) && !this.colisionaTropas(mina)) {
                     this.jugador.dinero = this.jugador.dinero - this.textoMinaOro.valor;
                     this.jugador.madera = this.jugador.madera - this.textoMinaMadera.valor;
@@ -726,7 +719,6 @@ class GameLayer extends Layer {
                 }
             case 10:
                 var serreria = new Serreria(posicionX, posicionY);
-                serreria.y = serreria.y - serreria.alto / 2;
                 if (!this.colisionaPropiedad(serreria) && !this.colisionaTropas(serreria)) {
                     this.jugador.dinero = this.jugador.dinero - this.textoSerreriaOro.valor;
                     this.jugador.madera = this.jugador.madera - this.textoSerreriaMadera.valor;
