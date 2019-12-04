@@ -12,8 +12,8 @@ class Espadachin extends Tropa {
             rango = -20;
         }
 
-        var cadenciaAtaque = 20,
-            vida = 200,
+        var cadenciaAtaque = 40,
+            vida = 1000,
             damage = 50;
 
         super(x, y, vx, cadenciaAtaque, rango, vida, damage, imagen, animaciones);

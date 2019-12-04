@@ -82,8 +82,8 @@ class GameLayer extends Layer {
 
         this.cargarMapa("res/" + nivelActual + ".txt");
 
-        this.baseAliada = new Base(30, 150);
-        this.baseEnemiga = new Base(this.anchoMapa - 30, 150);
+        this.baseAliada = new Base(30, 150, this.altoMapa / 2);
+        this.baseEnemiga = new Base(this.anchoMapa - 30, this.altoMapa / 2);
     }
 
     actualizar() {
@@ -139,11 +139,13 @@ class GameLayer extends Layer {
                     this.tropasAliadas[i].moverseHacia(this.tropasEnemigas[j].y);
                     this.tropasAliadas[i].atacar(this.tropasEnemigas[j]);
                     this.tropasEnemigas[j].checkVida();
+                    console.log("ALIADO ATACA");
                 }
                 if (this.tropasEnemigas[j].enRango(this.tropasAliadas[i]) && this.tropasEnemigas[j].mismaCalle(this.tropasAliadas[i])) {
                     this.tropasEnemigas[j].moverseHacia(this.tropasAliadas[i].y);
                     this.tropasEnemigas[j].atacar(this.tropasAliadas[i]);
                     this.tropasAliadas[i].checkVida();
+                    console.log("ENEMIGO ATACA")
                 }
             }
 
@@ -413,11 +415,7 @@ class GameLayer extends Layer {
                     if (this.jugador.dinero < this.textoEspadachin.valor) {
                         alert("NECESITAS" + "\n" + "20 oro");
                     } else {
-                        if (this.jugador.siguienteCompra === 1) {
-                            this.jugador.siguienteCompra = 0;
-                        } else {
-                            this.jugador.siguienteCompra = 1;
-                        }
+                        this.jugador.siguienteCompra = 1;
                     }
                 }
             }
@@ -427,11 +425,7 @@ class GameLayer extends Layer {
                     if (this.jugador.dinero < this.textoArquero.valor) {
                         alert("NECESITAS" + "\n" + "20 oro");
                     } else {
-                        if (this.jugador.siguienteCompra === 2) {
-                            this.jugador.siguienteCompra = 0;
-                        } else {
-                            this.jugador.siguienteCompra = 2;
-                        }
+                        this.jugador.siguienteCompra = 2;
                     }
                 }
             }
@@ -441,11 +435,7 @@ class GameLayer extends Layer {
                     if (this.jugador.dinero < this.textoLancero.valor) {
                         alert("NECESITAS" + "\n" + "60 oro");
                     } else {
-                        if (this.jugador.siguienteCompra === 3) {
-                            this.jugador.siguienteCompra = 0;
-                        } else {
-                            this.jugador.siguienteCompra = 3;
-                        }
+                        this.jugador.siguienteCompra = 3;
                     }
                 }
             }
@@ -455,11 +445,7 @@ class GameLayer extends Layer {
                     if (this.jugador.dinero < this.textoCaballero.valor) {
                         alert("NECESITAS" + "\n" + "60 oro");
                     } else {
-                        if (this.jugador.siguienteCompra === 4) {
-                            this.jugador.siguienteCompra = 0;
-                        } else {
-                            this.jugador.siguienteCompra = 4;
-                        }
+                        this.jugador.siguienteCompra = 4;
                     }
                 }
             }
@@ -469,11 +455,7 @@ class GameLayer extends Layer {
                     if (this.jugador.dinero < this.textoRey.valor) {
                         alert("NECESITAS" + "\n" + "60 oro");
                     } else {
-                        if (this.jugador.siguienteCompra === 5) {
-                            this.jugador.siguienteCompra = 0;
-                        } else {
-                            this.jugador.siguienteCompra = 5;
-                        }
+                        this.jugador.siguienteCompra = 5;
                     }
                 }
             }
@@ -484,11 +466,7 @@ class GameLayer extends Layer {
                     if (this.jugador.dinero < this.textoCatapulta.valor) {
                         alert("NECESITAS" + "\n" + "60 oro");
                     } else {
-                        if (this.jugador.siguienteCompra === 6) {
-                            this.jugador.siguienteCompra = 0;
-                        } else {
-                            this.jugador.siguienteCompra = 6;
-                        }
+                        this.jugador.siguienteCompra = 6;
                     }
                 }
             }
@@ -499,11 +477,7 @@ class GameLayer extends Layer {
                     if (this.jugador.dinero < this.textoAyuntamientoOro.valor || this.jugador.madera < this.textoAyuntamientoMadera.valor || this.jugador.hierro < this.textoAyuntamientoHierro.valor) {
                         alert("NECESITAS" + "\n" + "120 oro" + "\n" + "120 madera" + "\n" + " 200 hierro");
                     } else {
-                        if (this.jugador.siguienteCompra === 7) {
-                            this.jugador.siguienteCompra = 0;
-                        } else {
-                            this.jugador.siguienteCompra = 7;
-                        }
+                        this.jugador.siguienteCompra = 7;
                     }
                 }
             }
@@ -513,13 +487,7 @@ class GameLayer extends Layer {
                     if (this.jugador.dinero < this.textoCuartelOro.valor || this.jugador.madera < this.textoCuartelMadera.valor || this.jugador.hierro < this.textoCuartelHierro.valor) {
                         alert("NECESITAS" + "\n" + "120 oro" + "\n" + "120 madera" + "\n" + " 200 hierro");
                     } else {
-
-                        if (this.jugador.siguienteCompra === 8) {
-                            this.jugador.siguienteCompra = 0;
-                        } else {
-                            this.jugador.siguienteCompra = 8;
-                        }
-
+                        this.jugador.siguienteCompra = 8;
                     }
                 }
             }
@@ -529,12 +497,7 @@ class GameLayer extends Layer {
                     if (this.jugador.dinero < this.textoMinaOro.valor || this.jugador.madera < this.textoMinaMadera.valor || this.jugador.hierro < this.textoMinaHierro.valor) {
                         alert("NECESITAS" + "\n" + "120 oro" + "\n" + "120 madera" + "\n" + " 200 hierro");
                     } else {
-
-                        if (this.jugador.siguienteCompra === 9) {
-                            this.jugador.siguienteCompra = 0;
-                        } else {
-                            this.jugador.siguienteCompra = 9;
-                        }
+                        this.jugador.siguienteCompra = 9;
                     }
                 }
             }
@@ -544,12 +507,7 @@ class GameLayer extends Layer {
                     if (this.jugador.dinero < this.textoSerreriaOro.valor || this.jugador.madera < this.textoSerreriaMadera.valor || this.jugador.hierro < this.textoSerreriaHierro.valor) {
                         alert("NECESITAS" + "\n" + "120 oro" + "\n" + "120 madera" + "\n" + " 200 hierro");
                     } else {
-
-                        if (this.jugador.siguienteCompra === 10) {
-                            this.jugador.siguienteCompra = 0;
-                        } else {
-                            this.jugador.siguienteCompra = 10;
-                        }
+                        this.jugador.siguienteCompra = 10;
                     }
                 }
             }
@@ -617,7 +575,7 @@ class GameLayer extends Layer {
                 var animaciones = {
                     animacion_atacar: {
                         imagenSrc: imagenes.animacion_lancero_aliado_ataque,
-                        frames: 7
+                        frames: 4
                     },
                     animacion_mover: {
                         imagenSrc: imagenes.animacion_lancero_aliado_mover,

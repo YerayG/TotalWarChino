@@ -12,9 +12,9 @@ class Arquero extends Tropa {
             rango = 0;
         }
 
-        var cadenciaAtaque = 10,
-            vida = 100,
-            damage = 0;
+        var cadenciaAtaque = 20,
+            vida = 1000,
+            damage = 10;
 
         super(x, y, vx, cadenciaAtaque, rango, vida, damage, imagen, animaciones);
         this.aliado = aliado;
