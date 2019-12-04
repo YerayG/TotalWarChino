@@ -120,9 +120,9 @@ var imagenes = {
     animacion_catapulta_aliada_ataque: "res/catapulta_aliada/animacion_catapulta_aliada_ataque.png",
     animacion_catapulta_aliada_mover: "res/catapulta_aliada/animacion_catapulta_aliada_mover.png",
 
-    catapulta_aliada: "res/catapulta_enemiga/catapulta.png",
-    animacion_catapulta_aliada_ataque: "res/catapulta_enemiga/animacion_catapulta_enemiga_ataque.png",
-    animacion_catapulta_aliada_mover: "res/catapulta_enemiga/animacion_catapulta_enemiga_mover.png"
+    catapulta_enemiga: "res/catapulta_enemiga/catapulta.png",
+    animacion_catapulta_enemiga_ataque: "res/catapulta_enemiga/animacion_catapulta_enemiga_ataque.png",
+    animacion_catapulta_enemiga_mover: "res/catapulta_enemiga/animacion_catapulta_enemiga_mover.png"
 
 };
 

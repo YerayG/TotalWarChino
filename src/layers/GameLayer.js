@@ -631,7 +631,7 @@ class GameLayer extends Layer {
             case 4:
                 var animaciones = {
                     animacion_atacar: {
-                        imagenSrc: imagenes.animacion_caballero_aliado_ataque,
+                        imagenSrc: imagenes.animacion_caballero_aliado_ataque_derecha,
                         frames: 7
                     },
                     animacion_mover: {
@@ -651,7 +651,7 @@ class GameLayer extends Layer {
             case 5:
                 var animaciones = {
                     animacion_atacar: {
-                        imagenSrc: imagenes.animacion_rey_aliado_ataque,
+                        imagenSrc: imagenes.animacion_rey_aliado_ataque_derecha,
                         frames: 7
                     },
                     animacion_mover: {
@@ -672,11 +672,11 @@ class GameLayer extends Layer {
                 var animaciones = {
                     animacion_atacar: {
                         imagenSrc: imagenes.animacion_catapulta_aliada_ataque,
-                        frames: 5
+                        frames: 4
                     },
                     animacion_mover: {
                         imagenSrc: imagenes.animacion_catapulta_aliada_mover,
-                        frames: 4
+                        frames: 5
                     }
                 };
                 var catapulta = new Catapulta(posicionX, posicionY, true, animaciones);
