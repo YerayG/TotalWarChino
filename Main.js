@@ -24,7 +24,7 @@ function iniciarJuego() {
 
 
 function loop(){
-    console.log("loop - ")
+    //console.log("loop - ")
     layer.actualizar();
     layer.calcularPulsaciones(pulsaciones);
     layer.procesarControles();

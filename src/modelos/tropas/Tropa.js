@@ -26,6 +26,7 @@ class Tropa extends Modelo {
         this.animacion.actualizar();
         //en GameLayer tiempoAtaque-- y si <= 0 y hay tropasEnemigas en rango y misma calle ataca
         this.x = this.x + this.vx;
+        this.y = this.y + this.vy;
 
         if (this.tiempoAtaque > 0) {
             this.tiempoAtaque--;
@@ -48,10 +49,10 @@ class Tropa extends Modelo {
     }
 
     enRango(unidad) {
-        if (this.rango < 0) {
-            return this.x + this.rango >= unidad.x;
+        if (this.rango > 0) {
+            return this.x + this.rango >= unidad.x && !(this.x >= unidad.x);
         } else {
-            return this.x + this.rango <= unidad.x;
+            return this.x + this.rango <= unidad.x && !(this.x <= unidad.x);
         }
     }
 
