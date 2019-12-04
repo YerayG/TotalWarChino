@@ -66,7 +66,7 @@ class Tropa extends Modelo {
             this.tiempoAtaque = this.cadenciaAtaque;
             //TODO controlar animaciones y vx según las animaciones
         }
-        if (unidad.vida == 0) {
+        if (unidad.vida <= 1) {
             this.estado = estados.moviendo;
         }
     }
