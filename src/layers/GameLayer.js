@@ -136,13 +136,11 @@ class GameLayer extends Layer {
                     this.tropasAliadas[i].moverseHacia(this.tropasEnemigas[j].y);
                     this.tropasAliadas[i].atacar(this.tropasEnemigas[j]);
                     this.tropasEnemigas[j].checkVida();
-                    console.log("ALIADO ATACA");
                 }
                 if (this.tropasEnemigas[j].enRango(this.tropasAliadas[i]) && this.tropasEnemigas[j].mismaCalle(this.tropasAliadas[i])) {
                     this.tropasEnemigas[j].moverseHacia(this.tropasAliadas[i].y);
                     this.tropasEnemigas[j].atacar(this.tropasAliadas[i]);
                     this.tropasAliadas[i].checkVida();
-                    console.log("ENEMIGO ATACA");
                 }
             }
 
@@ -172,17 +170,17 @@ class GameLayer extends Layer {
 
         //Atacar (tropasEnemigas)
         for (var i = 0; i < this.tropasEnemigas.length; i++) {
-            //for (var j = 0; j < this.propiedadesAliadas.length; j++) {
-            // if (this.tropasEnemigas[i].enRango(this.propiedadesAliadas[j]) && this.tropasEnemigas[i].mismaCalle(this.propiedadesAliadas[j])) {
-            //    this.tropasEnemigas[i].atacar(this.propiedadesAliadas[j]);
-            //}
-            //}
+            for (var j = 0; j < this.propiedadesAliadas.length; j++) {
+                if (this.tropasEnemigas[i].enRango(this.propiedadesAliadas[j]) && this.tropasEnemigas[i].mismaCalle(this.propiedadesAliadas[j])) {
+                    this.tropasEnemigas[i].atacar(this.propiedadesAliadas[j]);
+                }
+            }
 
-            // for (var j = 0; j < this.barrerasAliadas.length; j++) {
-            //    if (this.tropasEnemigas[i].enRango(this.barrerasAliadas[j]) && this.tropasEnemigas[i].mismaCalle(this.barrerasAliadas[j])) {
-            //      this.tropasEnemigas[i].atacar(this.barrerasAliadas[j]);
-            //  }
-            //}
+            for (var j = 0; j < this.barrerasAliadas.length; j++) {
+                if (this.tropasEnemigas[i].enRango(this.barrerasAliadas[j]) && this.tropasEnemigas[i].mismaCalle(this.barrerasAliadas[j])) {
+                    this.tropasEnemigas[i].atacar(this.barrerasAliadas[j]);
+                }
+            }
 
             if (this.baseAliada != undefined) {
                 if (this.tropasEnemigas[i].x < 300) {
@@ -243,7 +241,6 @@ class GameLayer extends Layer {
                 i = i - 1;
             }
         }
-        console.log(this.propiedadesEnemigas.length);
     }
 
     dibujar() {
@@ -626,7 +623,6 @@ class GameLayer extends Layer {
                 }
             case 7:
                 var ayuntamiento = new Ayuntamiento(posicionX, posicionY);
-                //ayuntamiento.y = ayuntamiento.y - ayuntamiento.alto / 2;
                 if (!this.colisionaPropiedad(ayuntamiento) && !this.colisionaTropas(ayuntamiento)) {
                     this.jugador.dinero = this.jugador.dinero - this.textoAyuntamientoOro.valor;
                     this.jugador.madera = this.jugador.madera - this.textoAyuntamientoMadera.valor;

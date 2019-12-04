@@ -17,7 +17,7 @@ class Rey extends Tropa {
             vida = 1000,
             damage = 100;
 
-        super(x, y, vx, cadenciaAtaque, rango, vida, damage, imagen, animaciones);
+        super(x, y, vx, rango, cadenciaAtaque, vida, damage, imagen, animaciones);
         this.aliado = aliado;
     }
 

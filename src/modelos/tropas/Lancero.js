@@ -17,7 +17,7 @@ class Lancero extends Tropa {
             vida = 300,
             damage = 70;
 
-        super(x, y, vx, cadenciaAtaque, rango, vida, damage, imagen, animaciones);
+        super(x, y, vx, rango, cadenciaAtaque, vida, damage, imagen, animaciones);
         this.aliado = aliado;
     }
 

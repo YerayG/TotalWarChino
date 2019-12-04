@@ -16,7 +16,7 @@ class Caballero extends Tropa {
             vida = 600,
             damage = 50;
 
-        super(x, y, vx, cadenciaAtaque, rango, vida, damage, imagen, animaciones);
+        super(x, y, vx, rango, cadenciaAtaque, vida, damage, imagen, animaciones);
         this.aliado = aliado;
     }
 
