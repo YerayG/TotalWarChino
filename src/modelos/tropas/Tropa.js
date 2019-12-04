@@ -48,7 +48,7 @@ class Tropa extends Modelo {
     }
 
     enRango(unidad) {
-        if (this.rango > 0) {
+        if (this.rango < 0) {
             return this.x + this.rango >= unidad.x;
         } else {
             return this.x + this.rango <= unidad.x;

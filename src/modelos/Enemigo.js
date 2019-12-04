@@ -1,9 +1,9 @@
 class Enemigo {
 
     constructor() {
-        this.madera = 300;
-        this.dinero = 300;
-        this.hierro = 300;
+        this.madera = 200;
+        this.dinero = 200;
+        this.hierro = 200;
         this.cuarteles = 0;
 
         this.recursosAutomaticosCada = 20;
