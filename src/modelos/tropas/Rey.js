@@ -1,5 +1,3 @@
-import { threadId } from "worker_threads";
-
 class Rey extends Tropa {
 
     constructor(x, y, aliado, animaciones) {

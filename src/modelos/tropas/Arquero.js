@@ -4,17 +4,17 @@ class Arquero extends Tropa {
 
         if (aliado) {
             imagen = imagenes.arquero_aliado;
-            vx = 3;
-            rango = 300;
+            vx = 1;
+            rango = 100;
         } else {
             imagen = imagenes.arquero_enemigo;
-            vx = -3;
-            rango = -300
+            vx = -1;
+            rango = 0;
         }
 
-        var cadenciaAtaque = 15,
-            vida = 150,
-            damage = 40;
+        var cadenciaAtaque = 10,
+            vida = 100,
+            damage = 0;
 
         super(x, y, vx, cadenciaAtaque, rango, vida, damage, imagen, animaciones);
         this.aliado = aliado;
@@ -22,7 +22,7 @@ class Arquero extends Tropa {
 
     actualizar() {
         super.actualizar();
-        if (this.estado == estados.moviendo) this.vx = this.aliado ? 3 : -3;
+        if (this.estado == estados.moviendo) this.vx = this.aliado ? 1 : -1;
         else this.vx = 0;
     }
 }

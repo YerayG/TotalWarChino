@@ -55,7 +55,7 @@ class Tropa extends Modelo {
     }
 
     mismaCalle(unidad) {
-        return Math.abs(this.y - unidad.y) <= 10;
+        return Math.abs(this.y - unidad.y) <= 30;
     }
 
     atacar(unidad) {
@@ -120,6 +120,16 @@ class Tropa extends Modelo {
     }
 
     finAnimacionMorir() {
-        this.estado = estados.muerto;
+            this.estado = estados.muerto;
+        }
+        //TODO esto no va aun
+    moverseHacia(y) {
+        if (this.y > y) {
+            this.vy = -1;
+        } else if (this.y < y) {
+            this.vy = 1;
+        } else {
+            this.vy = 0;
+        }
     }
 }

@@ -1,4 +1,5 @@
 // Lista re recursos a precargar
+var cache = [];
 var imagenes = {
     jugador: "res/jugador.png",
     fondo: "res/fondo.png",
@@ -119,9 +120,9 @@ var imagenes = {
     animacion_catapulta_aliada_ataque: "res/catapulta_aliada/animacion_catapulta_aliada_ataque.png",
     animacion_catapulta_aliada_mover: "res/catapulta_aliada/animacion_catapulta_aliada_mover.png",
 
-    catapulta_aliada: "res/catapulta_enemiga/catapulta.png",
-    animacion_catapulta_aliada_ataque: "res/catapulta_enemiga/animacion_catapulta_enemiga_ataque.png",
-    animacion_catapulta_aliada_mover: "res/catapulta_enemiga/animacion_catapulta_enemiga_mover.png"
+    catapulta_enemiga: "res/catapulta_enemiga/catapulta.png",
+    animacion_catapulta_enemiga_ataque: "res/catapulta_enemiga/animacion_catapulta_enemiga_ataque.png",
+    animacion_catapulta_enemiga_mover: "res/catapulta_enemiga/animacion_catapulta_enemiga_mover.png"
 
 };
 
@@ -129,14 +130,15 @@ var rutasImagenes = Object.values(imagenes);
 cargarImagenes(0);
 
 function cargarImagenes(indice) {
-    var imagenCargar = new Image();
-    imagenCargar.src = rutasImagenes[indice];
-    imagenCargar.onload = function() {
-        if (indice < rutasImagenes.length - 1) {
+    cache[rutasImagenes[indice]] = new Image();
+    cache[rutasImagenes[indice]].src = rutasImagenes[indice];
+    cache[rutasImagenes[indice]].onload = function(){
+        if ( indice < rutasImagenes.length-1 ){
             indice++;
             cargarImagenes(indice);
         } else {
             iniciarJuego();
         }
     }
+
 }
