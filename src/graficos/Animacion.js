@@ -24,7 +24,7 @@ class Animacion {
         this.ultimaActualizacion = 0;
     }
 
-    actualizar (){
+    actualizar() {
         this.ultimaActualizacion++;
 
         if (this.ultimaActualizacion > this.velocidadRefresco) {
@@ -33,7 +33,7 @@ class Animacion {
             this.frameActual++;
             // Si llega al último frame evuelve al primero
             if (this.frameActual >= this.framesTotales) {
-                if ( this.callback != null){
+                if (this.callback != null) {
                     // avisar de que acabo
                     this.frameActual = 0;
                     this.callback();
@@ -47,17 +47,17 @@ class Animacion {
         this.rectanguloDibujo.x = this.frameActual * this.frameAncho;
     }
 
-    dibujar (x, y){
+    dibujar(x, y) {
         contexto.drawImage(
             this.imagen,
             this.rectanguloDibujo.x,
             this.rectanguloDibujo.y,
             this.rectanguloDibujo.ancho,
             this.rectanguloDibujo.alto,
-            x - this.modeloAncho/2 ,
-            y - this.modeloAlto/2,
-            this.modeloAncho,
-            this.modeloAlto);
+            x - this.modeloAncho / 2,
+            y - this.modeloAlto / 2,
+            this.frameAncho,
+            this.frameAlto);
     }
 
 }

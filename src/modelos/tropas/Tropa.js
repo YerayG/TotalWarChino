@@ -63,11 +63,11 @@ class Tropa extends Modelo {
     atacar(unidad) {
         if (this.tiempoAtaque <= 0) {
             this.estado = estados.atacando;
+            if (unidad.vida <= this.damage) {
+                this.estado = estados.moviendo;
+            }
             unidad.vida -= this.damage;
             this.tiempoAtaque = this.cadenciaAtaque;
-        }
-        if (unidad.vida <= 1) {
-            this.estado = estados.moviendo;
         }
     }
 
@@ -83,11 +83,11 @@ class Tropa extends Modelo {
         var xDifference = obstaculo.x - this.x;
         var yDifference = Math.abs(obstaculo.y - this.y);
         //Si va hacia la derecha y hay un obstaculo cerca a la derecha
-        if (this.vx > 0 && xDifference <= obstaculo.ancho*2 && xDifference > 0 && yDifference < obstaculo.alto) {
+        if (this.vx > 0 && xDifference <= obstaculo.ancho * 2 && xDifference > 0 && yDifference < obstaculo.alto) {
             return true;
         }
         //Si va hacia la izquierda y hay un obstaculo cerca a la izquierda
-        if (this.vx < 0 && xDifference >= -obstaculo.ancho*2 && xDifference < 0 && yDifference < obstaculo.alto) {
+        if (this.vx < 0 && xDifference >= -obstaculo.ancho * 2 && xDifference < 0 && yDifference < obstaculo.alto) {
             return true;
         }
         return false;

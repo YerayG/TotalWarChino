@@ -128,28 +128,34 @@ class GameLayer extends Layer {
         //Esquivar propiedades
         for (var i = 0; i < this.tropasAliadas.length; i++) {
             for (var j = 0; j < this.propiedadesAliadas.length; j++) {
-                if (this.tropasAliadas[i].obstaculoDelante(this.propiedadesAliadas[j])) {
-                    this.tropasAliadas[i].esquivar(this.propiedadesAliadas[j]);
-                } else {
-                    this.tropasAliadas[i].dejarDeEsquivar();
+                if (!this.tropasAliadas[i].esquivando) {
+                    if (this.tropasAliadas[i].obstaculoDelante(this.propiedadesAliadas[j])) {
+                        this.tropasAliadas[i].esquivar(this.propiedadesAliadas[j]);
+                    } else {
+                        this.tropasAliadas[i].dejarDeEsquivar();
+                    }
                 }
             }
 
             for (var j = 0; j < this.barrerasAliadas.length; j++) {
-                if (this.tropasAliadas[i].obstaculoDelante(this.barrerasAliadas[j])) {
-                    this.tropasAliadas[i].esquivar(this.barrerasAliadas[j]);
-                } else {
-                    this.tropasAliadas[i].dejarDeEsquivar();
+                if (!this.tropasAliadas[i].esquivando) {
+                    if (this.tropasAliadas[i].obstaculoDelante(this.barrerasAliadas[j])) {
+                        this.tropasAliadas[i].esquivar(this.barrerasAliadas[j]);
+                    } else {
+                        this.tropasAliadas[i].dejarDeEsquivar();
+                    }
                 }
             }
         }
 
-        for(var i = 0; i < this.propiedadesEnemigas.length; i++) {
+        for (var i = 0; i < this.propiedadesEnemigas.length; i++) {
             for (var j = 0; j < this.tropasEnemigas.length; j++) {
-                if (this.tropasEnemigas[j].obstaculoDelante(this.propiedadesEnemigas[i])) {
-                    this.tropasEnemigas[j].esquivar(this.propiedadesEnemigas[i]);
-                } else {
-                    this.tropasEnemigas[j].dejarDeEsquivar();
+                if (!this.tropasEnemigas[j].esquivando) {
+                    if (this.tropasEnemigas[j].obstaculoDelante(this.propiedadesEnemigas[i])) {
+                        this.tropasEnemigas[j].esquivar(this.propiedadesEnemigas[i]);
+                    } else {
+                        this.tropasEnemigas[j].dejarDeEsquivar();
+                    }
                 }
             }
         }
@@ -199,7 +205,7 @@ class GameLayer extends Layer {
                 if (this.tropasAliadas[i].enRango(this.baseEnemiga) && this.tropasAliadas[i].mismaCalle(this.baseEnemiga)) {
                     this.tropasAliadas[i].atacar(this.baseEnemiga);
                     //TODO Si vida de baseEnemiga <= 0 game over y ganas
-                    if(this.baseEnemiga.vida<=0){
+                    if (this.baseEnemiga.vida <= 0) {
                         this.ganarLayer = new GanarLayer();
                         layer = this.ganarLayer;
 
@@ -230,7 +236,7 @@ class GameLayer extends Layer {
                 if (this.tropasEnemigas[i].enRango(this.baseAliada) && this.tropasEnemigas[i].enRango(this.baseAliada)) {
                     this.tropasEnemigas[i].atacar(this.baseAliada);
                     //TODO Si vida de baseAliada <= 0 game over y pierdes
-                    if(this.baseAliada.vida<=0){
+                    if (this.baseAliada.vida <= 0) {
                         this.perderLayer = new PerderLayer();
                         layer = this.perderLayer;
 
