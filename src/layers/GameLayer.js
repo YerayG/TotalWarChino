@@ -435,9 +435,13 @@ class GameLayer extends Layer {
                 this.obstaculos.push(obstaculo);
                 break;
             case "*":
-                var montana = new Montana(imagenes.bloque_monte, x, y);
-                montana.y = montana.y - montana.alto / 2;
-                this.montanas.push(montana);
+                var bloque = new Bloque(imagenes.bloque_hierba, x, y);
+                bloque.y = bloque.y - bloque.alto / 2;
+                // modificación para empezar a contar desde el suelo
+                this.bloques.push(bloque);
+                var bandera = new Bloque(imagenes.bandera, x, y);
+                bandera.y = bandera.y - bandera.alto / 2;
+                this.bloques.push(bandera);
                 break;
             case "A":
                 var base = new Base(x, y);
