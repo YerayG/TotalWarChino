@@ -83,28 +83,28 @@ class Tropa extends Modelo {
         var xDifference = obstaculo.x - this.x;
         var yDifference = Math.abs(obstaculo.y - this.y);
         //Si va hacia la derecha y hay un obstaculo cerca a la derecha
-        if (this.vx > 0 && xDifference <= 40 && xDifference > 0 && yDifference < 30) {
+        if (this.vx > 0 && xDifference <= obstaculo.ancho*2 && xDifference > 0 && yDifference < obstaculo.alto) {
             return true;
         }
         //Si va hacia la izquierda y hay un obstaculo cerca a la izquierda
-        if (this.vx < 0 && xDifference >= -40 && xDifference < 0 && yDifference < 30) {
+        if (this.vx < 0 && xDifference >= -obstaculo.ancho*2 && xDifference < 0 && yDifference < obstaculo.alto) {
             return true;
         }
         return false;
     }
 
     //Si está cerca de arriba esquiva hacia abajo, si está cerca de abajo hacia arriba y si no random
-    esquivar() {
+    esquivar(obstaculo) {
         if (!this.esquivando) {
             if (this.y < 50) {
-                this.vy = 3;
+                this.vy = 2;
             } else if (this.y > 270) {
-                this.vy = -3;
+                this.vy = -2;
             } else {
-                if (Math.random() < 0.5) {
-                    this.vy = 3;
+                if (this.y > obstaculo.y) {
+                    this.vy = 2;
                 } else {
-                    this.vy = -3;
+                    this.vy = -2;
                 }
             }
 

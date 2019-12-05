@@ -105,7 +105,7 @@ class GameLayer extends Layer {
         for (var i = 0; i < this.obstaculos.length; i++) {
             for (var j = 0; j < this.tropasAliadas.length; j++) {
                 if (this.tropasAliadas[j].obstaculoDelante(this.obstaculos[i])) {
-                    this.tropasAliadas[j].esquivar();
+                    this.tropasAliadas[j].esquivar(this.obstaculos[i]);
                 } else {
                     this.tropasAliadas[j].dejarDeEsquivar();
                 }
@@ -113,12 +113,34 @@ class GameLayer extends Layer {
 
             for (var j = 0; j < this.tropasEnemigas.length; j++) {
                 if (this.tropasEnemigas[j].obstaculoDelante(this.obstaculos[i])) {
-                    this.tropasEnemigas[j].esquivar();
+                    this.tropasEnemigas[j].esquivar(this.obstaculos[i]);
                 } else {
                     this.tropasEnemigas[j].dejarDeEsquivar();
                 }
             }
         }
+
+        //Esquivar propiedades
+        for(var i = 0; i < this.propiedadesAliadas.length; i++) {
+            for (var j = 0; j < this.tropasAliadas.length; j++) {
+                if (this.tropasAliadas[j].obstaculoDelante(this.propiedadesAliadas[i])) {
+                    this.tropasAliadas[j].esquivar(this.propiedadesAliadas[i]);
+                } else {
+                    this.tropasAliadas[j].dejarDeEsquivar();
+                }
+            }
+        }
+
+        for(var i = 0; i < this.propiedadesEnemigas.length; i++) {
+            for (var j = 0; j < this.tropasEnemigas.length; j++) {
+                if (this.tropasEnemigas[j].obstaculoDelante(this.propiedadesEnemigas[i])) {
+                    this.tropasEnemigas[j].esquivar(this.propiedadesEnemigas[i]);
+                } else {
+                    this.tropasEnemigas[j].dejarDeEsquivar();
+                }
+            }
+        }
+
 
         //Generar recursos
         this.jugador.generarRecursos(this.propiedadesAliadas);
