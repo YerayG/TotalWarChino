@@ -16,9 +16,9 @@ class Enemigo {
     }
 
     generarRecursos(propiedades) {
-        //for (var i = 0; i < propiedades.length; i++) {
-        //  propiedades[i].generarPara(this);
-        //}
+        for (var i = 0; i < propiedades.length; i++) {
+            propiedades[i].generarPara(this);
+        }
 
         if (this.recursosAutomaticosContador <= 0) {
             this.dinero++;
@@ -38,8 +38,8 @@ class Enemigo {
                 this.isTropaSiguiente = false;
                 this.siguienteCompra = parseInt(Math.random() * 5);
             } else {
-                //70% de nueva tropa, 30% de nueva propiedad
-                if (Math.random() > 0) {
+                //80% de nueva tropa, 20% de nueva propiedad
+                if (Math.random() > 0.2) {
                     this.isTropaSiguiente = true;
                     this.siguienteCompra = parseInt(Math.random() * (this.cuarteles + 1));
                 } else {

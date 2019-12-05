@@ -12,7 +12,6 @@ class GameLayer extends Layer {
         this.scrollX = 0;
 
         this.bloques = [];
-        this.montanas = [];
 
         this.mapa = new Mapa();
 
@@ -97,6 +96,8 @@ class GameLayer extends Layer {
         this.oro.valor = this.jugador.dinero;
         this.madera.valor = this.jugador.madera;
         this.hierro.valor = this.jugador.hierro;
+
+        console.log(this.jugador.cuarteles);
 
         for (var i = 0; i < this.tropasEnemigas.length; i++) {
             this.tropasEnemigas[i].actualizar();
@@ -204,7 +205,6 @@ class GameLayer extends Layer {
                 }
                 if (this.tropasAliadas[i].enRango(this.baseEnemiga) && this.tropasAliadas[i].mismaCalle(this.baseEnemiga)) {
                     this.tropasAliadas[i].atacar(this.baseEnemiga);
-                    //TODO Si vida de baseEnemiga <= 0 game over y ganas
                     if (this.baseEnemiga.vida <= 0) {
                         this.ganarLayer = new GanarLayer();
                         layer = this.ganarLayer;
@@ -235,7 +235,6 @@ class GameLayer extends Layer {
                 }
                 if (this.tropasEnemigas[i].enRango(this.baseAliada) && this.tropasEnemigas[i].enRango(this.baseAliada)) {
                     this.tropasEnemigas[i].atacar(this.baseAliada);
-                    //TODO Si vida de baseAliada <= 0 game over y pierdes
                     if (this.baseAliada.vida <= 0) {
                         this.perderLayer = new PerderLayer();
                         layer = this.perderLayer;
@@ -303,18 +302,6 @@ class GameLayer extends Layer {
             this.bloques[i].dibujar(this.scrollX);
         }
 
-        for (var i = 0; i < this.montanas.length; i++) {
-            this.montanas[i].dibujar(this.scrollX);
-        }
-
-        for (var i = 0; i < this.tropasEnemigas.length; i++) {
-            this.tropasEnemigas[i].dibujar(this.scrollX);
-        }
-
-        for (var i = 0; i < this.tropasAliadas.length; i++) {
-            this.tropasAliadas[i].dibujar(this.scrollX);
-        }
-
         for (var i = 0; i < this.propiedadesAliadas.length; i++) {
             this.propiedadesAliadas[i].dibujar(this.scrollX);
         }
@@ -337,6 +324,14 @@ class GameLayer extends Layer {
 
         this.baseAliada.dibujar(this.scrollX);
         this.baseEnemiga.dibujar(this.scrollX);
+
+        for (var i = 0; i < this.tropasEnemigas.length; i++) {
+            this.tropasEnemigas[i].dibujar(this.scrollX);
+        }
+
+        for (var i = 0; i < this.tropasAliadas.length; i++) {
+            this.tropasAliadas[i].dibujar(this.scrollX);
+        }
 
         this.fondoMonedas.dibujar();
         this.fondoHierro.dibujar();
@@ -465,7 +460,7 @@ class GameLayer extends Layer {
                 this.botonEspadachin.pulsado = true;
                 if (pulsaciones[i].tipo == tipoPulsacion.inicio) {
                     if (this.jugador.dinero < this.textoEspadachin.valor) {
-                        alert("NECESITAS" + "\n" + "20 oro");
+                        alert("NECESITAS" + "\n" + costeEspadachin + " oro");
                     } else {
                         this.jugador.siguienteCompra = 1;
                     }
@@ -474,8 +469,8 @@ class GameLayer extends Layer {
             if (this.botonArquero.contienePunto(pulsaciones[i].x, pulsaciones[i].y)) {
                 this.botonArquero.pulsado = true;
                 if (pulsaciones[i].tipo == tipoPulsacion.inicio) {
-                    if (this.jugador.dinero < this.textoArquero.valor) {
-                        alert("NECESITAS" + "\n" + "20 oro");
+                    if (this.jugador.dinero < this.textoArquero.valor || this.jugador.cuarteles < 1) {
+                        alert("NECESITAS" + "\n" + costeArquero + " oro y 1 cuartel");
                     } else {
                         this.jugador.siguienteCompra = 2;
                     }
@@ -484,8 +479,8 @@ class GameLayer extends Layer {
             if (this.botonLancero.contienePunto(pulsaciones[i].x, pulsaciones[i].y)) {
                 this.botonLancero.pulsado = true;
                 if (pulsaciones[i].tipo == tipoPulsacion.inicio) {
-                    if (this.jugador.dinero < this.textoLancero.valor) {
-                        alert("NECESITAS" + "\n" + "60 oro");
+                    if (this.jugador.dinero < this.textoLancero.valor || this.jugador.cuarteles < 2) {
+                        alert("NECESITAS" + "\n" + costeLancero + " oro y 2 cuarteles");
                     } else {
                         this.jugador.siguienteCompra = 3;
                     }
@@ -494,8 +489,8 @@ class GameLayer extends Layer {
             if (this.botonCaballero.contienePunto(pulsaciones[i].x, pulsaciones[i].y)) {
                 this.botonCaballero.pulsado = true;
                 if (pulsaciones[i].tipo == tipoPulsacion.inicio) {
-                    if (this.jugador.dinero < this.textoCaballero.valor) {
-                        alert("NECESITAS" + "\n" + "60 oro");
+                    if (this.jugador.dinero < this.textoCaballero.valor || this.jugador.cuarteles < 3) {
+                        alert("NECESITAS" + "\n" + costeCaballero + " oro y 3 cuarteles");
                     } else {
                         this.jugador.siguienteCompra = 4;
                     }
@@ -504,8 +499,8 @@ class GameLayer extends Layer {
             if (this.botonRey.contienePunto(pulsaciones[i].x, pulsaciones[i].y)) {
                 this.botonRey.pulsado = true;
                 if (pulsaciones[i].tipo == tipoPulsacion.inicio) {
-                    if (this.jugador.dinero < this.textoRey.valor) {
-                        alert("NECESITAS" + "\n" + "60 oro");
+                    if (this.jugador.dinero < this.textoRey.valor || this.jugador.cuarteles < 5) {
+                        alert("NECESITAS" + "\n" + costeRey + " oro y 5 cuarteles");
                     } else {
                         this.jugador.siguienteCompra = 5;
                     }
@@ -515,8 +510,8 @@ class GameLayer extends Layer {
             if (this.botonCatapulta.contienePunto(pulsaciones[i].x, pulsaciones[i].y)) {
                 this.botonCatapulta.pulsado = true;
                 if (pulsaciones[i].tipo == tipoPulsacion.inicio) {
-                    if (this.jugador.dinero < this.textoCatapulta.valor) {
-                        alert("NECESITAS" + "\n" + "60 oro");
+                    if (this.jugador.dinero < this.textoCatapulta.valor || this.jugador.cuarteles < 4) {
+                        alert("NECESITAS" + "\n" + costeCatapulta + " oro y 4 cuarteles");
                     } else {
                         this.jugador.siguienteCompra = 6;
                     }
@@ -527,7 +522,7 @@ class GameLayer extends Layer {
                 this.botonBarrera.pulsado = true;
                 if (pulsaciones[i].tipo == tipoPulsacion.inicio) {
                     if (this.jugador.dinero < this.textoBarrera.valor) {
-                        alert("NECESITAS" + "\n" + "60 oro");
+                        alert("NECESITAS" + "\n" + costeBarreraDinero + " oro");
                     } else {
                         this.jugador.siguienteCompra = 11;
                     }
@@ -538,7 +533,7 @@ class GameLayer extends Layer {
                 this.botonAyuntamiento.pulsado = true;
                 if (pulsaciones[i].tipo == tipoPulsacion.inicio) {
                     if (this.jugador.dinero < this.textoAyuntamientoOro.valor || this.jugador.madera < this.textoAyuntamientoMadera.valor || this.jugador.hierro < this.textoAyuntamientoHierro.valor) {
-                        alert("NECESITAS" + "\n" + "120 oro" + "\n" + "120 madera" + "\n" + " 200 hierro");
+                        alert("NECESITAS" + "\n"+ costeAyuntamientoDinero + " oro" + "\n" + costeAyuntamientoMadera + " madera" + "\n" + costeAyuntamientoHierro + " hierro");
                     } else {
                         this.jugador.siguienteCompra = 7;
                     }
@@ -548,7 +543,7 @@ class GameLayer extends Layer {
                 this.botonCuartel.pulsado = true;
                 if (pulsaciones[i].tipo == tipoPulsacion.inicio) {
                     if (this.jugador.dinero < this.textoCuartelOro.valor || this.jugador.madera < this.textoCuartelMadera.valor || this.jugador.hierro < this.textoCuartelHierro.valor) {
-                        alert("NECESITAS" + "\n" + "120 oro" + "\n" + "120 madera" + "\n" + " 200 hierro");
+                        alert("NECESITAS" + "\n" + costeCuartelDinero + " oro" + "\n" + costeCuartelMadera + " madera" + "\n" + costeCuartelHierro + " hierro");
                     } else {
                         this.jugador.siguienteCompra = 8;
                     }
@@ -558,7 +553,7 @@ class GameLayer extends Layer {
                 this.botonMina.pulsado = true;
                 if (pulsaciones[i].tipo == tipoPulsacion.inicio) {
                     if (this.jugador.dinero < this.textoMinaOro.valor || this.jugador.madera < this.textoMinaMadera.valor || this.jugador.hierro < this.textoMinaHierro.valor) {
-                        alert("NECESITAS" + "\n" + "120 oro" + "\n" + "120 madera" + "\n" + " 200 hierro");
+                        alert("NECESITAS" + "\n" + costeMinaDinero + " oro" + "\n" + costeMinaMadera + " madera" + "\n" + costeMinaHierro + " hierro");
                     } else {
                         this.jugador.siguienteCompra = 9;
                     }
@@ -568,7 +563,7 @@ class GameLayer extends Layer {
                 this.botonSerreria.pulsado = true;
                 if (pulsaciones[i].tipo == tipoPulsacion.inicio) {
                     if (this.jugador.dinero < this.textoSerreriaOro.valor || this.jugador.madera < this.textoSerreriaMadera.valor || this.jugador.hierro < this.textoSerreriaHierro.valor) {
-                        alert("NECESITAS" + "\n" + "120 oro" + "\n" + "120 madera" + "\n" + " 200 hierro");
+                        alert("NECESITAS" + "\n" + costeSerreriaDinero + " oro" + "\n" + costeSerreriaMadera + " madera" + "\n" + costeSerreriaHierro + " hierro");
                     } else {
                         this.jugador.siguienteCompra = 10;
                     }

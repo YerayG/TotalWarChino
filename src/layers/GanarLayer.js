@@ -29,14 +29,12 @@ class GanarLayer extends Layer {
             }
         }
 
-        // No pulsado - Botón Disparo
         if ( !this.boton.pulsado ){
             controles.continuar = false;
         }
     }
 
     procesarControles( ) {
-        // siguiente pantalla
         if (controles.continuar) {
             gameLayer = new GameLayer();
             layer = gameLayer;
