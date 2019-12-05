@@ -2,8 +2,8 @@ var costeEspadachin = 10;
 var costeArquero = 15;
 var costeLancero = 20;
 var costeCaballero = 40;
-var costeCatapulta = 100;
-var costeRey = 100;
+var costeCatapulta = 99;
+var costeRey = 99;
 
 var costeMinaDinero = 30;
 var costeMinaHierro = 50;
@@ -22,5 +22,5 @@ var costeCuartelHierro = 50;
 var costeCuartelMadera = 50;
 
 var costeBarreraDinero = 70;
-var costeBarreraHierro = 100;
-var costeBarreraMadera = 100;
+var costeBarreraHierro = 99;
+var costeBarreraMadera = 99;
