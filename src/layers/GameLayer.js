@@ -59,30 +59,30 @@ class GameLayer extends Layer {
 
 
         //coste tropas
-        this.textoEspadachin = new TextoOro("20", 480 * 0.065, 320 * 0.975);
-        this.textoArquero = new TextoOro("20", 480 * 0.22, 320 * 0.975);
-        this.textoLancero = new TextoOro("60", 480 * 0.370, 320 * 0.975);
-        this.textoCaballero = new TextoOro("60", 480 * 0.515, 320 * 0.975);
-        this.textoRey = new TextoOro("60", 480 * 0.665, 320 * 0.975);
-        this.textoCatapulta = new TextoOro("60", 480 * 0.820, 320 * 0.975);
-        this.textoBarrera = new TextoMadera("60", 480 * 0.965, 320 * 0.975);
+        this.textoEspadachin = new TextoOro(costeEspadachin, 480 * 0.065, 320 * 0.975);
+        this.textoArquero = new TextoOro(costeArquero, 480 * 0.22, 320 * 0.975);
+        this.textoLancero = new TextoOro(costeLancero, 480 * 0.370, 320 * 0.975);
+        this.textoCaballero = new TextoOro(costeCaballero, 480 * 0.515, 320 * 0.975);
+        this.textoRey = new TextoOro(costeRey, 480 * 0.665, 320 * 0.975);
+        this.textoCatapulta = new TextoOro(costeCatapulta, 480 * 0.820, 320 * 0.975);
+        this.textoBarrera = new TextoMadera(costeBarreraMadera, 480 * 0.965, 320 * 0.975);
 
         //coste Edificios
-        this.textoAyuntamientoOro = new TextoOro("120", 480 * 0.13, 320 * 0.06);
-        this.textoAyuntamientoMadera = new TextoMadera("120", 480 * 0.13, 320 * 0.09);
-        this.textoAyuntamientoHierro = new TextoHierro("200", 480 * 0.13, 320 * 0.12);
+        this.textoAyuntamientoOro = new TextoOro(costeAyuntamientoDinero, 480 * 0.13, 320 * 0.06);
+        this.textoAyuntamientoMadera = new TextoMadera(costeAyuntamientoMadera, 480 * 0.13, 320 * 0.09);
+        this.textoAyuntamientoHierro = new TextoHierro(costeAyuntamientoHierro, 480 * 0.13, 320 * 0.12);
 
-        this.textoMinaOro = new TextoOro("120", 480 * 0.263, 320 * 0.06);
-        this.textoMinaMadera = new TextoMadera("120", 480 * 0.263, 320 * 0.09);
-        this.textoMinaHierro = new TextoHierro("200", 480 * 0.263, 320 * 0.12);
+        this.textoMinaOro = new TextoOro(costeMinaDinero, 480 * 0.266, 320 * 0.06);
+        this.textoMinaMadera = new TextoMadera(costeMinaMadera, 480 * 0.266, 320 * 0.09);
+        this.textoMinaHierro = new TextoHierro(costeMinaHierro, 480 * 0.266, 320 * 0.12);
 
-        this.textoSerreriaOro = new TextoOro("120", 480 * 0.393, 320 * 0.06);
-        this.textoSerreriaMadera = new TextoMadera("120", 480 * 0.393, 320 * 0.09);
-        this.textoSerreriaHierro = new TextoHierro("200", 480 * 0.393, 320 * 0.12);
+        this.textoSerreriaOro = new TextoOro(costeSerreriaDinero, 480 * 0.399, 320 * 0.06);
+        this.textoSerreriaMadera = new TextoMadera(costeSerreriaMadera, 480 * 0.399, 320 * 0.09);
+        this.textoSerreriaHierro = new TextoHierro(costeSerreriaHierro, 480 * 0.399, 320 * 0.12);
 
-        this.textoCuartelOro = new TextoOro("120", 480 * 0.523, 320 * 0.06);
-        this.textoCuartelMadera = new TextoMadera("120", 480 * 0.523, 320 * 0.09);
-        this.textoCuartelHierro = new TextoHierro("200", 480 * 0.523, 320 * 0.12);
+        this.textoCuartelOro = new TextoOro(costeCuartelDinero, 480 * 0.529, 320 * 0.06);
+        this.textoCuartelMadera = new TextoMadera(costeCuartelMadera, 480 * 0.529, 320 * 0.09);
+        this.textoCuartelHierro = new TextoHierro(costeSerreriaHierro, 480 * 0.529, 320 * 0.12);
 
         this.cargarMapa("res/" + nivelActual + ".txt");
 
