@@ -104,7 +104,7 @@ class GameLayer extends Layer {
         //Esquivar obstáculos
         for (var i = 0; i < this.obstaculos.length; i++) {
             for (var j = 0; j < this.tropasAliadas.length; j++) {
-                if (this.tropasAliadas[j].obstaculoDelante(i)) {
+                if (this.tropasAliadas[j].obstaculoDelante(this.obstaculos[i])) {
                     this.tropasAliadas[j].esquivar();
                 } else {
                     this.tropasAliadas[j].dejarDeEsquivar();
@@ -112,7 +112,7 @@ class GameLayer extends Layer {
             }
 
             for (var j = 0; j < this.tropasEnemigas.length; j++) {
-                if (this.tropasEnemigas[j].obstaculoDelante(i)) {
+                if (this.tropasEnemigas[j].obstaculoDelante(this.obstaculos[i])) {
                     this.tropasEnemigas[j].esquivar();
                 } else {
                     this.tropasEnemigas[j].dejarDeEsquivar();
@@ -367,6 +367,10 @@ class GameLayer extends Layer {
                 this.bloques.push(bloque);
                 break;
             case "O":
+                var bloque = new Bloque(imagenes.bloque_hierba, x, y);
+                bloque.y = bloque.y - bloque.alto / 2;
+                // modificación para empezar a contar desde el suelo
+                this.bloques.push(bloque);
                 var obstaculo = new Obstaculo(x, y);
                 obstaculo.y = obstaculo.y - obstaculo.alto / 2;
                 this.obstaculos.push(obstaculo);
