@@ -126,12 +126,20 @@ class GameLayer extends Layer {
         }
 
         //Esquivar propiedades
-        for(var i = 0; i < this.propiedadesAliadas.length; i++) {
-            for (var j = 0; j < this.tropasAliadas.length; j++) {
-                if (this.tropasAliadas[j].obstaculoDelante(this.propiedadesAliadas[i])) {
-                    this.tropasAliadas[j].esquivar(this.propiedadesAliadas[i]);
+        for (var i = 0; i < this.tropasAliadas.length; i++) {
+            for (var j = 0; j < this.propiedadesAliadas.length; j++) {
+                if (this.tropasAliadas[i].obstaculoDelante(this.propiedadesAliadas[j])) {
+                    this.tropasAliadas[i].esquivar(this.propiedadesAliadas[j]);
                 } else {
-                    this.tropasAliadas[j].dejarDeEsquivar();
+                    this.tropasAliadas[i].dejarDeEsquivar();
+                }
+            }
+
+            for (var j = 0; j < this.barrerasAliadas.length; j++) {
+                if (this.tropasAliadas[i].obstaculoDelante(this.barrerasAliadas[j])) {
+                    this.tropasAliadas[i].esquivar(this.barrerasAliadas[j]);
+                } else {
+                    this.tropasAliadas[i].dejarDeEsquivar();
                 }
             }
         }
