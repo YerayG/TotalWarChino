@@ -117,11 +117,10 @@ class Tropa extends Modelo {
         this.esquivando = false;
     }
 
-    //TODO esto no va aun
     moverseHacia(y) {
-        if (this.y > y) {
+        if (this.y > y + 5) {
             this.vy = -1;
-        } else if (this.y < y) {
+        } else if (this.y < y - 5) {
             this.vy = 1;
         } else {
             this.vy = 0;
