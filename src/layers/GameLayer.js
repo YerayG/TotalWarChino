@@ -1,9 +1,11 @@
 class GameLayer extends Layer {
 
+
     constructor() {
         super();
         this.iniciar();
     }
+
 
     iniciar() {
         this.scrollX = 0;
@@ -164,6 +166,12 @@ class GameLayer extends Layer {
                 if (this.tropasAliadas[i].enRango(this.baseEnemiga) && this.tropasAliadas[i].enRango(this.baseEnemiga)) {
                     this.tropasAliadas[i].atacar(this.baseEnemiga);
                     //TODO Si vida de baseEnemiga <= 0 game over y ganas
+                    if(this.baseEnemiga.vida<=0){
+                        this.ganarLayer = new GanarLayer();
+                        layer = this.ganarLayer;
+
+                        setInterval(loop, 1000 / 30);
+                    }
                 }
             }
         }
@@ -189,6 +197,12 @@ class GameLayer extends Layer {
                 if (this.tropasEnemigas[i].enRango(this.baseAliada) && this.tropasEnemigas[i].enRango(this.baseAliada)) {
                     this.tropasEnemigas[i].atacar(this.baseAliada);
                     //TODO Si vida de baseAliada <= 0 game over y pierdes
+                    if(this.baseAliada.vida<=0){
+                        this.perderLayer = new PerderLayer();
+                        layer = this.perderLayer;
+
+                        setInterval(loop, 1000 / 30);
+                    }
                 }
             }
         }
