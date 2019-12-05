@@ -1,9 +1,9 @@
 class Jugador {
 
     constructor() {
-        this.madera = 2000;
-        this.dinero = 2000;
-        this.hierro = 2000;
+        this.madera = 0;
+        this.dinero = 0;
+        this.hierro = 0;
         this.cuarteles = 0;
         this.siguienteCompra =0;
 
