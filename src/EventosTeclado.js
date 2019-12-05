@@ -3,6 +3,8 @@ var teclas = [];
 window.addEventListener('keydown', onKeyDown, false);
 window.addEventListener('keyup', onKeyUp, false);
 
+var estado=false;
+
 function onKeyDown( event) {
     entrada = entradas.teclado;
     // agregar la tecla pulsada si no estaba
@@ -18,6 +20,16 @@ function onKeyDown( event) {
                 break;
             case 32:
                 controles.back = 1;
+                break;
+            case 77:
+                reproducirMusica();
+                if(estado===false){
+                    reproducirMusica();
+                    estado=true;
+                }else{
+                    pararMusica();
+                    estado=false;
+                }
                 break;
         }
 

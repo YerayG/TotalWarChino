@@ -406,6 +406,7 @@ class GameLayer extends Layer {
         if (controles.back) {
             this.scrollX = 0;
         }
+
     }
 
     cargarObjetoMapa(simbolo, x, y) {
