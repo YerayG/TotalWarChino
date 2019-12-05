@@ -97,7 +97,6 @@ class GameLayer extends Layer {
         this.madera.valor = this.jugador.madera;
         this.hierro.valor = this.jugador.hierro;
 
-        console.log(this.jugador.cuarteles);
 
         for (var i = 0; i < this.tropasEnemigas.length; i++) {
             this.tropasEnemigas[i].actualizar();
