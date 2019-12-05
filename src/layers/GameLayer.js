@@ -95,6 +95,7 @@ class GameLayer extends Layer {
         this.madera.valor = this.jugador.madera;
         this.hierro.valor = this.jugador.hierro;
 
+
         for (var i = 0; i < this.tropasEnemigas.length; i++) {
             this.tropasEnemigas[i].actualizar();
         }
@@ -525,8 +526,8 @@ class GameLayer extends Layer {
             if (this.botonBarrera.contienePunto(pulsaciones[i].x, pulsaciones[i].y)) {
                 this.botonBarrera.pulsado = true;
                 if (pulsaciones[i].tipo == tipoPulsacion.inicio) {
-                    if (this.jugador.dinero < this.textoBarrera.valor) {
-                        alert("NECESITAS" + "\n" + costeBarreraDinero + " oro");
+                    if (this.jugador.madera < costeBarreraMadera) {
+                        alert("NECESITAS" + "\n" + costeBarreraMadera + " madera");
                     } else {
                         this.jugador.siguienteCompra = 11;
                     }
@@ -959,11 +960,11 @@ class GameLayer extends Layer {
                     }
                     break;
                 case 4:
-                    if (this.enemigo.comprobarRecursos(costeBarreraDinero, costeBarreraHierro, costeBarreraMadera)) {
+                    if (this.enemigo.comprobarRecursos(costeBarreraMadera)) {
                         var barrera = new Barrera(xEnemigo, yEnemigo);
                         if (!this.colisionaPropiedadEnemiga(barrera)) {
                             this.barrerasEnemigas.push(barrera);
-                            this.enemigo.decrementarRecursos(costeBarreraDinero, costeBarreraHierro, costeBarreraMadera);
+                            this.enemigo.decrementarRecursos(costeBarreraMadera);
                         } else {
                             this.enemigo.decidido = false;
                         }
