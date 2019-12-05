@@ -1,9 +1,12 @@
 class GameLayer extends Layer {
 
+
     constructor() {
         super();
         this.iniciar();
+
     }
+
 
     iniciar() {
         this.scrollX = 0;
@@ -40,12 +43,13 @@ class GameLayer extends Layer {
 
 
         //botones tropas
-        this.botonArquero = new Boton(imagenes.boton_arquero, 480 * 0.25, 320 * 0.94);
-        this.botonEspadachin = new Boton(imagenes.boton_espadachin, 480 * 0.1, 320 * 0.94);
-        this.botonLancero = new Boton(imagenes.boton_lancero, 480 * 0.40, 320 * 0.94);
-        this.botonCaballero = new Boton(imagenes.boton_caballero, 480 * 0.55, 320 * 0.94);
-        this.botonRey = new Boton(imagenes.boton_rey, 480 * 0.70, 320 * 0.94);
-        this.botonCatapulta = new Boton(imagenes.boton_catapulta, 480 * 0.85, 320 * 0.94);
+        this.botonArquero = new Boton(imagenes.boton_arquero, 480 * 0.20, 320 * 0.94);
+        this.botonEspadachin = new Boton(imagenes.boton_espadachin, 480 * 0.05, 320 * 0.94);
+        this.botonLancero = new Boton(imagenes.boton_lancero, 480 * 0.35, 320 * 0.94);
+        this.botonCaballero = new Boton(imagenes.boton_caballero, 480 * 0.50, 320 * 0.94);
+        this.botonRey = new Boton(imagenes.boton_rey, 480 * 0.65, 320 * 0.94);
+        this.botonCatapulta = new Boton(imagenes.boton_catapulta, 480 * 0.80, 320 * 0.94);
+        this.botonBarrera = new Boton(imagenes.boton_barrera, 480 * 0.95, 320 * 0.94);
 
         //botones edificios
         this.botonAyuntamiento = new Boton(imagenes.boton_Ayuntamiento, 480 * 0.1, 320 * 0.07);
@@ -55,12 +59,13 @@ class GameLayer extends Layer {
 
 
         //coste tropas
-        this.textoEspadachin = new TextoOro("20", 480 * 0.115, 320 * 0.975);
-        this.textoArquero = new TextoOro("20", 480 * 0.27, 320 * 0.975);
-        this.textoLancero = new TextoOro("60", 480 * 0.415, 320 * 0.975);
-        this.textoCaballero = new TextoOro("60", 480 * 0.565, 320 * 0.975);
-        this.textoRey = new TextoOro("60", 480 * 0.715, 320 * 0.975);
-        this.textoCatapulta = new TextoOro("60", 480 * 0.868, 320 * 0.975);
+        this.textoEspadachin = new TextoOro("20", 480 * 0.065, 320 * 0.975);
+        this.textoArquero = new TextoOro("20", 480 * 0.22, 320 * 0.975);
+        this.textoLancero = new TextoOro("60", 480 * 0.370, 320 * 0.975);
+        this.textoCaballero = new TextoOro("60", 480 * 0.515, 320 * 0.975);
+        this.textoRey = new TextoOro("60", 480 * 0.665, 320 * 0.975);
+        this.textoCatapulta = new TextoOro("60", 480 * 0.820, 320 * 0.975);
+        this.textoBarrera = new TextoMadera("60", 480 * 0.965, 320 * 0.975);
 
         //coste Edificios
         this.textoAyuntamientoOro = new TextoOro("120", 480 * 0.13, 320 * 0.06);
@@ -185,6 +190,13 @@ class GameLayer extends Layer {
                 }
                 if (this.tropasAliadas[i].enRango(this.baseEnemiga) && this.tropasAliadas[i].mismaCalle(this.baseEnemiga)) {
                     this.tropasAliadas[i].atacar(this.baseEnemiga);
+                    //TODO Si vida de baseEnemiga <= 0 game over y ganas
+                    if(this.baseEnemiga.vida<=0){
+                        this.ganarLayer = new GanarLayer();
+                        layer = this.ganarLayer;
+
+                        setInterval(loop, 1000 / 30);
+                    }
                 }
             }
         }
@@ -210,6 +222,12 @@ class GameLayer extends Layer {
                 if (this.tropasEnemigas[i].enRango(this.baseAliada) && this.tropasEnemigas[i].enRango(this.baseAliada)) {
                     this.tropasEnemigas[i].atacar(this.baseAliada);
                     //TODO Si vida de baseAliada <= 0 game over y pierdes
+                    if(this.baseAliada.vida<=0){
+                        this.perderLayer = new PerderLayer();
+                        layer = this.perderLayer;
+
+                        setInterval(loop, 1000 / 30);
+                    }
                 }
             }
         }
@@ -295,6 +313,14 @@ class GameLayer extends Layer {
             this.obstaculos[i].dibujar(this.scrollX);
         }
 
+        for (var i = 0; i < this.barrerasEnemigas; i++) {
+            this.barrerasEnemigas[i].dibujar(this.scrollX);
+        }
+
+        for (var i = 0; i < this.barrerasAliadas.length; i++) {
+            this.barrerasAliadas[i].dibujar(this.scrollX);
+        }
+
         this.baseAliada.dibujar(this.scrollX);
         this.baseEnemiga.dibujar(this.scrollX);
 
@@ -317,6 +343,7 @@ class GameLayer extends Layer {
         this.botonMina.dibujar();
         this.botonSerreria.dibujar();
         this.botonCuartel.dibujar();
+        this.botonBarrera.dibujar();
 
         //coste dibujar
         this.textoArquero.dibujar();
@@ -325,6 +352,7 @@ class GameLayer extends Layer {
         this.textoCaballero.dibujar();
         this.textoRey.dibujar();
         this.textoCatapulta.dibujar();
+        this.textoBarrera.dibujar();
 
         //coste edificios
         this.textoAyuntamientoOro.dibujar();
@@ -476,6 +504,17 @@ class GameLayer extends Layer {
                         alert("NECESITAS" + "\n" + "60 oro");
                     } else {
                         this.jugador.siguienteCompra = 6;
+                    }
+                }
+            }
+
+            if (this.botonBarrera.contienePunto(pulsaciones[i].x, pulsaciones[i].y)) {
+                this.botonBarrera.pulsado = true;
+                if (pulsaciones[i].tipo == tipoPulsacion.inicio) {
+                    if (this.jugador.dinero < this.textoBarrera.valor) {
+                        alert("NECESITAS" + "\n" + "60 oro");
+                    } else {
+                        this.jugador.siguienteCompra = 11;
                     }
                 }
             }
@@ -690,6 +729,14 @@ class GameLayer extends Layer {
                     this.jugador.siguienteCompra = 0;
                     break;
                 }
+            case 11:
+                var barrera = new Barrera(posicionX, posicionY);
+                if (!this.colisionaPropiedad(barrera) && !this.colisionaTropas(barrera)) {
+                    this.jugador.madera = this.jugador.madera - this.textoBarrera.valor;
+                    this.barrerasAliadas.push(barrera);
+                    this.jugador.siguienteCompra = 0;
+                    break;
+                }
         }
     }
 
@@ -901,7 +948,7 @@ class GameLayer extends Layer {
                     if (this.enemigo.comprobarRecursos(costeBarreraDinero, costeBarreraHierro, costeBarreraMadera)) {
                         var barrera = new Barrera(xEnemigo, yEnemigo);
                         if (!this.colisionaPropiedadEnemiga(barrera)) {
-                            this.propiedadesEnemigas.push(barrera);
+                            this.barrerasEnemigas.push(barrera);
                             this.enemigo.decrementarRecursos(costeBarreraDinero, costeBarreraHierro, costeBarreraMadera);
                         } else {
                             this.enemigo.decidido = false;
