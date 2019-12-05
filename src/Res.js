@@ -34,6 +34,7 @@ var imagenes = {
     boton_lancero: "res/boton-Lancero.png",
     boton_rey: "res/boton-Rey.png",
     boton_catapulta: "res/boton-Catapulta.png",
+    boton_barrera: "res/boton-Barrera.png",
     boton_espadachin: "res/boton-Espadachin.png",
     boton_caballero: "res/boton-Caballero.png",
     boton_Ayuntamiento: "res/boton-Ayuntamiento.png",
