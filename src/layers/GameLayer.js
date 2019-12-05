@@ -758,7 +758,7 @@ class GameLayer extends Layer {
                         var animaciones = {
                             animacion_atacar: {
                                 imagenSrc: imagenes.animacion_lancero_enemigo_ataque,
-                                frames: 7
+                                frames: 4
                             },
                             animacion_mover: {
                                 imagenSrc: imagenes.animacion_lancero_enemigo_mover,
