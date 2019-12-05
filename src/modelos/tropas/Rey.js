@@ -6,15 +6,15 @@ class Rey extends Tropa {
         if (aliado) {
             imagen = imagenes.rey_aliado;
             vx = 3;
-            rango = 20;
+            rango = 30;
         } else {
             imagen = imagenes.rey_enemigo;
             vx = -3;
-            rango = -20;
+            rango = -30;
         }
 
         var cadenciaAtaque = 20,
-            vida = 1000,
+            vida = 500,
             damage = 100;
 
         super(x, y, vx, rango, cadenciaAtaque, vida, damage, imagen, animaciones);

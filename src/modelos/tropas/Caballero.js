@@ -4,17 +4,17 @@ class Caballero extends Tropa {
 
         if (aliado) {
             imagen = imagenes.caballero_enemigo;
-            vx = 3;
+            vx = 1;
             rango = 30;
         } else {
             imagen = imagenes.caballero_enemigo;
-            vx = -3;
+            vx = -1;
             rango = -30
         }
 
         var cadenciaAtaque = 30,
-            vida = 600,
-            damage = 50;
+            vida = 500,
+            damage = 60;
 
         super(x, y, vx, rango, cadenciaAtaque, vida, damage, imagen, animaciones);
         this.aliado = aliado;

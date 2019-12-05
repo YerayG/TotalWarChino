@@ -6,16 +6,16 @@ class Catapulta extends Tropa {
         if (aliado) {
             imagen = imagenes.catapulta_aliada;
             vx = 1;
-            rango = 300;
+            rango = 200;
         } else {
             imagen = imagenes.catapulta_enemiga;
             vx = -1;
-            rango = -300
+            rango = -200
         }
 
-        var cadenciaAtaque = 200,
-            vida = 300,
-            damage = 200;
+        var cadenciaAtaque = 150,
+            vida = 200,
+            damage = 1000;
 
         super(x, y, vx, rango, cadenciaAtaque, vida, damage, imagen, animaciones);
         this.aliado = aliado;

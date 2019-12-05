@@ -119,9 +119,9 @@ class Tropa extends Modelo {
 
     moverseHacia(y) {
         if (this.y > y + 5) {
-            this.vy = -1;
+            this.vy = -2;
         } else if (this.y < y - 5) {
-            this.vy = 1;
+            this.vy = 2;
         } else {
             this.vy = 0;
         }

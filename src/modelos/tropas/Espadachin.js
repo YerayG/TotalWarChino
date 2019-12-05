@@ -5,16 +5,16 @@ class Espadachin extends Tropa {
         if (aliado) {
             imagen = imagenes.caballero_aliado;
             vx = 2;
-            rango = 20;
+            rango = 30;
         } else {
             imagen = imagenes.espadachin_enemigo;
             vx = -2;
-            rango = -20;
+            rango = -30;
         }
 
-        var cadenciaAtaque = 40,
-            vida = 1000,
-            damage = 50;
+        var cadenciaAtaque = 20,
+            vida = 150,
+            damage = 20;
 
         super(x, y, vx, rango, cadenciaAtaque, vida, damage, imagen, animaciones);
         this.aliado = aliado;

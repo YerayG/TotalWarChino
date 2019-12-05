@@ -87,8 +87,6 @@ class GameLayer extends Layer {
 
         this.baseAliada = new Base(30, 150, this.altoMapa / 2);
         this.baseEnemiga = new Base(this.anchoMapa - 30, this.altoMapa / 2);
-
-        //this.obstaculos.push(new Obstaculo(400, 180));
     }
 
     actualizar() {
@@ -97,14 +95,20 @@ class GameLayer extends Layer {
         this.madera.valor = this.jugador.madera;
         this.hierro.valor = this.jugador.hierro;
 
-        console.log(this.jugador.cuarteles);
-
         for (var i = 0; i < this.tropasEnemigas.length; i++) {
             this.tropasEnemigas[i].actualizar();
         }
 
         for (var i = 0; i < this.tropasAliadas.length; i++) {
             this.tropasAliadas[i].actualizar();
+        }
+
+        for (var i = 0; i < this.propiedadesAliadas.length; i++) {
+            this.propiedadesAliadas[i].actualizar();
+        }
+
+        for (var i = 0; i < this.propiedadesEnemigas.length; i++) {
+            this.propiedadesEnemigas[i].actualizar();
         }
 
         //Esquivar obstáculos
@@ -208,8 +212,6 @@ class GameLayer extends Layer {
                     if (this.baseEnemiga.vida <= 0) {
                         this.ganarLayer = new GanarLayer();
                         layer = this.ganarLayer;
-
-                        setInterval(loop, 1000 / 30);
                     }
                 }
             }
@@ -238,8 +240,6 @@ class GameLayer extends Layer {
                     if (this.baseAliada.vida <= 0) {
                         this.perderLayer = new PerderLayer();
                         layer = this.perderLayer;
-
-                        setInterval(loop, 1000 / 30);
                     }
                 }
             }

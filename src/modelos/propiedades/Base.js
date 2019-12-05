@@ -1,8 +1,8 @@
 class Base extends Propiedad {
     constructor(x, y) {
-        super(x, y, 0, 1000, imagenes.base_aliada);
+        super(x, y, 0, 2000, imagenes.base_aliada);
 
-        this.vida = 1000;
+        this.vida = 2000;
     }
 
     actualizar() {

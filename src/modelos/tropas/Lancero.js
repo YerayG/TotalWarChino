@@ -6,16 +6,16 @@ class Lancero extends Tropa {
         if (aliado) {
             imagen = imagenes.lancero_aliado;
             vx = 2;
-            rango = 40;
+            rango = 50;
         } else {
             imagen = imagenes.lancero_enemigo;
             vx = -2;
-            rango = -40;
+            rango = -50;
         }
 
         var cadenciaAtaque = 20,
-            vida = 300,
-            damage = 70;
+            vida = 250,
+            damage = 40;
 
         super(x, y, vx, rango, cadenciaAtaque, vida, damage, imagen, animaciones);
         this.aliado = aliado;

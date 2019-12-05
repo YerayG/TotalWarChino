@@ -1,14 +1,20 @@
 class Mina extends Propiedad {
     constructor(x, y) {
-        super(x, y, 5, 1000, imagenes.mina);
-        //TODO cambiar por imagen de verdad
+        super(x, y, 1, 200, imagenes.mina);
+
+        this.generarCada = 10;
+        this.contador = 0;
     }
 
     actualizar() {
         super.actualizar();
+        this.contador--;
     }
 
     generarPara(bando) {
-        bando.hierro += this.cantidad;
+        if(this.contador <= 0) {
+            bando.hierro += this.cantidad;
+            this.contador = this.generarCada;
+        }
     }
 }
