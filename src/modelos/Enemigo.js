@@ -1,9 +1,9 @@
 class Enemigo {
 
     constructor() {
-        this.madera = 200;
-        this.dinero = 200;
-        this.hierro = 200;
+        this.madera = 100;
+        this.dinero = 100;
+        this.hierro = 100;
         this.cuarteles = 0;
 
         this.recursosAutomaticosCada = 20;
@@ -39,7 +39,7 @@ class Enemigo {
                 this.siguienteCompra = parseInt(Math.random() * 5);
             } else {
                 //80% de nueva tropa, 20% de nueva propiedad
-                if (Math.random() > 0.2) {
+                if (Math.random() > 0.3) {
                     this.isTropaSiguiente = true;
                     this.siguienteCompra = parseInt(Math.random() * (this.cuarteles + 1));
                 } else {
