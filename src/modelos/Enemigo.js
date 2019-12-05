@@ -34,7 +34,7 @@ class Enemigo {
     decidirSiguiente(tropas, propiedades) {
         if (!this.decidido) {
             //Si tiene pocas propiedades y alguna tropa genera propiedad random
-            if (propiedades.length < 2 && tropas.length > 0) {
+            if (propiedades.length < 1 && tropas.length > 0) {
                 this.isTropaSiguiente = false;
                 this.siguienteCompra = parseInt(Math.random() * 5);
             } else {
